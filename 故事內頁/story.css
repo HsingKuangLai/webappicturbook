@@ -1,0 +1,37 @@
+body {
+    background-image: url("image_2.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    margin: 0 auto;
+}
+.up{margin: 0 auto;
+    width: 1200px;
+    height: 200px;
+}
+
+.pageicon{
+    width:"40"; 
+    height:"40";
+    position: relative;
+    left: 650px;
+}
+
+.container{
+    margin: 0 auto;
+    width: 1200px;
+    height: 700px;
+    background-color: white;
+    border-radius: 20px;
+    position: relative;
+    top: 20px;
+    text-align: center;
+}
+
+.story {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
