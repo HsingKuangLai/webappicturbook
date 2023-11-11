@@ -51,6 +51,7 @@ body {
     border-radius: 5px;
     width: 150px;
     height: 30px;
+    line-height:30px;
     font-size: 20px;
     text-align: center;
     position: relative;
@@ -67,4 +68,5 @@ body {
     height: 40px;
     text-align: center;
     border-radius: 30px;
+    line-height:40px;
 }
