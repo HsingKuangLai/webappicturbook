@@ -7,31 +7,33 @@ body {
     margin: 0 auto;
 }
 .up{margin: 0 auto;
+    position: relative;
+    top: 80px;
     width: 1200px;
-    height: 200px;
+    height: 120px;
 }
 
 .pageicon{
     width:"40"; 
     height:"40";
     position: relative;
-    left: 650px;
+    left: 700px;
 }
 
 .container{
     margin: 0 auto;
-    width: 1200px;
-    height: 700px;
-    background-color: white;
-    border-radius: 20px;
+    width: 1400px;
+    height: 750px;
     position: relative;
     top: 20px;
     text-align: center;
 }
 
 .story {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
+.changepage{
+    position: relative;
+    bottom: 375px;
+}
