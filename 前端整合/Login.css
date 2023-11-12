@@ -1,16 +1,56 @@
 body {
   font-family: Bookman, URW Bookman L, serif;
   color:#003C9D;
-  background-image: url('./background1.png');
+  background-image: url('./image/background1.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   margin: 0;
 }
-  
-h1 {
+
+.up{
+  margin: 0 auto;
+  position: relative;
+  top: 80px;
+  width: 1250px;
+  height: 120px;
+}
+
+.container{
+  background-color: white;
+  margin: 0 auto;
+  padding: 5px 20px;
+  max-width: 80%;
+  max-width: 1250px;
   text-align: center;
-  font-size: 24px;
+  border-radius: 20px;
+  margin-top: 100px;
+  margin-bottom: 25px;
+}
+
+.loginBox{
+  max-width: 400px;
+  background-color: white;
+  text-align: center;
+  height: 500px; 
+  margin: 0 auto; 
+  padding: 20px; 
+}
+
+.pageicon{
+  width:"40"; 
+  height:"40";
+  position: relative;
+  left: 650px;
+  bottom: 60px;
+}
+
+/* Login標題格式 */
+.head {
+  text-align: center;
+  font-size: 50px;
+  font-family: Bookman, URW Bookman L, serif;
+  font-weight: bold;
 }
 
 p{
@@ -18,24 +58,23 @@ p{
   padding: 10px;
   text-align: left; 
   margin-bottom: 10px;
-
 }
 
 button{
-    /* display: block;  */
-    border:0;
+    border:10;
     background-color:#003C9D;
     color:#fff;
     width: 40%;
-    padding: 10px;
+    padding: 20px;
     margin-bottom: 10px;
-    border-radius: 35px;
+    border-radius: 30px;
+    font-size: 25px;
     align-items: center;
     margin: 0 auto;
     cursor:pointer;
-    transition: 1s;
+    transition: 0.8s;
     font-family: Bookman, URW Bookman L, serif;
-    /* text-align: center; */
+
 }
 
 button:hover{
@@ -51,50 +90,15 @@ input[type="text"] {
   padding: 10px;
   margin-bottom: 10px;
   display: block;
-  /* -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6); */
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
   padding: 10px;
-  
   border : solid .1px black;
   border-radius: 35px;
   background-color :  #fff;
-  
   outline:none;
   }
   
-.white-box {
-  max-width: 1000px;
-  background-color: white;
-  text-align: center;
-  height: 500px; /* Adjust the height as needed */
-  margin: 0 auto; /* Center the box horizontally */
-  margin-top: 50px; 
-  padding: 20px; 
-  border-radius: 35px;
-  
-}
-
-.lower-div {
-  width: 30%; /* Adjust the width of the lower div as needed */
-  /* background-color: white; */
-  /* margin: 0 auto; */
-  text-align: left;
-  margin-left: 700px;
-  margin-top: 30px; /* Add margin to push it to the lower part of the page */
-  /* background-color: rgba(255, 255, 255, 0.5); */
-  padding: 20px; /* Add padding to the transparent div */
-}
-
-.box{
-  max-width: 400px;
-  background-color: white;
-  text-align: center;
-  height: 300px; /* Adjust the height as needed */
-  margin: 0 auto; /* Center the box horizontally */
-  margin-top: 50px; 
-  padding: 20px; /* Add padding inside the box as needed */
-}
-
+/* 下方為icon格式 */
 .user {
   position: relative;
 }
@@ -125,7 +129,7 @@ input[type="text"] {
   transform: translateY(-140%); 
 }
 
-.search {
+/* .search {
   position: relative;
 }
 
@@ -138,4 +142,4 @@ input[type="text"] {
   left: 10pt;
   top: 50%;
   transform: translateY(-50%); 
-}
+} */
