@@ -6,8 +6,7 @@ body {
     background-size: cover;
     margin: 0 auto;
 }
-.up{
-    margin: 0 auto;
+.up{margin: 0 auto;
     position: relative;
     top: 80px;
     width: 1400px;
