@@ -5,7 +5,7 @@ $(document).ready(function () {
 	    alert("您的瀏覽器不支援indexedDB");
 	}
 	//開啟資料庫
-    var req = window.indexedDB.open("Member");
+    var req = window.indexedDB.open("Membership");
     req.onsuccess = function (e) {
 		db = this.result;
 		str="MyDatabaseA 建立完成"
@@ -13,11 +13,11 @@ $(document).ready(function () {
 				+ " >版本：" + db.version
 				+ "<br>";
 		//  $("div").html(str);
-         console.log("in");
     };
     req.onerror = function (e) {    
 	   $("div").html("開啟資料庫錯誤:"+e.target.errorCode);
     };
+	
 	//onupgradeneeded事件
     req.onupgradeneeded = function(e) { 
 	  //建立objectStore
@@ -27,7 +27,7 @@ $(document).ready(function () {
       objectStore.createIndex("password", "password", { unique: false });
       objectStore.createIndex("creditCard_num", "creditCard_num", { unique: false });	  
 	};
-	$("#signupButton").click(function(){ //signupButton
+	$("#signupButton").click(function(){
 		add_click('add');
 	});
 	// $("#putbtn").click(function(){
@@ -45,18 +45,25 @@ function add_click(add_way){
 	var transaction = db.transaction("member", "readwrite");
 	transaction.oncomplete = function(e) {
 		str+="交易成功<br>";
-		$("div").html(str);
+		// $("div").html(str);
+		console.log("交易成功")
 	};
 	transaction.onerror = function(e) {$("div").html("交易失敗");};
 	store = transaction.objectStore("member");
 
 	if(add_way=="add")
+		// console.log($('#password').val());
 		request = store.add({user_id: $("#user_id").val(), email: $("#email").val(), password: $("#password").val(), creditCard_num: $("#creditCard_num").val()});
 	else
-		request = store.put({user_id: $("#user_id").val(), name: $("#name").val()});
+		request = store.put({user_id: $("#user_id").val(), email: $("#email").val()});
 
 	request.onsuccess = function (e){
 		str+="新增資料成功<br>";
+		// $("div").html(str);
+		$("#user_id").val('');
+		$("#email").val('');
+		$("#password").val('');
+		$("#creditCard_num").val('');
 		console.log(str);
 	}
 	request.onerror = function (e){
