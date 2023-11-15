@@ -5,7 +5,7 @@ $(document).ready(function () {
 	    alert("您的瀏覽器不支援indexedDB");
 	}
 	//開啟資料庫
-    var req = window.indexedDB.open("Book");
+    var req = window.indexedDB.open("Member");
     req.onsuccess = function (e) {
 		db = this.result;
 		str="MyDatabaseA 建立完成"
