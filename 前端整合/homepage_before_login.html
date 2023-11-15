@@ -29,7 +29,7 @@
             ];
         
             //開啟資料庫
-            var req = window.indexedDB.open("BOOK");
+            var req = window.indexedDB.open("Book");
             req.onsuccess = function (evt) {
               db = this.result;
             };
