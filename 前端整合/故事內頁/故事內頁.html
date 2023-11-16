@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="story.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
-    <title>你很特別</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="story.js"></script>
+    <title>吵架的松鼠</title>
 </head>
 
 <body>
@@ -21,10 +22,23 @@
     </div>
     
     <div class="container">
-        <img src="lastpage.png"  class="changepage">
-        <img src="story1.png" class="story" width="1200" height="750">
-        <img src="nextpage.png" class="changepage">
+        <div class = "story">
+            <div class="page"><img src="story1.png"  width="1200" height="750"> </div>
+            <div class="page"><img src="story2.png"  width="1200" height="750"> </div>
+            <div class="page"><img src="story1.png"  width="1200" height="750"> </div>
+            <div class="page"><img src="story2.png"  width="1200" height="750"> </div>
+            <div class="page"><img src="story1.png"  width="1200" height="750"> </div>
+        </div>    
     </div>
-    
+
+    <div class="changepage_container">
+        <img src="lastpage.png"  class="changepage", id="prev-btn">
+        <img src="nextpage.png" class="changepage" id="next-btn">  
+    </div>
+<script>
+    $(document).on("mobileinit", function () {
+        $.mobile.autoInitializePage = false;
+    });
+</script>
 </body>
 </html>

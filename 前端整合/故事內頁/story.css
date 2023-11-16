@@ -25,15 +25,37 @@ body {
     width: 1400px;
     height: 750px;
     position: relative;
-    top: 20px;
-    text-align: center;
+    top: 30px;
+    overflow: hidden;   
+    display: grid;
+
+   
 }
 
 .story {
-    margin: 0 auto;
+    
+    padding-left: 125px;
+    transition: margin-left 1s; /* 添加過渡效果 */
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    overflow: hidden;
+    gap: 200px;
 }
 
-.changepage{
-    position: relative;
-    bottom: 375px;
+
+
+.changepage_container{
+    display: flex;
+    align-items: center;
 }
+
+.changepage{ 
+    position: relative; 
+    left:700px;
+} 
+
+
+/* 
+.page:nth-child(even) {
+    background-color: #f9f9f9;
+} */
