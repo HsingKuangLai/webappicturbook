@@ -26,7 +26,6 @@
       <a href="./homepage_before_login.html">
       <img src="./image/homepage.png" class="pageicon">
       </a>
-      <img src="./image/list.png" class="pageicon">
     </div>
 
   </div>
@@ -37,14 +36,16 @@
   <div class = "loginBox">
     <p class = "head">Login</p>
     <p> ID </p>
-    <label class="user">
-    <input type="text" id="id" placeholder="">
-    </label>
+    <table>
+        <td class="icon"><i class='fas fa-user'></i></td>
+        <td><input type="text" id="id" placeholder=""></td>
+    </table>
     
     <p> Password </p>
-    <label class="lock">
-    <input type="text" id="password" placeholder="">
-    </label>
+    <table>
+        <td class="icon"><i class='fas fa-lock'></i></td>
+        <td> <input type="text" id="password" placeholder=""></td>
+    </table>
 
     <br><br>
     <button id="LoginButton" >Login</button>

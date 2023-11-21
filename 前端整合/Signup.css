@@ -95,6 +95,33 @@ button:hover{
   border:2px #003C9D solid;
 }
 
+table {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 35px;
+  padding: 8px;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+  background-color :  #fff;
+  outline: none;
+}
+
+.icon {
+  padding-left: 3px;
+  width: 20px; /* 固定icon寬度。 */
+}
+
+input {
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+}
+
+/*input格式*/
+/*
 input[type="text"] {
   width: 100%;
   align-items: center;
@@ -124,9 +151,10 @@ input[type="text"] {
     background-color :  #fff;
     outline:none;
     }
-
+*/
 
 /* 下方為icon格式 */
+/*
 .user {
   position: relative;
 }
@@ -156,6 +184,7 @@ input[type="text"] {
   top: 50%;
   transform: translateY(-140%); 
 }
+*/
 
 /* .search {
   position: relative;

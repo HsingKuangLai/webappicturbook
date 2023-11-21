@@ -12,7 +12,7 @@
     
     <!-- 加入Css格式 -->
     <link rel = "stylesheet" href = "Signup.css">
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     
     <!--最佳化螢幕寬度-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,7 +31,6 @@
       <a href="./homepage_before_login.html">
       <img src="./image/homepage.png" class="pageicon">
       </a>
-      <img src="./image/list.png" class="pageicon">
     </div>
 
   </div>
@@ -44,20 +43,32 @@
     <p class = "head">Sign up</p>
 
     <p> Name </p>
-    <input type="text" id="user_id" placeholder="">
+    <table>
+      <td class="icon"><i class='fas fa-user'></i></td>
+      <td><input type="text" id="user_id" placeholder=""></td>
+    </table>
 
     <p> Email </p>
     <!-- <label class="user"> -->
-    <input type="text" id="email" placeholder="">
+    <table>
+      <td class="icon"><i class='fas fa-envelope'></i></td>
+      <td><input type="text" id="email" placeholder=""></td>
+    </table>
     <!-- </label> -->
   
     <p> Password </p>
     <!-- <label class="lock"> -->
-    <input type="password" id="password" />
+    <table>
+      <td class="icon"><i class='fas fa-lock'></i></td>
+      <td> <input type="password" id="password" /></td>
+    </table>
     <!-- </label> -->
 
     <p> Credit Card </p>
-    <input type="text" id="creditCard_num" placeholder="">
+    <table>
+      <td class="icon"><i class='fas fa-credit-card'></i></td>
+      <td><input type="text" id="creditCard_num" placeholder=""></td>
+    </table>
 
     <br><br>
     <!-- <button id="loginButton" >Login</button> -->
