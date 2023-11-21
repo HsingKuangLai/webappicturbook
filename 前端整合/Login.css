@@ -11,9 +11,29 @@ body {
 .up{
   margin: 0 auto;
   position: relative;
-  top: 80px;
-  width: 1250px;
-  height: 120px;
+  top: 20px;
+  width: 1280px;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 400px;
+  height: auto;
+}
+
+.pageicon {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+}
+
+.pageicon-container {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
 }
 
 .container{
@@ -35,15 +55,6 @@ body {
   height: 500px; 
   margin: 0 auto; 
   padding: 20px; 
-}
-
-.pageicon{
-  width:"40"; 
-  height:"40";
-  position: relative;
-  left: 630px;
-  bottom: 60px;
-  margin-left: 10px;
 }
 
 /* Login標題格式 */
