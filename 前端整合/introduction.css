@@ -23,16 +23,60 @@ body {
     height: auto;
 }
   
-.pageicon {
-    width: 40px;
-    height: 40px;
-    margin-left: 10px;
+.up_right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: auto; /* 将右侧部分推到右侧 */
 }
   
 .pageicon-container {
     display: flex;
     justify-content: flex-end;
     position: relative;
+}
+  
+.pageicon {
+    width: 40px;
+    height: auto;
+    margin-left: 10px;
+}
+  
+.search {
+    bottom: 30px;
+    right: 10px;
+}
+  
+.search:before {
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f002";
+    font-size: 22px;
+    position: relative;
+    left: 25pt;
+    top: 3pt;
+    /* transform: translateY(-50%);  */
+}
+  
+input[type="text"] {
+    width: 500px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    padding: 10px 10px 10px 40px;
+    border: solid .1px black;
+    border-radius: 16px;
+    background-color: #fff;
+}
+  
+input[type="text"]::before {
+    content: "\f002";
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    font-size: 16px;
+    color: #555;
+    position: absolute;
+    left: 20px; 
+    top: 50%; 
+    transform: translateY(-50%);
 }
 
 .container{
