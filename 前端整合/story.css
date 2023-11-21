@@ -17,7 +17,8 @@ body {
     width:"40"; 
     height:"40";
     position: relative;
-    left: 660px;
+    left: 870px;
+    margin-left: 10px;
 }
 
 .container{

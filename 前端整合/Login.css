@@ -41,8 +41,9 @@ body {
   width:"40"; 
   height:"40";
   position: relative;
-  left: 650px;
+  left: 630px;
   bottom: 60px;
+  margin-left: 10px;
 }
 
 /* Login標題格式 */
