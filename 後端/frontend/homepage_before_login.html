@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="homepage_before_login.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="jquery-1.10.2.min.js"></script>
+    <script>
+        $(function () {
+        
+            window.indexedDB = window.indexedDB || window.mozIndexedDB || 	window.webkitIndexedDB || window.msIndexedDB;
+            if (!window.indexedDB) {
+                alert("您的瀏覽器不支援indexedDB");
+            }
+        
+               //要新增的資料array
+            const bookData = [
+              {name: "新動物寓言繪本系列2吵架的松鼠", category: "寓言繪本", author:"Rachel Bright", times:"12", translator:"張祐誠", painter:"Jim Field", publisher:"大光點", publish_date:"2023/11/11", cover:"cover_Image1.png", content:"story1-1.png/story1-2.png", intoduction:"大家都聽過伊索寓言裡《螞蟻和蟋蟀》的故事吧？這本書裡的兩隻松鼠—希瑞爾與布魯斯，就如同貪玩的蟋蟀和勤勞的螞蟻一般，而當這兩隻個性完全相反的松鼠同時發現了這個冬天裡的最後一顆松果，他們會為了這顆松果大打出手、拚個你死我活，直到耗盡彼此最後一分力氣；還是會試著互助分享，幫助彼此順利的度過這個寒冷的冬天？希瑞爾是一隻及時行樂的松鼠，大家都叫牠「隨興的希瑞爾」。所以當寒冬來臨，動物們紛紛準備屯糧、冬眠之際，牠家的糧食櫃仍然空空如也。希瑞爾在蕭瑟的森林裡找了好久，終於看到這個季節裡的最後一顆松果，也是希瑞爾準備用來過冬的糧食。但是，另一隻松鼠「未雨綢繆的布魯斯」，也虎視眈眈著這顆松果，即使家裡的糧倉裡已經堆滿食物，布魯斯仍然堅信少了這些松子，牠將難以度過整個冬季。既然兩隻松鼠都認為這最後一顆松果是我的，牠們便上演了一場搶奪松果大作戰，一路從樹上爭搶到了河邊，吵得其他動物都不得安寧，最後到底是誰獲得了那顆松果呢？"},
+              {name: "新動物寓言繪本系列1心理的獅子", category: "寓言繪本", author:"Rachel Bright", times:"20", translator:"張祐誠", painter:"Jim Field", publisher:"大光點", publish_date:"2023/11/11", cover:"cover_Image2.png", content:"story1-1.png/story1-2.png", intoduction:"就算是最渺小的動物，也可以有一顆強大的獅子心！幽默誇張的全新動物寓言故事，教孩子建立自信與勇氣！小老鼠是草原上最弱小、最微不足道的動物，他總是被其他動物們忽視、遺忘，甚至踩踏。而在草原另一端，那一塊又高又大又平坦的石塊頂端，住著萬獸之王——獅老大。他是獅群裡的王，又高又帥又剛強，還總喜歡發出超～大～聲的吼叫聲，提醒動物們誰才是草原上的老大。小老鼠想讓自己變得更勇敢，於是他決定去請教獅老大「如何吼叫」。這真是一趟恐怖之旅，小老鼠能成功見到獅老大，學會吼叫嗎？或者說，強壯勇猛的獅老大，也有膽小如鼠的那一面呢？"},
+              {name: "新動物寓言繪本系列3無尾熊辦得到", category: "寓言繪本", author:"Rachel Bright", times:"30", translator:"張祐誠", painter:"Jim Field", publisher:"大光點", publish_date:"2023/11/11", cover:"cover_Image3.png", content:"story1-1.png/story1-2.png", intoduction:"幽默浮誇的全新動物寓言故事，輕鬆教孩子勇敢踏出新嘗試的第一步！凱文是隻討人喜愛、從耳朵到腳掌全都軟綿綿、毛茸茸的小無尾熊。他最喜歡在暖陽下緊緊抱住樹幹、睡午覺和啃嫩葉，凱文是「紋風不動高手」中的高手。嚴格來說，凱文這輩子也只做過這三件事，即便他很想加入樹下動物們的小圈圈，但是地面上的世界對他來說步伐太快、聲音太吵、什麼都太大而且太奇怪，只有待在樹上才安全。凱文就這樣動也不動的待在樹上，生活總是一成不變，直到有一天，樹幹彼端傳來巨大的「答答—啪答」聲響，糟糕！凱文的樹幹要倒了，他能放手讓自己離開這棵大樹、相信自己一定辦得到嗎？"},
+              {name: "角落生物的生活:這裡讓人好安心", category: "生活繪本", author:"橫溝友里", times:"12", translator:"張祐誠", painter:"Jim Field", publisher:"大光點", publish_date:"2023/11/11", cover:"cover_Image4.png", content:"story1-1.png/story1-2.png", intoduction:"久等了！角落生物的第一本角色繪本完成了。日本人氣NO1的肖像明星！可愛到令人崩潰的角落生物。角落生物是？這是一群總是偷偷躲在角落裡的好朋友的總稱，常常疊在一起，是因為角落只有一個，有時候以疊羅漢的方式，讓每個生物都能享受舒適的角落！有時候還會排隊共享角落一處，要讓自己有安全感，但又不知道其他生物會「用」多久，索性疊在一起相互取暖，角落生物的可愛逗趣生活從此展開。歡迎找一面牆角，一起加入角落的生活！「還是 這裡讓人最安心啊。」謝謝說不出口時→躲到角落，被稱讚不好意思時→躲到角落，需要討論作戰計畫時→躲到角落，覺得信心被擊退時→躲到角落，想安靜時→躲到角落 (如果很難過請再蓋上空罐頭)，需要溫暖時→請群體集合疊在角落。我們是一群需要待在角落的生物，請務必把這本書放在書櫃角落，萬事拜託了!"},
+              {name: "角落小夥伴的生活：一直這樣就好", category: "生活繪本", author:"橫溝友里", times:"0", translator:"張祐誠", painter:"Jim Field", publisher:"大光點", publish_date:"2023/11/11", cover:"cover_Image5.png", content:"story1-1.png/story1-2.png", intoduction:"春夏秋冬的角落小夥伴。讓您久等了的第3本。「請把我放在心靈的角落。」果然，比起中央，還是角落比較好。因為角落總讓人有安全感，所以小夥伴們會疊在一起共享角落(偶爾爭奪)。如此愉快的生活，希望能永遠「這樣不變」，也自己期盼能成為大家永遠「這樣不變」的其中之一。一直這樣就好，角落小夥伴的每一天。這次以春夏秋冬為主題，描繪角落小夥伴的日常生活。角落讓人好安心。一起窺探角落小夥伴們的春夏秋冬生活吧！春天的角落生活，比起賞花更在意的是…夏天的角落生活，試膽大會竟然相遇的是…秋天的角落生活，一起去咖啡廳想試試的是…冬天的角落生活，溫泉之旅看見的是…下一個春天的角落生活，一直這樣就好了…最後最後還有角落小夥伴們全員集合在房間的角落，偷偷開演了角落劇場，重新演繹了「角落style」的童話故事。希望角落小夥伴的生活能被大家放在心中的角落，請繼續溫暖的看顧角落小夥伴，萬事拜託了!"},
+              {name: "雨蛙生態旅行團：池塘發現之旅", category: "知識繪本", author:"松岡達英", times:"1", translator:"張祐誠", painter:"Jim Field", publisher:"大光點", publish_date:"2023/11/11", cover:"cover_Image1.png", content:"story1-1.png/story1-2.png", intoduction:"雨蛙旅行社回來囉！你想一睹池塘水面上和水面下的風景嗎？動物們在池塘裡過著怎樣的生活呢？這次導遊雨蛙先生帶路，搭乘寶特瓶改裝的水下潛艇，帶領大家認識不可思議的池塘生物們。本次預計拜訪水螳螂、黑腹鱊、仰蝽、螯蝦……還有好多好多住在水面下或水面上的生物們都在期待您的蒞臨。也許過程中會有點驚險，但千萬不用害怕，鼓起勇氣，準備出發吧！喜愛生態深度旅遊的朋友們不要錯過，報名前請詳閱行程注意事項，想知道更多旅遊行程，請關注「雨蛙生態旅行團」。"},
+              {name: "雨蛙生態旅行團：空中驚險之旅", category: "知識繪本", author:"松岡達英", times:"12", translator:"張祐誠", painter:"Jim Field", publisher:"大光點", publish_date:"2023/11/11", cover:"cover_Image1.png", content:"story1-1.png/story1-2.png", intoduction:"歡迎光臨雨蛙生態旅行團！想要體驗遨遊天際的快感嗎？能在天空飛翔的只有鳥類嗎？雨蛙先生特製了一架紙飛機，可以飛的跟遊隼一樣快，還可以飛得比日本冷杉高。讓我們一起翱翔天際吧！從日出到日落，由空中俯瞰地面，嗅聞各種植物，本次預計拜訪叉尾雨燕、蒼鷹、蝙蝠、鼯鼠，還有各種蝴蝶和甲蟲……也許過程中會有點驚險，但千萬不用害怕，一定會有許多夥伴互相幫助，歡迎踴躍報名參加！喜愛生態深度旅遊的朋友們不要錯過，報名前請詳閱行程注意事項，想知道更多旅遊行程，請關注「雨蛙生態旅行團」。"},
+              {name: "新動物寓言繪本系列4吵架的松鼠", category: "寓言繪本", author:"Rachel Bright", times:"12", translator:"張祐誠", painter:"Jim Field", publisher:"大光點", publish_date:"2023/11/11", cover:"cover_Image1.png", content:"story1-1.png/story1-2.png", intoduction:"大家都聽過伊索寓言裡《螞蟻和蟋蟀》的故事吧？這本書裡的兩隻松鼠—希瑞爾與布魯斯，就如同貪玩的蟋蟀和勤勞的螞蟻一般，而當這兩隻個性完全相反的松鼠同時發現了這個冬天裡的最後一顆松果，他們會為了這顆松果大打出手、拚個你死我活，直到耗盡彼此最後一分力氣；還是會試著互助分享，幫助彼此順利的度過這個寒冷的冬天？希瑞爾是一隻及時行樂的松鼠，大家都叫牠「隨興的希瑞爾」。所以當寒冬來臨，動物們紛紛準備屯糧、冬眠之際，牠家的糧食櫃仍然空空如也。希瑞爾在蕭瑟的森林裡找了好久，終於看到這個季節裡的最後一顆松果，也是希瑞爾準備用來過冬的糧食。但是，另一隻松鼠「未雨綢繆的布魯斯」，也虎視眈眈著這顆松果，即使家裡的糧倉裡已經堆滿食物，布魯斯仍然堅信少了這些松子，牠將難以度過整個冬季。既然兩隻松鼠都認為這最後一顆松果是我的，牠們便上演了一場搶奪松果大作戰，一路從樹上爭搶到了河邊，吵得其他動物都不得安寧，最後到底是誰獲得了那顆松果呢？"},
+              {name: "新動物寓言繪本系列5吵架的松鼠", category: "寓言繪本", author:"Rachel Bright", times:"12", translator:"張祐誠", painter:"Jim Field", publisher:"大光點", publish_date:"2023/11/11", cover:"cover_Image1.png", content:"story1-1.png/story1-2.png", intoduction:"大家都聽過伊索寓言裡《螞蟻和蟋蟀》的故事吧？這本書裡的兩隻松鼠—希瑞爾與布魯斯，就如同貪玩的蟋蟀和勤勞的螞蟻一般，而當這兩隻個性完全相反的松鼠同時發現了這個冬天裡的最後一顆松果，他們會為了這顆松果大打出手、拚個你死我活，直到耗盡彼此最後一分力氣；還是會試著互助分享，幫助彼此順利的度過這個寒冷的冬天？希瑞爾是一隻及時行樂的松鼠，大家都叫牠「隨興的希瑞爾」。所以當寒冬來臨，動物們紛紛準備屯糧、冬眠之際，牠家的糧食櫃仍然空空如也。希瑞爾在蕭瑟的森林裡找了好久，終於看到這個季節裡的最後一顆松果，也是希瑞爾準備用來過冬的糧食。但是，另一隻松鼠「未雨綢繆的布魯斯」，也虎視眈眈著這顆松果，即使家裡的糧倉裡已經堆滿食物，布魯斯仍然堅信少了這些松子，牠將難以度過整個冬季。既然兩隻松鼠都認為這最後一顆松果是我的，牠們便上演了一場搶奪松果大作戰，一路從樹上爭搶到了河邊，吵得其他動物都不得安寧，最後到底是誰獲得了那顆松果呢？"},
+              {name: "新動物寓言繪本系列6吵架的松鼠", category: "寓言繪本", author:"Rachel Bright", times:"12", translator:"張祐誠", painter:"Jim Field", publisher:"大光點", publish_date:"2023/11/11", cover:"cover_Image1.png", content:"story1-1.png/story1-2.png", intoduction:"大家都聽過伊索寓言裡《螞蟻和蟋蟀》的故事吧？這本書裡的兩隻松鼠—希瑞爾與布魯斯，就如同貪玩的蟋蟀和勤勞的螞蟻一般，而當這兩隻個性完全相反的松鼠同時發現了這個冬天裡的最後一顆松果，他們會為了這顆松果大打出手、拚個你死我活，直到耗盡彼此最後一分力氣；還是會試著互助分享，幫助彼此順利的度過這個寒冷的冬天？希瑞爾是一隻及時行樂的松鼠，大家都叫牠「隨興的希瑞爾」。所以當寒冬來臨，動物們紛紛準備屯糧、冬眠之際，牠家的糧食櫃仍然空空如也。希瑞爾在蕭瑟的森林裡找了好久，終於看到這個季節裡的最後一顆松果，也是希瑞爾準備用來過冬的糧食。但是，另一隻松鼠「未雨綢繆的布魯斯」，也虎視眈眈著這顆松果，即使家裡的糧倉裡已經堆滿食物，布魯斯仍然堅信少了這些松子，牠將難以度過整個冬季。既然兩隻松鼠都認為這最後一顆松果是我的，牠們便上演了一場搶奪松果大作戰，一路從樹上爭搶到了河邊，吵得其他動物都不得安寧，最後到底是誰獲得了那顆松果呢？"} 
+            ];
+        
+            //開啟資料庫
+            var req = window.indexedDB.open("Book");
+            req.onsuccess = function (evt) {
+              db = this.result;
+            };
+            req.onerror = function (evt) {
+              alert("openDb:", evt.target.errorCode);
+            };
+            //onupgradeneeded事件
+            req.onupgradeneeded = function(event) { 
+              var db = event.target.result;
+              //建立objectStore
+              var objectStore = db.createObjectStore("bookData", { keyPath: "name" });
+              objectStore.createIndex("name", "name", { unique: false });
+              objectStore.createIndex("author", "author", { unique: false });
+              objectStore.createIndex("times", "times", { unique: false });
+              objectStore.createIndex("translator", "translator", { unique: false });
+              objectStore.createIndex("painter", "painter", { unique: false });
+              objectStore.createIndex("publisher", "publisher", { unique: false });
+              objectStore.createIndex("publish_date", "publish_date", { unique: false });
+              objectStore.createIndex("cover", "cover", { unique: false });
+              objectStore.createIndex("content", "content", { unique: false });
+              objectStore.createIndex("intoduction", "intoduction", { unique: false });
+              
+        
+              //新增資料到objectStore
+              for (var i in bookData) {
+                objectStore.add(bookData[i]);
+              }
+            };
+        })
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.image-grid div img, .image-grid div span.book-series').on('click tap', function () {
+                alert('Please log in');
+            });
+        });
+    </script>
+
+
+    <!--最佳化螢幕寬度-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Homepage Before Login</title>
+</head>
+<body>
+    <div class="up">
+        <img src="./image/Logo_1.png" class="logo">
+        
+        <div class="up_rihght">
+            <div class="pageicon-container">
+                <a href="./Login.html"><img src="./image/loginpage.png"  class="pageicon"></a>
+                <!-- <a><img src="./image/homepage.png" class="pageicon"></a>
+                <a><img src="./image/list.png" class="pageicon"></a> -->
+            </div>
+            <!-- <label class="search"><input type="text"></label> -->
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="hot-reads">
+            <h2>Hot Reads</h2>
+            <hr class="hr-space-square">    
+            <div class="image-grid">
+                <!-- Place your eight images here -->
+                <div>
+                    <!-- <a href="./introduction.html"> -->
+                    <img src="./image/cover_Image1.png" alt="Image 1">
+                    <span class="book-series">新動物寓言繪本系列2<br>吵架的松鼠<br></span>
+                    <!-- </a>  -->
+                    <span class="author-name">Rachel Bright<br></span>
+                    <span class="genre">寓言繪本<br></span>
+                    <span class="genre">點擊次數：100次<br></span>
+                    
+                </div>
+                
+                <div>
+                    <!-- <a href="./introduction.html"> -->
+                    <img src="./image/cover_Image2.png" alt="Image 1">
+                    <span class="book-series">新動物寓言繪本系列1<br>心裡的獅子<br></span>
+                    <!-- </a>  -->
+                    <span class="author-name">Rachel Bright<br></span>
+                    <span class="genre">寓言繪本<br></span>
+                    <span class="genre">點擊次數：75次<br></span>
+                    
+                </div>
+
+
+                <div>
+                    <!-- <a href="./introduction.html"> -->
+                    <img src="./image/cover_Image3.png" alt="Image 1">
+                    <span class="book-series">新動物寓言繪本系列3<br>無尾熊辦得到<br></span>
+                    <!-- </a> -->
+                    <span class="author-name">Rachel Bright<br></span>
+                    <span class="genre">寓言繪本<br></span>
+                    <span class="genre">點擊次數：50次<br></span>
+                    
+                </div>
+                
+
+                <div>
+                    <!-- <a href="./introduction.html"> -->
+                    <img src="./image/cover_Image4.png" alt="Image 1">
+                    <span class="book-series">角落生物的生活：<br>這裡讓人好安心<br></span>
+                    <!-- </a> -->
+                    <span class="author-name">橫溝友里<br></span>
+                    <span class="genre">寓言繪本<br></span>
+                    <span class="genre">點擊次數：25次<br></span>
+                    
+                </div>
+                
+                <div>
+                    <!-- <a href="./introduction.html"> -->
+                    <img src="./image/cover_Image5.png" alt="Image 1">
+                    <span class="book-series">角落小夥伴的生活：<br>一直這樣就好<br></span>
+                    <!-- </a> -->
+                    <span class="author-name">橫溝友里<br></span>
+                    <span class="genre">寓言繪本<br></span>
+                    <span class="genre">點擊次數：15次<br></span>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="content2">    
+        <div class="hot-themes">
+            <h2>Popular Themes</h2>
+            <hr class="hr-space-square"> 
+            <div class="text-grid">
+                
+                <a href="./introduction.html">
+                    <img src="./image/theme_1.png"  class="themeicon">
+                </a>
+                <a href="./introduction.html">
+                    <img src="./image/theme_2.png"  class="themeicon">
+                </a>
+                <a href="./introduction.html">
+                    <img src="./image/theme_3.png"  class="themeicon">
+                </a>
+               
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
