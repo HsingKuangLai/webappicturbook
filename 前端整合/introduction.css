@@ -5,6 +5,7 @@ body {
     background-position: center;
     background-size: cover;
     margin: 0 auto;
+    font-family: "Microsoft JhengHei", sans-serif;
 }
 
 .up{
@@ -103,6 +104,11 @@ input[type="text"]::before {
     width: 700px;
     height: 600px;
     word-wrap: break-word;
+    font-family: "Microsoft JhengHei", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Microsoft JhengHei", sans-serif;
 }
 
 span{
@@ -120,7 +126,7 @@ p{
     width: 150px;
     height: 30px;
     line-height:30px;
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
     position: relative;
     top: 20px;
@@ -131,7 +137,7 @@ p{
     border: 1px solid; 
     color: #edd664; 
     background-color: #003C9D;
-    font-size: 30px;
+    font-size: 15px;
     width: 250px;
     height: 40px;
     text-align: center;
@@ -147,14 +153,14 @@ button{
     background-color:#003C9D;
     color:#edd664;
     border-radius: 30px;
-    font-size: 30px;
+    font-size: 18px;
     width: 250px;
     height: 40px;
     line-height:40px;
     text-align: center;
     cursor:pointer;
     transition: 0.8s;
-    font-family: Bookman, URW Bookman L, serif;
+    font-family: "Heiti TC", serif;
 }
 
 button:hover{
@@ -162,3 +168,9 @@ button:hover{
   background-color:#fff;
   border:2px #003C9D solid;
 }
+
+a {
+  text-decoration: none; /* 去除超連結的底線 */
+}
+
+

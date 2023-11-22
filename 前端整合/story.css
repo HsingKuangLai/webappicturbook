@@ -6,20 +6,42 @@ body {
     background-size: cover;
     margin: 0 auto;
 }
-.up{margin: 0 auto;
+
+.up{
+    margin: 0 auto;
     position: relative;
-    top: 80px;
-    width: 1200px;
-    height: 120px;
+    top: 20px;
+    width: 1280px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
-.pageicon{
-    width:"40"; 
-    height:"40";
+.logo {
+    width: 250px;
+    height: auto;
+}
+  
+.up_right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: auto; /* 将右侧部分推到右侧 */
+}
+  
+.pageicon-container {
+    display: flex;
+    justify-content: flex-end;
     position: relative;
-    left: 870px;
+}
+  
+.pageicon {
+    width: 40px;
+    height: auto;
     margin-left: 10px;
 }
+
 
 .container{
     margin: 0 auto;
