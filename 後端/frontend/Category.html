@@ -6,26 +6,11 @@
     <link rel="stylesheet" href="homepage_before_login.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="jquery-1.10.2.min.js"></script>
-    <script>
-        // 讀取id
-        
-        function storeAndNavigate(targetId) {
-            event.preventDefault();
-            const targetElement = document.getElementById(targetId);
-            const spanText = targetElement.textContent.trim();
-
-            console.log('Stored Text:', spanText);
-            localStorage.setItem('storedText', spanText);
-            // window.location.href = event.currentTarget.getAttribute('href');
-            
-            window.location.href = 'introduction.html';
-        }
-
-    </script>
+   
     <!--最佳化螢幕寬度-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Homepage</title>
+    <title>Category</title>
 </head>
 <body>
     <div class="up">
@@ -33,9 +18,9 @@
         
         <div class="up_rihght">
             <div class="pageicon-container">
-                <a href="./favoritepage.html"><img src="./image/tofavorie.png"  class="pageicon"></a>
+                <a href="./Login.html"><img src="./image/loginpage.png"  class="pageicon"></a>
                 <a><img src="./image/homepage.png" class="pageicon"></a>
-                <a href="./Login.html"><img src="./image/loginpage.png" class="pageicon"></a>
+                <a><img src="./image/list.png" class="pageicon"></a>
             </div>
             <label class="search"><input type="text"></label>
         </div>
@@ -43,14 +28,14 @@
 
     <div class="content">
         <div class="hot-reads">
-            <h2>Hot Reads</h2>
+            <h2>生活繪本 Hot Reads</h2>
             <hr class="hr-space-square">    
             <div class="image-grid">
                 <!-- Place your eight images here -->
                 <div>
-                    <a href="./introduction.html" onclick = "storeAndNavigate('targetID1')">
+                    <a href="./introduction.html">
                     <img src="./image/cover_Image1.png" alt="Image 1">
-                    <span class="book-series" id = "targetID1">新動物寓言繪本系列2<br>吵架的松鼠<br>
+                    <span class="book-series">新動物寓言繪本系列2<br>吵架的松鼠<br>
                     </a> 
                         <span class="author-name">Rachel Bright<br></span>
                         <span class="genre">寓言繪本<br></span>
@@ -59,9 +44,9 @@
                 </div>
                 
                 <div>
-                    <a href="./introduction.html" onclick = "storeAndNavigate('targetID2')">
+                    <a href="./introduction.html">
                     <img src="./image/cover_Image2.png" alt="Image 1">
-                    <span class="book-series" id = "targetID2">新動物寓言繪本系列1<br>心裡的獅子<br>
+                    <span class="book-series">新動物寓言繪本系列1<br>心裡的獅子<br>
                     </a> 
                         <span class="author-name">Rachel Bright<br></span>
                         <span class="genre">寓言繪本<br></span>
@@ -71,9 +56,9 @@
 
 
                 <div>
-                    <a href="./introduction.html" onclick = "storeAndNavigate('targetID3')">
+                    <a href="./introduction.html">
                     <img src="./image/cover_Image3.png" alt="Image 1">
-                    <span class="book-series" id = "targetID3">新動物寓言繪本系列3<br>無尾熊辦得到<br>
+                    <span class="book-series">新動物寓言繪本系列3<br>無尾熊辦得到<br>
                     </a>
                         <span class="author-name">Rachel Bright<br></span>
                         <span class="genre">寓言繪本<br></span>
@@ -83,9 +68,9 @@
                 
 
                 <div>
-                    <a href="./introduction.html" onclick = "storeAndNavigate('targetID4')">
+                    <a href="./introduction.html">
                     <img src="./image/cover_Image4.png" alt="Image 1">
-                    <span class="book-series" id = "targetID4">角落生物的生活：<br>這裡讓人好安心<br>
+                    <span class="book-series">角落生物的生活：<br>這裡讓人好安心<br>
                     </a>
                         <span class="author-name">橫溝友里<br></span>
                         <span class="genre">寓言繪本<br></span>
@@ -94,9 +79,9 @@
                 </div>
                 
                 <div>
-                    <a href="./introduction.html" onclick = "storeAndNavigate('targetID5')">
+                    <a href="./introduction.html">
                     <img src="./image/cover_Image5.png" alt="Image 1">
-                    <span class="book-series" id = "targetID5">角落小夥伴的生活：<br>一直這樣就好<br>
+                    <span class="book-series">角落小夥伴的生活：<br>一直這樣就好<br>
                     </a>
                         <span class="author-name">橫溝友里<br></span>
                         <span class="genre">寓言繪本<br></span>
@@ -104,6 +89,17 @@
                     </span>
                 </div>
                 
+
+
+                <!-- <p>新動物寓言繪本系列2<br>心理的獅子<br>Rachel Bright<br>寓言繪本</p> -->
+                <!-- <p>新動物寓言繪本系列2<br>無尾熊辦得到<br>Rachel Bright<br>寓言繪本</p> -->
+                <!-- <p>新動物寓言繪本系列2<br>角落生物的生活<br>Rachel Bright<br>寓言繪本</p> -->
+                <!-- <img src="./image/cover_Image1.png" alt="Image 1">
+                <img src="./image/cover_Image2.png" alt="Image 1">
+                <img src="./image/cover_Image3.png" alt="Image 1">
+                <img src="./image/cover_Image4.png" alt="Image 1">
+                <img src="./image/cover_Image5.png" alt="Image 1"> -->
+
             </div>
             
         </div>
@@ -125,7 +121,13 @@
                     <img src="./image/theme_3.png"  class="themeicon">
                 </a>
                
-               
+                <!-- <div class="text-box">Text 2</div>
+                <div class="text-box">Text 2</div>
+                <div class="text-box">Text 2</div>
+                <div class="text-box">Text 2</div>
+                <div class="text-box">Text 2</div>
+                <div class="text-box">Text 2</div> -->
+                <!-- Add seven more text boxes -->
             </div>
         </div>
     </div>

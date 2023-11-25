@@ -1,27 +1,47 @@
 import mongoose from "mongoose";
 
 // Create a schema
-const memberSchema = new mongoose.Schema(
+const bookSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       required: true,
     },
-    email: {
+    category: {
       type: String,
       required: true,
     },
-    password: {
+    author: {
       type: String,
       required: true,
     },
-    creditCard: {
-      type: String,
+    times: {
+      type: Number,
       required: true,
     },
-    favorite: {
-      type: Array, 
-      default: [], 
+    translator: {
+        type: String,
+        required: true,
+      },
+    painter: {
+        type: String,
+        required: true,
+    },
+    publisher: {
+        type: String,
+        required: true,
+    },
+    publish_date: {
+        type: String,
+        required: true,
+    },
+    cover: {
+        type: String,
+        required: true,
+    },
+    content: {
+        type: String,
+        required: true,
     }
   },
   // The second argument is an options object.
@@ -37,11 +57,11 @@ const memberSchema = new mongoose.Schema(
     // This option is to make sure that when a new document is created,
     // the timestamps will be added automatically.
     // You can comment this out to see the difference.
-    // timestamps: true,
+    timestamps: false,
   },
 );
 
 // Create a model
-const MemberModel = mongoose.model("members", memberSchema);
+const BookModel = mongoose.model("Book", bookSchema);
 
-export default MemberModel;
+export default BookModel;

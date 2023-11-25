@@ -3,6 +3,7 @@ import {
   getMembers,
   updateMember,
   deleteMember,
+  getTargetMembers,
 } from "../controllers/member.js";
 import express from "express";
 
@@ -14,12 +15,14 @@ const router = express.Router();
 
 // GET /api/todos
 router.get("/", getMembers);
+// GET /api/todos
+router.get("/target", getTargetMembers);
 // POST /api/todos
 router.post("/", createMember);
 // PUT /api/todos/:id
-router.put("/:id", updateMember);
+router.put("/", updateMember);
 // DELETE /api/todos/:id
-router.delete("/:id", deleteMember);
+router.delete("/target", deleteMember);
 
 // export the router
 export default router;
