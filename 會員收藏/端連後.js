@@ -26,10 +26,16 @@ $(document).ready(function() {
         // 遍历书单数据，为每本书生成一个列表项
         books.forEach(function(book) {
             const li = $('<li>').append(`
-                <img src="${book.image}" alt="${book.title}">
-                <p>${book.title}</p>
-                <button class="read-btn">阅读</button>
-                <button class="delete-btn">删除</button>
+            <li>
+                <div class="favorite-book">
+                    <img src="./image/cover_Image1.png" alt="Image 1">
+                </div>
+                <div class="text-box">
+                    <p>新動物慾言繪本系列2吵架的松鼠</p>
+                    <button class="read-btn">Read</button>
+                    <button class="delete-btn">Unlike</button>
+                </div>
+            </li>
             `).appendTo(taskList);
 
             li.find('.read-btn').on('click', function() {

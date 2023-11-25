@@ -10,9 +10,12 @@ body {
   margin: 0 auto;
 }
 
-li{
-  display: inline-block; 
-  height: 300px; 
+li {
+  display: grid;
+  grid-template-columns: 40% 55%;
+  align-items: center;
+  justify-content: space-between;
+  height: 300px;
   width: 600px;
 }
 
@@ -72,8 +75,6 @@ input[type="text"] {
 }
 
 
-
-
 h2 {
   font-size: 30px;
   /* color: #6495ED; */
@@ -82,46 +83,35 @@ h2 {
 
 .text-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
+}
+
+.favorite-book {
+  flex: 0 0 40%; /* 调整图片所占的宽度，这里占 40% */
+}
+
+.text-box {
+  flex: 0 0 55%; /* 调整文字和按钮所占的宽度，这里占 55% */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.text-box p {
+  margin-bottom: 10px; /* 添加一些底部边距，使按钮不会紧贴文字 */
 }
 
 .favorite-book img {
   max-width: 100%;
-  height: auto;
-  transform: scale(0.4);
-  
+  height:auto;
 }
 
-.text-box {
-  color: white;
-  padding: 10px;
-  max-width: 100%;
-  text-align: center;
-  border: 1px solid gray;
-  background-color: #6495ED;
-  border-radius: 20px;
+.read-btn, .delete-btn {
+  margin-top: 10px; /* 保留上方边距 */
+  margin-left: 5px; /* 新增左侧边距，调整按钮之间的间距 */
+  display: inline-block; /* 使按钮在水平方向上排列 */
 }
 
-
-.hr-space-square {
-  color: #6495ED;
-  border: 0;
-  background: linear-gradient(currentColor, currentColor) no-repeat center;
-  background-size: calc(100% - 1.5em - 6px) 1px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.hr-space-square::before,
-.hr-space-square::after {
-  content: '';
-  display: block;
-  width: .75em; height: .75em;
-  transform: rotate(45deg);
-  box-sizing: border-box;
-  border: 1px solid;
-  margin: 3px;
-  color: #6495ED;
-  background-color: #6495ED
-}
