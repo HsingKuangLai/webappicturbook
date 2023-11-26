@@ -8,23 +8,7 @@ const instance = axios.create({
   });
   
 async function main() {
-    $(document).ready(function() {
-        // 为所有阅读按钮绑定点击事件
-        $('.read-btn').on('click', function() {
-            //window.location.href = "./introduction.html"
-        });
     
-       
-        $('ul').on('click', '.delete-btn', function() {
-            // const names = document.querySelector("p.bookName");
-            const bookTitle = $(this).siblings('p').text();
-            const id = localStorage.getItem('ID');
-            console.log(bookTitle)
-            $(this).closest('li').remove();
-            deleteMembersFav(id, bookTitle)
-        });
-    });
-
     try {
     
       // 抓書名
@@ -42,6 +26,26 @@ async function main() {
       alert("Failed to load Favorite books!");
       console.log(error);
     }
+    
+    $(document).ready(function() {
+        // 为所有阅读按钮绑定点击事件
+        $('ul').on('click', '.read-btn', function() {
+            const bookTitle = $(this).siblings('p').text();
+            localStorage.setItem('storedText', bookTitle);
+            window.location.href = "./introduction.html"
+        });
+    
+       
+        $('ul').on('click', '.delete-btn', function() {
+            // const names = document.querySelector("p.bookName");
+            const bookTitle = $(this).siblings('p').text();
+            const id = localStorage.getItem('ID');
+            console.log(bookTitle)
+            $(this).closest('li').remove();
+            deleteMembersFav(id, bookTitle)
+        });
+    });
+
   }
 
 

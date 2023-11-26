@@ -9,17 +9,6 @@ async function main() {
     try {
     // 抓書名
       const textValue = localStorage.getItem('storedText');
-      // console.log('Stored Text:', textValue);
-      
-      // 檢查錯字 //
-      // const book = document.querySelector("#bookName")
-      // const name = book.innerText;
-      // console.log('name:', name);
-      // console.log(typeof(name));
-
-      // if (name===textValue)
-      //   console.log("true");
-
       const books = await getBooks({"name":textValue});
       renderBook(books);
     
@@ -32,9 +21,12 @@ async function main() {
 function setupEventListeners() {
     const startReadButton = document.querySelector("#StartReadingButton");    
     startReadButton.addEventListener("click", async () => {
-    // here is now empty
+      const book = localStorage.getItem('storedText');
+      updateBookTimes(book);
+      window.location.href = "./story.html"
   
     });
+
     addButton = document.getElementById('addFavoriteButton');
     addButton.addEventListener("click", async() => {
     await addFavorite(id, textValue)
@@ -97,12 +89,10 @@ console.log('Stored Text:', textValue);
 const id = localStorage.getItem('ID');
 console.log('ID:', id);
 
-// 加入收藏
-
-
 
 // 前端呼叫後端function
 async function getBooks(bookName) {
+    // console.log({params:bookName});
     const response = await instance.get("/books", {params:bookName});
     return response.data;
 }
@@ -112,6 +102,11 @@ async function addFavorite(member, bookName){
     const response = await instance.put("/members", {"bookName":bookName, "userId":member});
     return response.data;
 }
-  
+
+async function updateBookTimes(bookName) {
+  const response = await instance.put("/books", {"name": bookName});
+  return response.data;
+}
+
 main();
   

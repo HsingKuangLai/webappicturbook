@@ -6,21 +6,28 @@
     <link rel="stylesheet" href="homepage_before_login.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="jquery-1.10.2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script defer src="homepage.js"></script>
     <script>
         // 讀取id
         
-        function storeAndNavigate(targetId) {
-            event.preventDefault();
-            const targetElement = document.getElementById(targetId);
-            const spanText = targetElement.textContent.trim();
+        // function storeAndNavigate(targetId) {
+        //     event.preventDefault();
+        //     const targetElement = document.getElementById(targetId);
+        //     const spanText = targetElement.textContent.trim();
 
-            console.log('Stored Text:', spanText);
-            localStorage.setItem('storedText', spanText);
-            // window.location.href = event.currentTarget.getAttribute('href');
-            
-            window.location.href = 'introduction.html';
-        }
+        //     console.log('Stored Text:', spanText);
+        //     localStorage.setItem('storedText', spanText);            
+        //     window.location.href = 'introduction.html';
+        // }
 
+    </script>
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"
+    integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    >
     </script>
     <!--最佳化螢幕寬度-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,76 +41,19 @@
         <div class="up_rihght">
             <div class="pageicon-container">
                 <a href="./favoritepage.html"><img src="./image/tofavorie.png"  class="pageicon"></a>
-                <a><img src="./image/homepage.png" class="pageicon"></a>
+                <a href="./homepage.html"><img src="./image/homepage.png" class="pageicon"></a>
                 <a href="./Login.html"><img src="./image/loginpage.png" class="pageicon"></a>
             </div>
-            <label class="search"><input type="text"></label>
+            <label class="search"><input id = "search-box" type="text" placeholder=" 請輸入書名、作者 "></label>
         </div>
     </div>
 
     <div class="content">
         <div class="hot-reads">
-            <h2>Hot Reads</h2>
+            <h2 id="headText">Hot Reads</h2>
             <hr class="hr-space-square">    
             <div class="image-grid">
-                <!-- Place your eight images here -->
-                <div>
-                    <a href="./introduction.html" onclick = "storeAndNavigate('targetID1')">
-                    <img src="./image/cover_Image1.png" alt="Image 1">
-                    <span class="book-series" id = "targetID1">新動物寓言繪本系列2<br>吵架的松鼠<br>
-                    </a> 
-                        <span class="author-name">Rachel Bright<br></span>
-                        <span class="genre">寓言繪本<br></span>
-                        <span class="genre">點擊次數：100次<br></span>
-                    </span>
-                </div>
-                
-                <div>
-                    <a href="./introduction.html" onclick = "storeAndNavigate('targetID2')">
-                    <img src="./image/cover_Image2.png" alt="Image 1">
-                    <span class="book-series" id = "targetID2">新動物寓言繪本系列1<br>心裡的獅子<br>
-                    </a> 
-                        <span class="author-name">Rachel Bright<br></span>
-                        <span class="genre">寓言繪本<br></span>
-                        <span class="genre">點擊次數：75次<br></span>
-                    </span>
-                </div>
 
-
-                <div>
-                    <a href="./introduction.html" onclick = "storeAndNavigate('targetID3')">
-                    <img src="./image/cover_Image3.png" alt="Image 1">
-                    <span class="book-series" id = "targetID3">新動物寓言繪本系列3<br>無尾熊辦得到<br>
-                    </a>
-                        <span class="author-name">Rachel Bright<br></span>
-                        <span class="genre">寓言繪本<br></span>
-                        <span class="genre">點擊次數：50次<br></span>
-                    </span>
-                </div>
-                
-
-                <div>
-                    <a href="./introduction.html" onclick = "storeAndNavigate('targetID4')">
-                    <img src="./image/cover_Image4.png" alt="Image 1">
-                    <span class="book-series" id = "targetID4">角落生物的生活：<br>這裡讓人好安心<br>
-                    </a>
-                        <span class="author-name">橫溝友里<br></span>
-                        <span class="genre">寓言繪本<br></span>
-                        <span class="genre">點擊次數：25次<br></span>
-                    </span>
-                </div>
-                
-                <div>
-                    <a href="./introduction.html" onclick = "storeAndNavigate('targetID5')">
-                    <img src="./image/cover_Image5.png" alt="Image 1">
-                    <span class="book-series" id = "targetID5">角落小夥伴的生活：<br>一直這樣就好<br>
-                    </a>
-                        <span class="author-name">橫溝友里<br></span>
-                        <span class="genre">寓言繪本<br></span>
-                        <span class="genre">點擊次數：15次<br></span>
-                    </span>
-                </div>
-                
             </div>
             
         </div>
@@ -113,23 +63,28 @@
         <div class="hot-themes">
             <h2>Popular Themes</h2>
             <hr class="hr-space-square"> 
-            <div class="text-grid">
-                
-                <a href="./category.html">
-                    <img src="./image/theme_1.png"  class="themeicon">
-                </a>
-                <a href="./category.html">
-                    <img src="./image/theme_2.png"  class="themeicon">
-                </a>
-                <a href="./category.html">
-                    <img src="./image/theme_3.png"  class="themeicon">
-                </a>
-               
-               
+            <div class="text-grid"> 
+                    <img id = "生活繪本" src="./image/theme_1.png"  class="themeicon">
+                    <img id = "知識繪本" src="./image/theme_2.png"  class="themeicon">
+                    <img id = "寓言繪本" src="./image/theme_3.png"  class="themeicon">
             </div>
         </div>
     </div>
 </body>
+<template id="homepage-book-template">
+<div class = "book-div">
+    <a class = "introduction-page">
+    <img class="book-image" alt="Image 1">
+    <span class="book-series" id = ""> <br></span>    
+    </a><br>
+
+    <span class="author-name"></span><br>
+    <span class = "genre"></span><br>
+    <span class = "times">瀏覽次數：</span>
+        
+</div>
+</template>
+
 </html>
 
 

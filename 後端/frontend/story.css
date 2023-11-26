@@ -58,7 +58,8 @@ body {
 .story {
     
     padding-left: 125px;
-    transition: margin-left 1s; /* 添加過渡效果 */
+    /* 添加過渡效果 */
+    /* transition: margin-left 0.5s;  */
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     overflow: hidden;
