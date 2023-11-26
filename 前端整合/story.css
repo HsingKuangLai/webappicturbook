@@ -5,6 +5,7 @@ body {
     background-position: center;
     background-size: cover;
     margin: 0 auto;
+
 }
 
 .up{
@@ -51,7 +52,6 @@ body {
     top: 30px;
     overflow: hidden;   
     display: grid;
-
    
 }
 
@@ -67,15 +67,25 @@ body {
 
 
 
-.changepage_container{
+
+.changepage_container {
+    position: absolute;
+    top: 75%;
+    transform: translateY(-50%);
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
 }
 
-.changepage{ 
-    position: relative; 
-    left:700px;
-} 
+
+
+.changepage { 
+    width: 75px;
+    height: auto;
+    margin-right: 70px;
+    margin-left: 120px;
+}
 
 
 /* 
