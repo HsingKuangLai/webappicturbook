@@ -1,6 +1,4 @@
-
 body {
-  font-family: Bookman, URW Bookman L, serif;
   color:#003C9D;
   background-image: url("./image/background2.png");
   background-repeat: no-repeat;
@@ -8,35 +6,45 @@ body {
   background-position: center;
   background-size: cover;
   margin: 0 auto;
-}
-
-li {
-  display: grid;
-  grid-template-columns: 40% 55%;
-  align-items: center;
-  justify-content: space-between;
-  height: 300px;
-  width: 600px;
+  font-family: Bookman, URW Bookman L, serif;
 }
 
 .up{
   margin: 0 auto;
   position: relative;
-  top: 80px;
-  width: 1250px;
-  height: 120px;
+  top: 20px;
+  width: 1280px;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.pageicon{
-  width:"40"; 
-  height:"40";
+.logo {
+  width: 400px;
+  height: auto;
+}
+
+.up_right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: auto; /* 将右侧部分推到右侧 */
+}
+
+.pageicon-container {
+  display: flex;
+  justify-content: flex-end;
   position: relative;
-  left: 600px;
-  bottom: 60px;
+}
+
+.pageicon {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
 }
 
 .search {
-  position: relative;
   bottom: 30px;
   right: 10px;
 }
@@ -53,14 +61,47 @@ li {
 }
 
 input[type="text"] {
-  /* position: relative; */
-  width: 300px;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
-  padding: 10px;
-  border : solid .1px black;
-  border-radius: 20px;
-  background-color :  #fff;
-  }
+  width: 500px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+  padding: 10px 10px 10px 40px;
+  border: solid .1px black;
+  border-radius: 16px;
+  background-color: #fff;
+}
+
+input[type="text"]::before {
+  content: "\f002";
+  font-family: "Font Awesome 5 Free"; 
+  font-weight: 900; 
+  font-size: 16px;
+  color: #555;
+  position: absolute;
+  left: 20px; 
+  top: 50%; 
+  transform: translateY(-50%);
+}
+
+
+h2 {
+  font-size: 30px;
+  /* color: #6495ED; */
+}
+
+p {
+  font-size: 25px;
+  font-weight: bold;
+  font-family: 'Microsoft JhengHei', sans-serif;
+  text-align:left;
+}
+
+li {
+  display: grid;
+  grid-template-columns: 40% 55%;
+  align-items: center;
+  justify-content: space-between;
+  height: 300px;
+  width: 600px;
+}
 
 .content {
   background-color: white;
@@ -74,44 +115,54 @@ input[type="text"] {
   margin-bottom: 25px;
 }
 
-
-h2 {
-  font-size: 30px;
-  /* color: #6495ED; */
-}
-
-
 .text-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  row-gap: 20px;
+  column-gap: 10px;
 }
 
 .favorite-book {
   flex: 0 0 40%; /* 调整图片所占的宽度，这里占 40% */
 }
 
-.text-box {
+.box {
   flex: 0 0 55%; /* 调整文字和按钮所占的宽度，这里占 55% */
+  height: 288px; /* 容器高度 */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
+  justify-content: space-between; /* 文字和按钮在容器中垂直分布 */
+  align-items: flex-start; /* 文字和按钮左对齐 */
 }
 
-.text-box p {
+.box p {
   margin-bottom: 10px; /* 添加一些底部边距，使按钮不会紧贴文字 */
+  align-items: baseline;
+  height: 100%;
+  margin-top: 0px;
 }
 
 .favorite-book img {
-  max-width: 100%;
-  height:auto;
+  max-width: 90%;
+  height: 288px;
+  object-fit: cover; 
+}
+
+.button-container {
+  display: flex;
+  height: 50%;
 }
 
 .read-btn, .delete-btn {
   margin-top: 10px; /* 保留上方边距 */
-  margin-left: 5px; /* 新增左侧边距，调整按钮之间的间距 */
+  margin-right: 20px; /* 可以调整按钮之间的间距 */
   display: inline-block; /* 使按钮在水平方向上排列 */
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  align-self: flex-end;
 }
+
+
 
