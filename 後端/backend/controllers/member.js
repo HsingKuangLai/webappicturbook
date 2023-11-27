@@ -75,7 +75,6 @@ export const updateMember = async (req, res) => {
     
     members.favorite.addToSet(bookName);
     members.save();
-    console.log("Add successfully");
 
     return res.status(200).json(members);
   } catch (error) {

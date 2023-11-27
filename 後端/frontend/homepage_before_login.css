@@ -199,3 +199,26 @@ a {
   line-height: 1.8;
   font-family: 'Microsoft JhengHei', sans-serif;
 }
+.times {
+  font-size: 15px;
+  color: gray;
+  line-height: 1.8;
+  font-family: 'Microsoft JhengHei', sans-serif;
+}
+
+/* .changepage_container {
+  position: absolute;
+  top: 75%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+}
+
+.changepage { 
+  width: 75px;
+  height: auto;
+  margin-right: 70px;
+  margin-left: 120px;
+} */

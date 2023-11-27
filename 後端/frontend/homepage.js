@@ -21,23 +21,60 @@ async function main() {
     }
     
     $(document).ready(function() {
+        // 書本超連結
         $('.image-grid').on('click', '.introduction-page', function() {
             const bookTitle = $(this).find('span').text();
+            console.log(bookTitle);
             localStorage.setItem('storedText', bookTitle);
             window.location.href = "./introduction.html"
         });
 
+        // 類別按鈕
         $('.themeicon').on('click', async function() {
           const bookCategory = $(this).attr('id');
           const headText = document.querySelector("#headText");
-          headText.innerText = bookCategory
+          headText.innerText = bookCategory;
 
           Books = await getCategoryBooks({"category":bookCategory});
           bookList.innerHTML = ""
           Books.forEach((book) => renderAllBooks(book));
           
+          // 顯示書本
+          $('.book-div').hide();
+          $('.book-div').slice(0, 5).css('transform', 'translateX(0)').fadeIn(500);
+          
         });
 
+        var currentPage = 1;
+
+        // 上一頁按鈕點擊事件
+        $('#prev-btn').on('click', function () {
+            console.log('上一頁按鈕被點擊');
+            if (currentPage > 1) {
+                currentPage--;
+                slideLeft(currentPage);
+            }
+        });
+    
+        // 下一頁按鈕點擊事件
+        $('#next-btn').on('click', function () {
+            console.log('下一頁按鈕被點擊');
+            var totalBooks = $('.book-div').length;
+            var booksPerPage = 5;
+            var totalPages = Math.ceil(totalBooks / booksPerPage);
+    
+            if (currentPage < totalPages) {
+                currentPage++;
+                slideRight(currentPage);
+            }
+        });
+    
+        // 顯示書本一開始執行一次
+
+        $('.book-div').hide();
+        $('.book-div').slice(0, 5).css('transform', 'translateX(0)').fadeIn(500);
+
+        // 搜尋框
         $('#search-box').on('keyup', async function(event) {
           try {
     
@@ -52,9 +89,18 @@ async function main() {
               
               bookList.innerHTML = ""
               Books.forEach((book) => renderAllBooks(book));
+              // 顯示書本
+              $('.book-div').hide();
+              $('.book-div').slice(0, 5).css('transform', 'translateX(0)').fadeIn(500);
+
               if(Books.length === 0){
-                // bugs 是警告視窗會先跳，原本的頁面才刪除
-                alert("No book Found！")
+                // 未找到書警告
+                Swal.fire({
+                  icon: 'warning', // Set the icon (success, error, warning, info, question)
+                  title: 'No book Found!',
+                  showConfirmButton: true
+                  // timer: 3000
+                });
                 return;
               }
             }
@@ -70,7 +116,53 @@ async function main() {
 
   }
 
+function slideLeft(currentPage) {
+    var booksPerPage = 5;
+    var startBook = (currentPage - 1) * booksPerPage;
+    var currentBook = (currentPage + 1) * booksPerPage;
+    var endBook = startBook + booksPerPage;
+    
+    setTimeout(function() {          
+      $('.book-div').slice(currentBook-5, currentBook).css('transform', 'translateX(100%)');            
+    }, 200);
 
+    setTimeout(function() {                    
+      $('.book-div').slice(currentBook-1, currentBook).css('transform', 'translateX(20)').fadeOut(); 
+    }, 200);
+  
+    setTimeout(function() {
+      $('.book-div').css('transform', 'translateX(0)').hide();
+    }, 700);
+
+    setTimeout(function() {
+    $('.book-div').slice(startBook, endBook).css('transform', 'translateX(0)').fadeIn(750);
+     }, 700);
+
+}
+
+function slideRight(currentPage) {
+  var booksPerPage = 5;
+  var startBook = (currentPage - 1) * booksPerPage;
+  var currentBook = (currentPage - 2) * booksPerPage;
+  var endBook = startBook + booksPerPage;
+  setTimeout(function() {      
+      
+    $('.book-div').slice(currentBook, startBook).css('transform', 'translateX(-100%)');          
+  }, 200);
+
+  setTimeout(function() {                    
+    $('.book-div').slice(currentBook, currentBook+1).css('transform', 'translateX(20)').fadeOut(500); 
+  }, 200);
+
+  setTimeout(function() {
+    $('.book-div').css('transform', 'translateX(0)').hide();
+  }, 700);
+
+  setTimeout(function() {
+  $('.book-div').slice(startBook, endBook).css('transform', 'translateX(0)').fadeIn(750);
+   }, 700);
+
+}
 
 // 抓取書本資訊
 async function renderAllBooks(books) {
@@ -98,6 +190,7 @@ async function renderAllBooks(books) {
 
     // 加入前端List
     bookList.appendChild(item);
+    
 }
 
 

@@ -28,25 +28,34 @@ async function main() {
     }
     
     $(document).ready(function() {
-        // 为所有阅读按钮绑定点击事件
+        // 所有閱讀按鈕設定事件
         $('ul').on('click', '.read-btn', function() {
             const bookTitle = $(this).siblings('p').text();
             localStorage.setItem('storedText', bookTitle);
             window.location.href = "./introduction.html"
         });
     
-       
+        // 所有刪除按鈕設定事件
         $('ul').on('click', '.delete-btn', function() {
-            // const names = document.querySelector("p.bookName");
-            const bookTitle = $(this).siblings('p').text();
-            const id = localStorage.getItem('ID');
-            console.log(bookTitle)
-            $(this).closest('li').remove();
-            deleteMembersFav(id, bookTitle)
+            Swal.fire({
+                icon: 'warning', // Set the icon (success, error, warning, info, question)
+                title: `Are you sure you UNLIKE the book？`,
+                showConfirmButton: true
+                // timer: 3000
+              }).then( (result) => {
+                    if (result.isConfirmed){
+                        const bookTitle = $(this).siblings('p').text();
+                        const id = localStorage.getItem('ID');
+                        
+                        $(this).closest('li').remove();
+                        deleteMembersFav(id, bookTitle);
+                    };                
+                });
         });
     });
+}
 
-  }
+  
 
 
 // 抓取書本資訊

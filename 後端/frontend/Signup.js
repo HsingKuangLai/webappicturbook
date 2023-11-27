@@ -29,20 +29,36 @@ function setupEventListeners() {
 	const password = passwordInput.value;
 	const creditCard = creditcardInput.value;
     if (!name) {
-      alert("Please enter a name!");
+      Swal.fire({
+        icon: 'warning', // Set the icon (success, error, warning, info, question)
+        title: 'Please enter name！', 
+        showConfirmButton: true,
+      })
       return;
     }
     if (!email) {
-      alert("Please enter an email!");
+      Swal.fire({
+        icon: 'warning', // Set the icon (success, error, warning, info, question)
+        title: 'Please enter email！', 
+        showConfirmButton: true,
+      })
       return;
     }
 	  if (!password){
-	  alert("Please enter a password!");
+      Swal.fire({
+        icon: 'warning', // Set the icon (success, error, warning, info, question)
+        title: 'Please enter Credit Card Number！', 
+        showConfirmButton: true,
+      })
       return;
 	  }
 	  if (!creditCard){
-		alert("Please enter a credit card number!");
-		return;
+      Swal.fire({
+        icon: 'warning', // Set the icon (success, error, warning, info, question)
+        title: 'Please enter password！', 
+        showConfirmButton: true,
+      })
+		  return;
 	  }
 
     try {
@@ -56,7 +72,17 @@ function setupEventListeners() {
     emailInput.value = "";
 	  passwordInput.value = "";
 	  creditcardInput.value = "";
-    alert("Sign up Successfully, press back to return Log in page！")
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Sign up Successfully！',
+      showConfirmButton: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = 'Login.html';
+      }
+    });
+    
     
 
   });

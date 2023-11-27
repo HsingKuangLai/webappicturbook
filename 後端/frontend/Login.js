@@ -40,7 +40,13 @@ async function main() {
       try {
         const memberData = await getMembers({email, password});
         if (!memberData || memberData.length === 0){
-          alert("Failed to get member!");
+          // 未找到會員警告
+          Swal.fire({
+            icon: 'error', // Set the icon (success, error, warning, info, question)
+            title: 'Email or Password wrong！',
+            showConfirmButton: true
+            // timer: 3000
+          });
           emailInput.value = "";
           passwordInput.value = "";
           return;
@@ -53,9 +59,18 @@ async function main() {
       }
 
       // 確定正確就清空
-      storeAndNavigate(event);
       emailInput.value = "";
       passwordInput.value = "";
+      Swal.fire({
+        icon: 'success', // Set the icon (success, error, warning, info, question)
+        title: 'Log in Successfully！',
+        showConfirmButton: false,
+        timer: 1500
+      }).then( () => {
+          storeAndNavigate(event);
+      });
+
+      
       
       
     });

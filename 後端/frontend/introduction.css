@@ -105,6 +105,8 @@ input[type="text"]::before {
     height: 600px;
     word-wrap: break-word;
     font-family: "Microsoft JhengHei", sans-serif;
+    transition: transform 0.75s ease-in-out;
+
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -173,4 +175,7 @@ a {
   text-decoration: none; /* 去除超連結的底線 */
 }
 
-
+.text {
+    transition: transform 0.75s ease-in-out;
+}
+  

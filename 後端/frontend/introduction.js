@@ -9,11 +9,21 @@ async function main() {
     try {
     // 抓書名
       const textValue = localStorage.getItem('storedText');
+      // console.log(textValue);
       const books = await getBooks({"name":textValue});
       renderBook(books);
+      $('.text').hide();
+      $('.text').css('transform', 'translateX(0)').fadeIn(300);
     
     } catch (error) {
-      alert("Failed to load books!");
+      console.log(error);
+      $('.container').hide();
+      Swal.fire({
+        icon: 'error', // Set the icon (success, error, warning, info, question)
+        title: 'Fail to Load the book！',
+        showConfirmButton: true
+        // timer: 3000
+      });
     }
   }
 
@@ -29,8 +39,14 @@ function setupEventListeners() {
 
     addButton = document.getElementById('addFavoriteButton');
     addButton.addEventListener("click", async() => {
-    await addFavorite(id, textValue)
-    alert("Add Successfully！")
+      back = await addFavorite(id, textValue);
+      console.log(back);
+      Swal.fire({
+        icon: 'success', // Set the icon (success, error, warning, info, question)
+        title: 'Add Successfully!',
+        showConfirmButton: true
+        // timer: 3000
+      });
     });
 
   }
