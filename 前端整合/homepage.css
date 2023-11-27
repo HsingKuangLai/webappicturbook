@@ -115,11 +115,15 @@ h2 {
 }
 
 .image-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 3px;
-  margin-bottom: 25px;
+  display: flex;
+  overflow-x: auto;
 }
+
+.book {
+  width: 240px; /* 设置每本书的宽度 */
+  margin-right: 10px; /* 可以根据需要调整书籍之间的间距 */
+}
+
 
 .text-grid {
   display: grid;
@@ -128,12 +132,12 @@ h2 {
   margin: 30px 0;
 }
 
-.image-grid img {
-  width: 240px;
-  height: 300px;
-  transform: scale(0.8);
-  object-fit: cover; /* 保持圖片比例並裁切，避免拉伸 */
+.image-grid {
+    display: flex;
+    overflow-x: auto;
+    width: auto; /* 或是設定一個足夠大的值，確保所有書本能夠容納在同一行 */
 }
+
 
 .text-box {
   color: white;
