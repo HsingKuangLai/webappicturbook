@@ -115,8 +115,17 @@ h2 {
 }
 
 .image-grid {
-  display: flex;
-  overflow-x: auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3px;
+  margin-bottom: 25px;
+}
+
+.image-grid img {
+  width: 240px;
+  height: 300px;
+  transform: scale(0.8);
+  object-fit: cover; /* 保持圖片比例並裁切，避免拉伸 */
 }
 
 .book {
@@ -131,13 +140,6 @@ h2 {
   gap: 10px;
   margin: 30px 0;
 }
-
-.image-grid {
-    display: flex;
-    overflow-x: auto;
-    width: auto; /* 或是設定一個足夠大的值，確保所有書本能夠容納在同一行 */
-}
-
 
 .text-box {
   color: white;
@@ -201,4 +203,24 @@ a {
   color: gray;
   line-height: 1.8;
   font-family: 'Microsoft JhengHei', sans-serif;
+}
+
+.changepage_container {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
+  padding: 0;
+}
+
+
+
+.changepage { 
+  width: 50px;
+  height: auto;
+  cursor: pointer;
+  /* margin-right: -10px;
+  margin-left: -10px; */
 }
