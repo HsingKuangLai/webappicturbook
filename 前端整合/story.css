@@ -47,7 +47,7 @@ body {
 .container{
     margin: 0 auto;
     width: 1400px;
-    height: 750px;
+    height: 800px;
     position: relative;
     top: 30px;
     overflow: hidden;   
@@ -56,7 +56,6 @@ body {
 }
 
 .story {
-    
     padding-left: 125px;
     transition: margin-left 1s; /* 添加過渡效果 */
     display: grid;
@@ -64,8 +63,6 @@ body {
     overflow: hidden;
     gap: 200px;
 }
-
-
 
 
 .changepage_container {
@@ -79,12 +76,11 @@ body {
 }
 
 
-
 .changepage { 
-    width: 75px;
+    width: 60px;
     height: auto;
-    margin-right: 70px;
-    margin-left: 120px;
+    margin-right: 80px;
+    margin-left: 130px;
     cursor: pointer;
 }
 
