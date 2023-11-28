@@ -106,7 +106,6 @@ input[type="text"]::before {
     word-wrap: break-word;
     font-family: "Microsoft JhengHei", sans-serif;
     transition: transform 0.75s ease-in-out;
-
 }
 
 h1, h2, h3, h4, h5, h6 {

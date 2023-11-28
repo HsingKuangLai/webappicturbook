@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 
 // Routes
 import memberRouter from "./routes/member.js";
+import bookRouter from './routes/book.js';
 
 dotenv.config();
 
@@ -16,17 +17,19 @@ app.use(cors());
 // To make the code more readable, we will use `router` to handle each resource.
 app.use("/api/members", memberRouter);
 
-app.get("/heartbeat", (_, res) => {
-  return res.send({ message: "Hello World!" });
-});
+app.use("/api/books", bookRouter);
+
+// app.get("/heartbeat", (_, res) => {
+//   return res.send({ message: "Hello World!" });
+// });
 
 const port = process.env.PORT || 8000;
 
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true,
   })
   .then(() => {
     // We move app.listen() here to make sure that the server is started after the connection to the database is established.

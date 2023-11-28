@@ -7,7 +7,7 @@ const instance = axios.create({
 async function main() {
     setupEventListeners();
     try {
-    // 抓書名
+      // 抓書名
       const textValue = localStorage.getItem('storedText');
       // console.log(textValue);
       const books = await getBooks({"name":textValue});
@@ -44,8 +44,8 @@ function setupEventListeners() {
       Swal.fire({
         icon: 'success', // Set the icon (success, error, warning, info, question)
         title: 'Add Successfully!',
-        showConfirmButton: true
-        // timer: 3000
+        showConfirmButton: false,
+        timer: 1500
       });
     });
 
@@ -83,7 +83,7 @@ function renderBook(book) {
 
     // 瀏覽次數
     const times = document.querySelector('#times');
-    times.innerText = `${times.innerText} ${firstBook.times}`;
+    times.innerText = `${times.innerText} ${firstBook.times} ${"次"}`;
 
     // 簡介
     const introduction = document.querySelector('#introduction');

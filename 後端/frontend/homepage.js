@@ -10,13 +10,23 @@ const instance = axios.create({
 async function main() {
     
     try {
+      // 抓用戶名並顯示
+      const userId = localStorage.getItem("ID");
+      const user = document.querySelector("#memberID");
+      user.innerText = `${user.innerText} ${userId}`;
+
     
       Books = await getAllBooks();
       Books.forEach((book) => renderAllBooks(book));
       // bookList.innerHTML = "";
     
     } catch (error) {
-      alert("Failed to load books!");
+      Swal.fire({
+        icon: 'warning', // Set the icon (success, error, warning, info, question)
+        title: 'Fail to load books!',
+        showConfirmButton: true
+        // timer: 3000
+      });
       console.log(error);
     }
     
@@ -186,7 +196,7 @@ async function renderAllBooks(books) {
 
     // 瀏覽次數
     const times = item.querySelector("span.times");
-    times.innerText = `${times.innerText} ${books.times}`;
+    times.innerText = `${times.innerText} ${books.times} ${"次"}`;
 
     // 加入前端List
     bookList.appendChild(item);

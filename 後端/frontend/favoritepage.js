@@ -39,8 +39,11 @@ async function main() {
         $('ul').on('click', '.delete-btn', function() {
             Swal.fire({
                 icon: 'warning', // Set the icon (success, error, warning, info, question)
-                title: `Are you sure you UNLIKE the book？`,
-                showConfirmButton: true
+                title: `Are you sure you want to UNLIKE the book？`,
+                showCancelButton: true, // Show the cancel button
+                showConfirmButton: true,
+                confirmButtonText: 'OK', // Text for the confirm button
+                cancelButtonText: 'Cancel' // Text for the cancel button
                 // timer: 3000
               }).then( (result) => {
                     if (result.isConfirmed){
