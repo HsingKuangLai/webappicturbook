@@ -37,11 +37,7 @@ button{
     /* text-align: center; */
 }
 
-button:hover{
-  color:#003C9D;
-  background-color:#fff;
-  border:2px #003C9D solid;
-}
+
 
 input[type="text"] {
   width: 100%;
@@ -98,7 +94,7 @@ input[type="text"] {
   position: relative;
 }
 
-.user:before {
+/* .user:before {
   font-family: "Font Awesome 5 Free"; 
   font-weight: 900; 
   content: "\f007";
@@ -107,12 +103,12 @@ input[type="text"] {
   right: 185%;
   top: 50%;
   transform: translateY(-50%); 
-}
+} */
 
 .lock {
   position: relative;
 }
-
+/* 
 .lock:before {
   font-family: "Font Awesome 5 Free"; 
   font-weight: 900; 
@@ -122,13 +118,13 @@ input[type="text"] {
   right: 128pt;
   top: 50%;
   transform: translateY(-140%); 
-}
+} */
 
 .search {
   position: relative;
 }
 
-.search:before {
+/* .search:before {
   font-family: "Font Awesome 5 Free"; 
   font-weight: 900; 
   content: "\f002";
@@ -137,4 +133,24 @@ input[type="text"] {
   left: 10pt;
   top: 50%;
   transform: translateY(-50%); 
+} */
+
+.circle-btn {
+  /* display: inline-block; */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #003C9D;
+  color: black;
+  text-align: center;
+  /* line-height: 50px; */
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
 }
+/* 
+button:hover{
+  color:#003C9D;
+  background-color:#fff;
+  border:2px #003C9D solid;
+} */
