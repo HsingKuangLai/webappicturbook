@@ -65,6 +65,7 @@ function setupEventListeners() {
       })
 		  return;
 	  }
+    
     if (!checkbox.checked) {
       Swal.fire({
         icon: 'warning', // Set the icon (success, error, warning, info, question)
@@ -74,6 +75,16 @@ function setupEventListeners() {
       })
       return;
     }
+
+    if (!isValidCreditCardNumber(creditCard)){
+      Swal.fire({
+        icon: 'warning', // Set the icon (success, error, warning, info, question)
+        title: 'Invalid credit card number! Please enter a valid 16-digit number！', 
+        showConfirmButton: true,
+      })
+      creditcardInput.value = "";
+		  return;
+	  }
 
     try {
       const memeberShip = await createMember({ name, email, password, creditCard });
@@ -105,6 +116,13 @@ function setupEventListeners() {
 
   });
 }
+
+function isValidCreditCardNumber(creditCardNumber) {
+  
+  // Check if the cleaned number has exactly 16 digits
+  return /^\d{16}$/.test(creditCardNumber);
+}
+
 
 // 前端呼叫後端function
 async function createMember(members) {

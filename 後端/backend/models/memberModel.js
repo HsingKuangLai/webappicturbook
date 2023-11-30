@@ -16,7 +16,14 @@ const memberSchema = new mongoose.Schema(
       required: true,
     },
     creditCard: {
-      type: String,
+      type: Number,
+      validate: {
+        validator: function (v) {
+          // Check if the credit card number has exactly 16 digits
+          return /^\d{16}$/.test(v);
+        },
+        message: props => `${props.value} is not a valid 16-digit credit card number!`
+      },
       required: true,
     },
     favorite: {
