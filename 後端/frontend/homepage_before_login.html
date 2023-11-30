@@ -7,10 +7,19 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="jquery-1.10.2.min.js"></script>
 
+    <!-- Include SweetAlert2 CSS and JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.2/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.2/dist/sweetalert2.all.min.js"></script>
+
     <script>
         $(document).ready(function () {
             $('.image-grid div img, .image-grid div span.book-series, .text-grid img.themeicon').on('click tap', function () {
-                alert('Please log in');
+                Swal.fire({
+          icon: 'error', // Set the icon (success, error, warning, info, question)
+          title: 'Please log in！',
+          showConfirmButton: true
+          // timer: 3000
+        });
             });
         });
     </script>
@@ -109,18 +118,10 @@
         <div class="hot-themes">
             <h2>Popular Themes</h2>
             <hr class="hr-space-square"> 
-            <div class="text-grid">
-                
-                <a href="./introduction.html">
-                    <img src="./image/theme_1.png"  class="themeicon">
-                </a>
-                <a href="./introduction.html">
-                    <img src="./image/theme_2.png"  class="themeicon">
-                </a>
-                <a href="./introduction.html">
-                    <img src="./image/theme_3.png"  class="themeicon">
-                </a>
-               
+            <div class="text-grid">               
+                <img src="./image/theme_1.png"  class="themeicon">
+                <img src="./image/theme_2.png"  class="themeicon">
+                <img src="./image/theme_3.png"  class="themeicon">         
             </div>
         </div>
     </div>

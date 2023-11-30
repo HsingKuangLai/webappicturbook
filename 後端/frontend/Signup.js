@@ -11,7 +11,11 @@ async function main() {
     // here is empty
 
   } catch (error) {
-    alert("Failed to load members!");
+    Swal.fire({
+      icon: 'error', // Set the icon (success, error, warning, info, question)
+      title: "Failed to load members!",
+      showConfirmButton: true,
+    });
   }
 }
 
@@ -65,7 +69,11 @@ function setupEventListeners() {
       const memeberShip = await createMember({ name, email, password, creditCard });
       console.log(memeberShip);
     } catch (error) {
-      alert("Failed to create member!");
+      Swal.fire({
+        icon: 'error', // Set the icon (success, error, warning, info, question)
+        title: "Failed to create member!",
+        showConfirmButton: true,
+      });
       return;
     }
     nameInput.value = "";

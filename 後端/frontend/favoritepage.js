@@ -23,8 +23,12 @@ async function main() {
       members.favorite.forEach((book) => renderFavorite(book))
     
     } catch (error) {
-      alert("Failed to load Favorite books!");
-      console.log(error);
+        Swal.fire({
+            icon: 'error', // Set the icon (success, error, warning, info, question)
+            title: "Failed to load Favorite books!",
+            showConfirmButton: true,
+          });
+        console.log(error);
     }
     
     $(document).ready(function() {

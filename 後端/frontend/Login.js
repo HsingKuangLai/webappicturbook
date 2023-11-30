@@ -34,14 +34,32 @@ const handleLogin = async (event) => {
     const passwordInput = document.querySelector("#password");
     const email = emailInput.value;
     const password = passwordInput.value;
-  
+
+    if (!email && !password) {
+      Swal.fire({
+        icon: 'warning',
+        title: "Please enter an email and a password!",
+        showConfirmButton: true,
+      });
+      return;
+    }
+    
+
     if (!email) {
-      alert("Please enter an email!");
+      Swal.fire({
+        icon: 'warning', // Set the icon (success, error, warning, info, question)
+        title: "Please enter an email!",
+        showConfirmButton: true,
+      });
       return;
     }
     
     if (!password){
-      alert("Please enter a password!");
+      Swal.fire({
+        icon: 'warning', // Set the icon (success, error, warning, info, question)
+        title: "Please enter a password!",
+        showConfirmButton: true,
+      });
       return;
     }
       
@@ -62,7 +80,12 @@ const handleLogin = async (event) => {
     
 
     } catch (error) {
-      alert("Failed to get member!");
+      Swal.fire({
+        icon: 'error', // Set the icon (success, error, warning, info, question)
+        title: "Failed to get member!",
+        showConfirmButton: true
+        // timer: 3000
+      });
       return;
     }
 

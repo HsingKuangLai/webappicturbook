@@ -92,7 +92,11 @@ async function main() {
               const textInput = document.querySelector("#search-box");
               const text = textInput.value;
               if (!text) {
-                alert("Please enter word!");
+                Swal.fire({
+                  icon: 'warning', // Set the icon (success, error, warning, info, question)
+                  title: "Please enter word!",
+                  showConfirmButton: true,
+                });
                 return;
               }
               Books = await getSearchBooks({"name":text})
@@ -116,7 +120,11 @@ async function main() {
             }
           
           } catch (error) {
-            alert("Failed to Search books!");
+            Swal.fire({
+              icon: 'error', // Set the icon (success, error, warning, info, question)
+              title: "Failed to Search books!",
+              showConfirmButton: true,
+            });
             console.log(error);
           }
         });
