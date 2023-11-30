@@ -58,6 +58,7 @@ p{
   padding: 10px;
   text-align: left; 
   margin-bottom: 10px;
+  font-size: 20px;
 }
 
 button{
@@ -96,9 +97,10 @@ input[type="text"] {
   border-radius: 35px;
   background-color :  #fff;
   outline:none;
-  }
+  font-size: 18px;
+}
 
-  input[type="password"] {
+input[type="password"] {
     width: 100%;
     align-items: center;
     margin: 0 auto;
@@ -111,52 +113,56 @@ input[type="text"] {
     border-radius: 35px;
     background-color :  #fff;
     outline:none;
-    }
+    font-size: 18px;
+}
 
+/* Hide the default checkbox */
+input[type="checkbox"] {
+  display: none;
+  
+}
 
-/* 下方為icon格式 */
-.user {
+/* Style the label to create a custom checkbox */
+label.checkbox-container {
+  display: inline-block;
   position: relative;
+  padding-left: 30px; 
+  cursor: pointer;
+  font-size: 20px;
+  user-select: none;
+  align-items: left;
 }
 
-.user:before {
-  font-family: "Font Awesome 5 Free"; 
-  font-weight: 900; 
-  content: "\f007";
-  font-size: 14px;
+/* Create the custom checkbox design */
+label.checkbox-container::before {
+  content: "";
   position: absolute;
-  right: 185%;
-  top: 50%;
-  transform: translateY(-50%); 
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #2196F3; /* Border color */
+  background-color: white;
 }
 
-.lock {
-  position: relative;
+/* Style the custom checkbox when checked */
+input[type="checkbox"]:checked + label.checkbox-container::before {
+  background-color: #2196F3; /* Background color when checked */
+  border: 2px solid #2196F3; /* Border color when checked */
 }
 
-.lock:before {
-  font-family: "Font Awesome 5 Free"; 
-  font-weight: 900; 
-  content: "\f023";
-  font-size: 14px;
+/* Style the checkmark inside the custom checkbox */
+label.checkbox-container::after {
+  content: "\2713"; /* Unicode checkmark character */
+  font-size: 20px;
   position: absolute;
-  right: 128pt;
-  top: 50%;
-  transform: translateY(-140%); 
+  left: 5px; /* Adjust the position of the checkmark */
+  top: 1px; /* Adjust the position of the checkmark */
+  color: white; /* Color of the checkmark */
+  display: none;
 }
 
-/* .search {
-  position: relative;
+/* Show the checkmark when the checkbox is checked */
+input[type="checkbox"]:checked + label.checkbox-container::after {
+  display: block;
 }
-
-.search:before {
-  font-family: "Font Awesome 5 Free"; 
-  font-weight: 900; 
-  content: "\f002";
-  font-size: 14px;
-  position: absolute;
-  left: 10pt;
-  top: 50%;
-  transform: translateY(-50%); 
-} */
-

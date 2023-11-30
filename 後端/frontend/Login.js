@@ -21,7 +21,8 @@ function setupEventListeners() {
     document.addEventListener("keydown", (event) => {
       // Check if the pressed key is Enter (key code 13)
       if (event.key === "Enter") {
-        handleLogin();
+        handleLogin(event);
+        
       }
     });
 
@@ -29,7 +30,9 @@ function setupEventListeners() {
   }
 
 const handleLogin = async (event) => {   
-    
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
     const emailInput = document.querySelector("#id");
     const passwordInput = document.querySelector("#password");
     const email = emailInput.value;

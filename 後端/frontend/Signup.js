@@ -26,6 +26,7 @@ function setupEventListeners() {
   const emailInput = document.querySelector("#email");
   const passwordInput = document.querySelector("#password");
   const creditcardInput = document.querySelector('#creditCard_num')
+  var checkbox = document.getElementById("myCheckbox");
   
   signUpButton.addEventListener("click", async () => {
   const name = nameInput.value;
@@ -64,6 +65,15 @@ function setupEventListeners() {
       })
 		  return;
 	  }
+    if (!checkbox.checked) {
+      Swal.fire({
+        icon: 'warning', // Set the icon (success, error, warning, info, question)
+        title: 'Please confirm subscription！', 
+        showConfirmButton: true,
+     
+      })
+      return;
+    }
 
     try {
       const memeberShip = await createMember({ name, email, password, creditCard });

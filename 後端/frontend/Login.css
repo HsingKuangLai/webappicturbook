@@ -58,6 +58,7 @@ p{
   padding: 10px;
   text-align: left; 
   margin-bottom: 10px;
+  font-size: 20px;
 }
 
 button{
@@ -96,6 +97,7 @@ input[type="text"] {
   border-radius: 35px;
   background-color :  #fff;
   outline:none;
+  font-size: 18px;
   }
 
   input[type="password"] {
@@ -111,6 +113,7 @@ input[type="text"] {
     border-radius: 35px;
     background-color :  #fff;
     outline:none;
+    font-size: 18px;
     }
 
   
@@ -118,49 +121,3 @@ a {
     text-decoration: none; /* 去除超連結的底線 */
   }
 
-/* 下方為icon格式 */
-/* .user {
-  position: relative;
-}
-
-.user:before {
-  font-family: "Font Awesome 5 Free"; 
-  font-weight: 900; 
-  content: "\f007";
-  font-size: 14px;
-  position: absolute;
-  right: 185%;
-  top: 50%;
-  transform: translateY(-50%); 
-} */
-
-/* .lock {
-  position: relative;
-}
-
-.lock:before {
-  font-family: "Font Awesome 5 Free"; 
-  font-weight: 900; 
-  content: "\f023";
-  font-size: 14px;
-  position: absolute;
-  right: 128pt;
-  top: 50%;
-  transform: translateY(-140%); 
-} */
-
-
-/* .search {
-  position: relative;
-}
-
-.search:before {
-  font-family: "Font Awesome 5 Free"; 
-  font-weight: 900; 
-  content: "\f002";
-  font-size: 14px;
-  position: absolute;
-  left: 10pt;
-  top: 50%;
-  transform: translateY(-50%); 
-} */
