@@ -51,7 +51,7 @@ function setupEventListeners() {
 	  if (!password){
       Swal.fire({
         icon: 'warning', // Set the icon (success, error, warning, info, question)
-        title: 'Please enter Credit Card Number！', 
+        title: 'Please enter password！', 
         showConfirmButton: true,
       })
       return;
@@ -59,7 +59,7 @@ function setupEventListeners() {
 	  if (!creditCard){
       Swal.fire({
         icon: 'warning', // Set the icon (success, error, warning, info, question)
-        title: 'Please enter password！', 
+        title: 'Please enter Credit Card Number！', 
         showConfirmButton: true,
       })
 		  return;
