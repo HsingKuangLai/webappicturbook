@@ -17,7 +17,7 @@ async function main() {
 
     
       Books = await getAllBooks();
-      Books.slice(0,5).forEach((book) => renderAllBooks(book));
+      Books.slice(0,10).forEach((book) => renderAllBooks(book));
       // bookList.innerHTML = "";
     
     } catch (error) {
