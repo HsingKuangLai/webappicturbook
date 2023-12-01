@@ -19,7 +19,7 @@ async function main() {
       const id = localStorage.getItem('ID');
       console.log('ID:', id);
 
-      const members = await getMembers({"email":id});
+      const members = await getMembers({"account":id});
       members.favorite.forEach((book) => renderFavorite(book))
     
     } catch (error) {

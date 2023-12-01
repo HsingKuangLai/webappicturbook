@@ -33,25 +33,25 @@ const handleLogin = async (event) => {
     // Prevent the default form submission behavior
     event.preventDefault();
 
-    const emailInput = document.querySelector("#id");
+    const accountInput = document.querySelector("#id");
     const passwordInput = document.querySelector("#password");
-    const email = emailInput.value;
+    const account = accountInput.value;
     const password = passwordInput.value;
 
-    if (!email && !password) {
+    if (!account && !password) {
       Swal.fire({
         icon: 'warning',
-        title: "Please enter an email and a password!",
+        title: "Please enter an account and a password!",
         showConfirmButton: true,
       });
       return;
     }
     
 
-    if (!email) {
+    if (!account) {
       Swal.fire({
         icon: 'warning', // Set the icon (success, error, warning, info, question)
-        title: "Please enter an email!",
+        title: "Please enter an account!",
         showConfirmButton: true,
       });
       return;
@@ -67,16 +67,16 @@ const handleLogin = async (event) => {
     }
       
     try {
-      const memberData = await getMembers({email, password});
+      const memberData = await getMembers({account, password});
       if (!memberData || memberData.length === 0){
         // 未找到會員警告
         Swal.fire({
           icon: 'error', // Set the icon (success, error, warning, info, question)
-          title: 'Email or Password wrong！',
+          title: 'Account or Password wrong！',
           showConfirmButton: true
           // timer: 3000
         });
-        emailInput.value = "";
+        accountInput.value = "";
         passwordInput.value = "";
         return;
       }
@@ -101,7 +101,7 @@ const handleLogin = async (event) => {
       timer: 1500
     }).then( () => {
         storeAndNavigate(event);
-        emailInput.value = "";
+        accountInput.value = "";
         passwordInput.value = "";
     });
 
@@ -113,8 +113,8 @@ function storeAndNavigate(event) {
   try{
     event.preventDefault();
   } finally {
-    const emailInput = document.querySelector("#id");
-    const id = emailInput.value;
+    const accountInput = document.querySelector("#id");
+    const id = accountInput.value;
 
     console.log('ID:', id);
     localStorage.setItem('ID', id);

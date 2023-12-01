@@ -3,10 +3,10 @@ import MemberModel from "../models/memberModel.js";
 
 // get all members
 export const getTargetMembers = async (req, res) =>{
-  const {email} = req.query;
+  const {account} = req.query;
   
   try{
-    const members = await MemberModel.findOne({'email':email});
+    const members = await MemberModel.findOne({'account':account});
     // Return members
     return res.status(200).json(members)
   } catch(error){
@@ -18,15 +18,15 @@ export const getTargetMembers = async (req, res) =>{
 
 // get members
 export const getMembers = async (req, res) => {
-  const {email, password} = req.query;
-  if (!email || !password) {
+  const {account, password} = req.query;
+  if (!account || !password) {
     return res
       .status(400)
-      .json({ message: "Email or password is not correct!" });
+      .json({ message: "Account or password is not correct!" });
   }
 
   try {
-    const members = await MemberModel.findOne({'email':email, 'password':password});
+    const members = await MemberModel.findOne({'account':account, 'password':password});
     if (!members){
       console.log("Log in fail QQ");
     }
@@ -68,7 +68,7 @@ export const updateMember = async (req, res) => {
   const { userId, bookName } = req.body;
   // console.log(userId, bookName)
   try {
-    const members = await MemberModel.findOne({'email':userId});
+    const members = await MemberModel.findOne({'account':userId});
     if (!members){
       console.log("fail QQ");
     }
@@ -89,11 +89,11 @@ export const deleteMember = async (req, res) => {
   const { userId, bookName } = req.body;
   try {
     const result = await MemberModel.updateOne(
-      { 'email': userId },
+      { 'account': userId },
       { $pull: { 'favorite': { $in: [bookName] } } }
     );
 
-    // const members = await MemberModel.findOne({'email':userId});
+    
     if (!result) {
       return res.status(404).json({ message: "Member not found!" });
     }
