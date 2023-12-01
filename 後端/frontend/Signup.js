@@ -96,7 +96,29 @@ function setupEventListeners() {
       creditcardInput.value = "";
 		  return;
 	  }
+    try {
+      const account = accountInput.value;
+      const members = await getMembers({"account":account});
+      if (!members === false){
+        console.log(!members);
+        Swal.fire({
+          icon: 'warning', // Set the icon (success, error, warning, info, question)
+          title: "Account has already been signed up, please try another account！",
+          showConfirmButton: true,
+        });
+        accountInput.value = "";
+        return;
+      }
 
+    } catch(error){
+      Swal.fire({
+        icon: 'warning', // Set the icon (success, error, warning, info, question)
+        title: "Failed to get members!",
+        showConfirmButton: true,
+      });
+      console.log(error);
+      return;
+    }
     try {
       const memeberShip = await createMember({ name, email, account, password, creditCard });
       // console.log(memeberShip);
@@ -142,5 +164,9 @@ async function createMember(members) {
   return response.data;
 }
 
+async function getMembers(id) {
+  const response = await instance.get("/members/target", {params:id});
+  return response.data;
+}
 
 main();
