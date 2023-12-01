@@ -39,10 +39,10 @@ export const getMembers = async (req, res) => {
 
 // Create a member
 export const createMember = async (req, res) => {
-  const { name, email, password, creditCard } = req.body;
+  const { name, email, account, password, creditCard } = req.body;
 
   // Check title and description
-  if (!name || !email || !password || !creditCard) {
+  if (!name || !email || !account || !password || !creditCard) {
     return res
       .status(400)
       .json({ message: "Information are required!" });
@@ -52,7 +52,8 @@ export const createMember = async (req, res) => {
   try {
     const newMember = await MemberModel.create({
       name, 
-      email, 
+      email,
+      account, 
       password, 
       creditCard
     });

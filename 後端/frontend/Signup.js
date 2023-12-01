@@ -24,6 +24,7 @@ function setupEventListeners() {
   const signUpButton = document.querySelector("#signupButton");
   const nameInput = document.querySelector("#user_id");
   const emailInput = document.querySelector("#email");
+  const accountInput = document.querySelector("#account");
   const passwordInput = document.querySelector("#password");
   const creditcardInput = document.querySelector('#creditCard_num')
   var checkbox = document.getElementById("myCheckbox");
@@ -31,8 +32,10 @@ function setupEventListeners() {
   signUpButton.addEventListener("click", async () => {
   const name = nameInput.value;
   const email = emailInput.value;
+  const account = accountInput.value;
 	const password = passwordInput.value;
 	const creditCard = creditcardInput.value;
+
     if (!name) {
       Swal.fire({
         icon: 'warning', // Set the icon (success, error, warning, info, question)
@@ -45,6 +48,14 @@ function setupEventListeners() {
       Swal.fire({
         icon: 'warning', // Set the icon (success, error, warning, info, question)
         title: 'Please enter email！', 
+        showConfirmButton: true,
+      })
+      return;
+    }
+    if (!account) {
+      Swal.fire({
+        icon: 'warning', // Set the icon (success, error, warning, info, question)
+        title: 'Please enter account！', 
         showConfirmButton: true,
       })
       return;
@@ -87,8 +98,8 @@ function setupEventListeners() {
 	  }
 
     try {
-      const memeberShip = await createMember({ name, email, password, creditCard });
-      console.log(memeberShip);
+      const memeberShip = await createMember({ name, email, account, password, creditCard });
+      // console.log(memeberShip);
     } catch (error) {
       Swal.fire({
         icon: 'error', // Set the icon (success, error, warning, info, question)
@@ -99,6 +110,7 @@ function setupEventListeners() {
     }
     nameInput.value = "";
     emailInput.value = "";
+    accountInput.value = "";
 	  passwordInput.value = "";
 	  creditcardInput.value = "";
 
