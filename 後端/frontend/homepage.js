@@ -109,7 +109,7 @@ async function main() {
                 return;
               }
               Books = await getSearchBooks({"name":text})
-              
+              $('.themeicon').removeClass('dimmed');
               // 顯示書本搜尋結果
               const headText = document.querySelector("#headText");
               headText.innerHTML = `${text} 的搜尋結果 共${Books.length}則`;
