@@ -49,7 +49,7 @@ async function main() {
           for (var i = 0; i < allImages.length; i++) {
               allImages[i].classList.add('dimmed');
           }
-          
+
           // Not Dim the clicked image
           $(this).removeClass('dimmed');
 
@@ -110,6 +110,10 @@ async function main() {
               }
               Books = await getSearchBooks({"name":text})
               
+              // 顯示書本搜尋結果
+              const headText = document.querySelector("#headText");
+              headText.innerHTML = `${text} 的搜尋結果 共${Books.length}則`;
+
               bookList.innerHTML = ""
               Books.forEach((book) => renderAllBooks(book));
               // 顯示書本
