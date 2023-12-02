@@ -45,6 +45,15 @@ async function main() {
           const headText = document.querySelector("#headText");
           headText.innerText = bookCategory;
 
+          var allImages = document.getElementsByClassName('themeicon');
+          for (var i = 0; i < allImages.length; i++) {
+              allImages[i].classList.add('dimmed');
+          }
+          
+          // Not Dim the clicked image
+          $(this).removeClass('dimmed');
+
+
           Books = await getCategoryBooks({"category":bookCategory});
           bookList.innerHTML = ""
           Books.forEach((book) => renderAllBooks(book));

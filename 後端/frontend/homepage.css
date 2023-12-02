@@ -121,8 +121,14 @@ h2 {
 }
 
 .themeicon{
-  transition: transform 0.3s ease-in-out;
+  /* transition: transform 0.3s ease-in-out; */
+  opacity: 1; /* Initial opacity */
+  transition: opacity 0.3s ease-in-out; /* Add a transition effect for a smoother appearance */
 
+}
+
+.dimmed {
+  opacity: 0.3; /* Adjust the opacity value to control the level of dimming */
 }
 
 .text-grid img:hover {
@@ -253,3 +259,6 @@ a {
 .changepage:hover{
   transform: scale(1.2);
 }
+
+
+
