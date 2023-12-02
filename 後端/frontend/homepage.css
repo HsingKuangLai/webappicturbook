@@ -133,6 +133,7 @@ h2 {
 
 .text-grid img:hover {
   transform: scale(1.1);
+  cursor: pointer;
   
 }
 
@@ -169,6 +170,7 @@ h2 {
 /* Apply bounce animation on hover */
 .image-grid img:hover {
   animation: bounce 1.5s ease 2;
+  cursor: pointer;
 }
 
 .text-box {
@@ -258,6 +260,7 @@ a {
 
 .changepage:hover{
   transform: scale(1.2);
+  cursor: pointer;
 }
 
 
