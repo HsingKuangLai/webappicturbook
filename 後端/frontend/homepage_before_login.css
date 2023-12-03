@@ -104,10 +104,6 @@ input[type="text"]::before {
   border-radius: 20px;
 }
 
-.hot-reads, .hot-themes {
-
-}
-
 h2 {
   font-size: 30px;
   padding: 5px;
