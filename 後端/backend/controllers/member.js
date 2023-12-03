@@ -104,3 +104,17 @@ export const deleteMember = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+// Get a member favorite book
+// export const getFavorite = async (req, res) => {
+
+//   const {userId} = req.body;
+//   try{
+//     const member_fv = await MemberModel.findOne({"account":userId});
+//     // Return members
+//     return res.status(200).json(member_fv)
+//   } catch(error){
+//     return res.status(500).json({message: error.message})
+//   }
+
+// };

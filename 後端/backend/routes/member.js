@@ -24,5 +24,8 @@ router.put("/", updateMember);
 // DELETE /api/todos/:id
 router.delete("/target", deleteMember);
 
+// GET /api/todos
+// router.get("/favorite", getFavorite);
+
 // export the router
 export default router;

@@ -51,6 +51,52 @@ function setupEventListeners() {
 
   }
 
+
+// 設定EventListeners
+// function setupEventListeners() {
+//   const startReadButton = document.querySelector("#StartReadingButton");    
+//   startReadButton.addEventListener("click", async () => {
+//     const book = localStorage.getItem('storedText');
+//     updateBookTimes(book);
+//     window.location.href = "./story.html"
+
+//   });
+
+//   addButton = document.getElementById('addFavoriteButton');
+//   addButton.addEventListener("click", async () => {
+//     // Check if the book is already in favorites
+//     const isBookInFavorites = await checkIfBookInFavorites(id, textValue);
+
+//     if (!isBookInFavorites) {
+//         // If not, add it to favorites
+//         const back = await addFavorite(id, textValue);
+//         console.log(back);
+//         Swal.fire({
+//             icon: 'success',
+//             title: 'Add Successfully!',
+//             showConfirmButton: false,
+//             timer: 1500
+//         });
+//         // Change the image source after successful addition
+//         addButton.innerHTML = '<img src="./image/tofavorite.png" class="pageicon">';
+//     } else {
+//         // If the book is already in favorites, remove it from favorites
+//         const removed = await deleteMembersFav(id, textValue);
+//         console.log(removed);
+//         Swal.fire({
+//             icon: 'success',
+//             title: 'Remove Successfully!',
+//             showConfirmButton: false,
+//             timer: 1500
+//         });
+//         // Change the image source after successful removal
+//         addButton.innerHTML = '<img src="./image/addfavorite.png" class="pageicon">';
+//     }
+// });
+// }
+
+
+
 function renderBook(book) {
     // 書名
     const firstBook = book;
@@ -113,11 +159,32 @@ async function getBooks(bookName) {
     return response.data;
 }
 
+// async function checkIfBookInFavorites(member, bookName) {
+//   try {
+//       console.log("Checking favorites for member:", member,bookName);
+//       const response = await instance.get("/members/favorite",{"userId":member});
+//       console.log("Response from server:", response.data);
+
+//       const userData = response.data;
+//       const isInFavorites = userData.favorite.includes(bookName);
+//       return { inFavorites: isInFavorites };
+//   } catch (error) {
+//       console.error("Check Favorites Error:", error);
+//       throw error;
+//   }
+// }
+
 async function addFavorite(member, bookName){
     // req.userId = member;
     const response = await instance.put("/members", {"bookName":bookName, "userId":member});
     return response.data;
 }
+
+// async function deleteMembersFav(userId, bookName) {
+//   const response = await instance.delete("/members/target", {
+//       data: {userId, bookName}});
+//   return response.data;
+// }
 
 async function updateBookTimes(bookName) {
   const response = await instance.put("/books", {"name": bookName});
