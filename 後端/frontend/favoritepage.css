@@ -1,13 +1,47 @@
-
 body {
   font-family: Bookman, URW Bookman L, serif;
   color:#003C9D;
-  background-image: url("./image/background2.png");
+  background-image: url("./image/background.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
   margin: 0 auto;
+}
+
+.up{
+  margin: 0 auto;
+  position: relative;
+  top: 20px;
+  width: 1280px;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 410px;
+  height: auto;
+}
+
+.up_right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: auto; 
+}
+
+.pageicon-container {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.pageicon {
+  width: 40px;
+  height: auto;
+  margin-left: 10px;
 }
 
 li {
@@ -19,21 +53,7 @@ li {
   width: 600px;
 }
 
-.up{
-  margin: 0 auto;
-  position: relative;
-  top: 80px;
-  width: 1250px;
-  height: 120px;
-}
 
-.pageicon{
-  width:"40"; 
-  height:"40";
-  position: relative;
-  left: 600px;
-  bottom: 60px;
-}
 
 .search {
   position: relative;
@@ -78,7 +98,9 @@ input[type="text"] {
 h2 {
   font-size: 30px;
   /* color: #6495ED; */
+  font-family: 'Microsoft JhengHei', sans-serif;
 }
+
 
 
 .text-grid {
@@ -115,3 +137,9 @@ h2 {
   display: inline-block;
 }
 
+#memberID {
+  color: white;
+  font-size: 22px;
+  font-family: 'Microsoft JhengHei', sans-serif;
+  margin: 5px 5px 0 0;
+}
