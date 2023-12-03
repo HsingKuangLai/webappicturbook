@@ -28,7 +28,7 @@ async function main() {
   }
 
 // 設定EventListeners
-function setupEventListeners() {
+async function setupEventListeners() {
     const startReadButton = document.querySelector("#StartReadingButton");    
     startReadButton.addEventListener("click", async () => {
       const book = localStorage.getItem('storedText');
@@ -37,67 +37,60 @@ function setupEventListeners() {
   
     });
 
+    // 判斷addButton愛心顏色
     addButton = document.getElementById('addFavoriteButton');
-    addButton.addEventListener("click", async() => {
-
-      const isBookInFavorites = await checkIfBookInFavorites(id, textValue);
-
-      back = await addFavorite(id, textValue);
-      console.log(back);
-      Swal.fire({
-        icon: 'success', // Set the icon (success, error, warning, info, question)
-        title: 'Add Successfully!',
-        showConfirmButton: false,
-        timer: 1500
-      });
-    });
-
-  }
-
-
-// 設定EventListeners
-function setupEventListeners() {
-  const startReadButton = document.querySelector("#StartReadingButton");    
-  startReadButton.addEventListener("click", async () => {
-    const book = localStorage.getItem('storedText');
-    updateBookTimes(book);
-    window.location.href = "./story.html"
-
-  });
-
-  addButton = document.getElementById('addFavoriteButton');
-  addButton.addEventListener("click", async () => {
-    // Check if the book is already in favorites
     const account = id;
     const bookName = textValue;
-    const isBookInFavorites = await checkIfBookInFavorites({account, bookName});
-    // console.log(isBookInFavorites);
-    if (!isBookInFavorites) {
-        // If not, add it to favorites
-        const back = await addFavorite(id, textValue);
-        console.log(back);
-        Swal.fire({
-            icon: 'success',
-            title: 'Add Successfully!',
-            showConfirmButton: false,
-            timer: 1500
-        });
-
-        addButton.innerHTML = '<img src="./image/tofavorite.png">';
+    const insideFav = await checkIfBookInFavorites({account, bookName});
+    
+    console.log(insideFav);
+    if (insideFav){
+      addButton.innerHTML = '<img src="./image/tofavorite.png">';
     } else {
-        // // If the book is already in favorites, remove it from favorites
-        // const removed = await deleteMembersFav(id, textValue);
-        // console.log(removed);
-        Swal.fire({
-            icon: 'warning',
-            title: 'The book is already in your Favorite. Are you sure that you want to delete it? ',
-            showConfirmButton: true,
-            // timer: 1500
-        });
-        // // Change the image source after successful removal
-        // addButton.innerHTML = '<img src="./image/addfavorite.png">';
+      addButton.innerHTML = '<img src="./image/addfavorite.png">';
     }
-});
+
+    
+    
+
+    // addButton 點擊 function
+    addButton = document.getElementById('addFavoriteButton');
+    addButton.addEventListener("click", async () => {
+      // Check if the book is already in favorites
+      const account = id;
+      const bookName = textValue;
+      const isBookInFavorites = await checkIfBookInFavorites({account, bookName});
+      // console.log(isBookInFavorites);
+      if (!isBookInFavorites) {
+          // If not, add it to favorites
+          const back = await addFavorite(id, textValue);
+          // console.log(back);
+          Swal.fire({
+              icon: 'success',
+              title: 'Add Successfully!',
+              showConfirmButton: false,
+              timer: 1500
+          });
+
+          addButton.innerHTML = '<img src="./image/tofavorite.png">';
+      } else {
+          
+          Swal.fire({
+              icon: 'warning',
+              title: 'The book is already in your Favorite. Are you sure that you want to delete it? ',
+              showConfirmButton: true,
+              // timer: 1500
+          }).then(async (result) => {
+            if (result.isConfirmed) {
+              // If the book is already in favorites, remove it from favorites
+              const removed = await deleteMembersFav(id, textValue);
+              console.log(removed);
+            }})
+          // // Change the image source after successful removal
+          addButton.innerHTML = '<img src="./image/addfavorite.png">';
+      }
+    });
+
 }
 
 
@@ -148,20 +141,18 @@ function renderBook(book) {
 
 }
 
-
-//Retrieve the idValue from local storage
-const textValue = localStorage.getItem('storedText');
-console.log('Stored Text:', textValue);
-
-const id = localStorage.getItem('ID');
-console.log('ID:', id);
-
-
 // 前端呼叫後端function
 async function getBooks(bookName) {
-    // console.log({params:bookName});
-    const response = await instance.get("/books", {params:bookName});
+  // console.log({params:bookName});
+  const response = await instance.get("/books", {params:bookName});
+  return response.data;
+}
+
+// addButton 顏色判斷
+async function buttonColor(favBook){
+    const response = await instance.get("/members/favorite", {params : favBook});
     return response.data;
+
 }
 
 async function checkIfBookInFavorites(favBook) {
@@ -183,16 +174,23 @@ async function addFavorite(member, bookName){
     return response.data;
 }
 
-// async function deleteMembersFav(userId, bookName) {
-//   const response = await instance.delete("/members/target", {
-//       data: {userId, bookName}});
-//   return response.data;
-// }
+async function deleteMembersFav(userId, bookName) {
+  const response = await instance.delete("/members/target", {
+      data: {userId, bookName}});
+  return response.data;
+}
 
 async function updateBookTimes(bookName) {
   const response = await instance.put("/books", {"name": bookName});
   return response.data;
 }
+
+//Retrieve the idValue from local storage
+const textValue = localStorage.getItem('storedText');
+console.log('Stored Text:', textValue);
+
+const id = localStorage.getItem('ID');
+console.log('ID:', id);
 
 main();
   
