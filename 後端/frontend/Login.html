@@ -34,7 +34,7 @@
     <img src="./image/Logo_2.png" class="logo">
     </a>
     
-    <div class="up_rihght">
+    <div class="up_right">
         <div class="pageicon-container">
             <a href="./homepage_before_login.html"><img src="./image/homepage.png" class="pageicon"></a>
         </div>
@@ -47,14 +47,22 @@
   <div class = "loginBox">
     <p class = "head">Log In</p>
     <p> Account </p>
-    <label class="user">
+    <!-- <label class="user">
     <input type="text" id="id" autofocus placeholder="">
-    </label>
+    </label>-->
+    <table>
+      <td class="icon"><i class='fas fa-user'></i></td>
+      <td><input type="text" id="id" placeholder=""></td>
+    </table>
     
     <p> Password </p>
-    <label class="lock">
+    <!--<label class="lock">
     <input type="password" id="password" placeholder="">
-    </label>
+    </label>-->
+    <table>
+      <td class="icon"><i class='fas fa-lock'></i></td>
+      <td> <input type="password" id="password" placeholder=""></td>
+    </table>
 
     <br><br>
     <button id="LoginButton" >Log in</button>

@@ -6,6 +6,7 @@ body {
   background-size: cover;
   margin: 0 auto;
   font-family: "Microsoft JhengHei", sans-serif;
+  color:#003C9D;
 }
 
 .up{
@@ -59,27 +60,6 @@ body {
   /* transform: translateY(-50%);  */
 }
 
-input[type="text"] {
-  width: 500px;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
-  padding: 10px 10px 10px 40px;
-  border: solid .1px black;
-  border-radius: 16px;
-  background-color: #fff;
-}
-
-input[type="text"]::before {
-  content: "\f002";
-  font-family: "Font Awesome 5 Free"; 
-  font-weight: 900; 
-  font-size: 16px;
-  color: #555;
-  position: absolute;
-  left: 20px; 
-  top: 50%; 
-  transform: translateY(-50%);
-}
-
 .content{
   background-color: white;
   margin: 0 auto;
@@ -88,7 +68,7 @@ input[type="text"]::before {
   max-width: 1250px;
   text-align: center;
   border-radius: 20px;
-  margin-top: 60px;
+  margin-top: 100px;
   margin-bottom: 25px;
 }
 
@@ -106,7 +86,7 @@ input[type="text"]::before {
 .head {
   text-align: center;
   font-size: 45px;
-  font-family: 'Gill Sans', sans-serif;
+  font-family: Bookman, URW Bookman L, serif;
   font-weight: bold;
   margin: 15px 0 20px 0;
 }
@@ -138,42 +118,36 @@ button{
 }
 
 button:hover{
-color:#003C9D;
-background-color:#fff;
-border:2px #003C9D solid;
+  color:#003C9D;
+  background-color:#fff;
+  border:2px #003C9D solid;
 }
 
-input[type="text"] {
+table {
   width: 100%;
+  border: 1px solid black;
+  border-radius: 35px;
+  padding: 8px;
   align-items: center;
   margin: 0 auto;
-  padding: 10px;
   margin-bottom: 10px;
-  display: block;
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
-  padding: 10px;
-  border : solid .1px black;
-  border-radius: 35px;
   background-color :  #fff;
-  outline:none;
-  font-size: 18px;
+  outline: none;
 }
 
-input[type="password"] {
-    width: 100%;
-    align-items: center;
-    margin: 0 auto;
-    padding: 10px;
-    margin-bottom: 10px;
-    display: block;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
-    padding: 10px;
-    border : solid .1px black;
-    border-radius: 35px;
-    background-color :  #fff;
-    outline:none;
-    font-size: 18px;
+.icon {
+  padding-left: 3px;
+  width: 20px; /* 固定icon寬度。 */
 }
+
+input {
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+}
+
 
 /* Hide the default checkbox */
 input[type="checkbox"] {
@@ -225,3 +199,58 @@ label.checkbox-container::after {
 input[type="checkbox"]:checked + label.checkbox-container::after {
   display: block;
 }
+
+/*
+input[type="text"] {
+  width: 500px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+  padding: 10px 10px 10px 40px;
+  border: solid .1px black;
+  border-radius: 16px;
+  background-color: #fff;
+}
+
+input[type="text"]::before {
+  content: "\f002";
+  font-family: "Font Awesome 5 Free"; 
+  font-weight: 900; 
+  font-size: 16px;
+  color: #555;
+  position: absolute;
+  left: 20px; 
+  top: 50%; 
+  transform: translateY(-50%);
+}
+
+input[type="text"] {
+  width: 100%;
+  align-items: center;
+  margin: 0 auto;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: block;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+  padding: 10px;
+  border : solid .1px black;
+  border-radius: 35px;
+  background-color :  #fff;
+  outline:none;
+  font-size: 18px;
+}
+
+input[type="password"] {
+    width: 100%;
+    align-items: center;
+    margin: 0 auto;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: block;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    padding: 10px;
+    border : solid .1px black;
+    border-radius: 35px;
+    background-color :  #fff;
+    outline:none;
+    font-size: 18px;
+}
+*/

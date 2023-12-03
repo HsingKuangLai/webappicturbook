@@ -22,7 +22,7 @@
     
     <!-- 加入Css格式 -->
     <link rel = "stylesheet" href = "Signup.css">
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     
     <!--最佳化螢幕寬度-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,7 +36,7 @@
     <img src="./image/Logo_2.png" class="logo">
     </a>
     
-    <div class="up_rihght">
+    <div class="up_right">
         <div class="pageicon-container">
             <a href="./homepage_before_login.html"><img src="./image/homepage.png" class="pageicon"></a>
         </div>
@@ -51,19 +51,40 @@
     <p class = "head">Sign Up</p>
 
     <p> Name </p>
-    <input type="text" id="user_id" autofocus placeholder="">
+    <!--<input type="text" id="user_id" autofocus placeholder="">-->
+    <table>
+      <td class="icon"><i class='fas fa-keyboard'></i></td>
+      <td><input type="text" id="user_id" placeholder=""></td>
+    </table>
 
     <p> Email </p>
-    <input type="text" id="email" placeholder="">
+    <!--<input type="text" id="email" placeholder="">-->
+    <table>
+      <td class="icon"><i class='fas fa-envelope'></i></td>
+      <td><input type="text" id="email" placeholder=""></td>
+    </table>
 
-    <p> account </p>
-    <input type="text" id="account" placeholder="">
+    <p> Account </p>
+    <!--<input type="text" id="account" placeholder="">-->
+    <table>
+      <td class="icon"><i class='fas fa-user'></i></td>
+      <td><input type="text" id="email" placeholder=""></td>
+    </table>
+
   
     <p> Password </p>
-    <input type="password" id="password" />
+    <!--<input type="password" id="password" />-->
+    <table>
+      <td class="icon"><i class='fas fa-lock'></i></td>
+      <td> <input type="password" id="password" /></td>
+    </table>
 
     <p> Credit Card Number </p>
-    <input type="text" id="creditCard_num" placeholder="Please enter 16 digits number">
+    <!--<input type="text" id="creditCard_num" placeholder="Please enter 16 digits number">-->
+    <table>
+      <td class="icon"><i class='fas fa-credit-card'></i></td>
+      <td><input type="text" id="creditCard_num" placeholder="Please enter 16 digits number"></td>
+    </table>
 
     <p>
       <input type = "checkbox" id = "myCheckbox">
