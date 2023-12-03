@@ -1,31 +1,33 @@
 import {
   createMember,
   getMembers,
-  updateMember,
-  deleteMember,
+  getFavorite,
   getTargetMembers,
+  updateMember,
+  deleteMember
 } from "../controllers/member.js";
 import express from "express";
 
 // Create an express router
 const router = express.Router();
 
-// Every path we define here will get /api/todos prefix
+// Every path we define here will get /api/members prefix
 // To make code even more cleaner we can wrap functions in `./controllers` folder
 
-// GET /api/todos
+// GET /api/members
 router.get("/", getMembers);
-// GET /api/todos
+// GET /api/members
 router.get("/target", getTargetMembers);
-// POST /api/todos
+// GET /api/members
+router.get("/favorite", getFavorite);
+// POST /api/members
 router.post("/", createMember);
-// PUT /api/todos/:id
+// PUT /api/members/:id
 router.put("/", updateMember);
-// DELETE /api/todos/:id
+// DELETE /api/members/:id
 router.delete("/target", deleteMember);
 
-// GET /api/todos
-// router.get("/favorite", getFavorite);
+
 
 // export the router
 export default router;

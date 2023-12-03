@@ -39,6 +39,9 @@ function setupEventListeners() {
 
     addButton = document.getElementById('addFavoriteButton');
     addButton.addEventListener("click", async() => {
+
+      const isBookInFavorites = await checkIfBookInFavorites(id, textValue);
+
       back = await addFavorite(id, textValue);
       console.log(back);
       Swal.fire({
@@ -53,47 +56,49 @@ function setupEventListeners() {
 
 
 // 設定EventListeners
-// function setupEventListeners() {
-//   const startReadButton = document.querySelector("#StartReadingButton");    
-//   startReadButton.addEventListener("click", async () => {
-//     const book = localStorage.getItem('storedText');
-//     updateBookTimes(book);
-//     window.location.href = "./story.html"
+function setupEventListeners() {
+  const startReadButton = document.querySelector("#StartReadingButton");    
+  startReadButton.addEventListener("click", async () => {
+    const book = localStorage.getItem('storedText');
+    updateBookTimes(book);
+    window.location.href = "./story.html"
 
-//   });
+  });
 
-//   addButton = document.getElementById('addFavoriteButton');
-//   addButton.addEventListener("click", async () => {
-//     // Check if the book is already in favorites
-//     const isBookInFavorites = await checkIfBookInFavorites(id, textValue);
+  addButton = document.getElementById('addFavoriteButton');
+  addButton.addEventListener("click", async () => {
+    // Check if the book is already in favorites
+    const account = id;
+    const bookName = textValue;
+    const isBookInFavorites = await checkIfBookInFavorites({account, bookName});
+    // console.log(isBookInFavorites);
+    if (!isBookInFavorites) {
+        // If not, add it to favorites
+        const back = await addFavorite(id, textValue);
+        console.log(back);
+        Swal.fire({
+            icon: 'success',
+            title: 'Add Successfully!',
+            showConfirmButton: false,
+            timer: 1500
+        });
 
-//     if (!isBookInFavorites) {
-//         // If not, add it to favorites
-//         const back = await addFavorite(id, textValue);
-//         console.log(back);
-//         Swal.fire({
-//             icon: 'success',
-//             title: 'Add Successfully!',
-//             showConfirmButton: false,
-//             timer: 1500
-//         });
-//         // Change the image source after successful addition
-//         addButton.innerHTML = '<img src="./image/tofavorite.png" class="pageicon">';
-//     } else {
-//         // If the book is already in favorites, remove it from favorites
-//         const removed = await deleteMembersFav(id, textValue);
-//         console.log(removed);
-//         Swal.fire({
-//             icon: 'success',
-//             title: 'Remove Successfully!',
-//             showConfirmButton: false,
-//             timer: 1500
-//         });
-//         // Change the image source after successful removal
-//         addButton.innerHTML = '<img src="./image/addfavorite.png" class="pageicon">';
-//     }
-// });
-// }
+        addButton.innerHTML = '<img src="./image/tofavorite.png">';
+    } else {
+        // // If the book is already in favorites, remove it from favorites
+        // const removed = await deleteMembersFav(id, textValue);
+        // console.log(removed);
+        Swal.fire({
+            icon: 'warning',
+            title: 'The book is already in your Favorite. Are you sure that you want to delete it? ',
+            showConfirmButton: true,
+            // timer: 1500
+        });
+        // // Change the image source after successful removal
+        // addButton.innerHTML = '<img src="./image/addfavorite.png">';
+    }
+});
+}
 
 
 
@@ -159,20 +164,18 @@ async function getBooks(bookName) {
     return response.data;
 }
 
-// async function checkIfBookInFavorites(member, bookName) {
-//   try {
-//       console.log("Checking favorites for member:", member,bookName);
-//       const response = await instance.get("/members/favorite",{"userId":member});
-//       console.log("Response from server:", response.data);
+async function checkIfBookInFavorites(favBook) {
+  try {
+      console.log("Checking favorites for member:", favBook);
+      const response = await instance.get("/members/favorite", {params : favBook});
+      console.log("Response from server:", response.data);
 
-//       const userData = response.data;
-//       const isInFavorites = userData.favorite.includes(bookName);
-//       return { inFavorites: isInFavorites };
-//   } catch (error) {
-//       console.error("Check Favorites Error:", error);
-//       throw error;
-//   }
-// }
+      return response.data;
+  } catch (error) {
+      // console.error("Check Favorites Error:", error);
+      throw error;
+  }
+}
 
 async function addFavorite(member, bookName){
     // req.userId = member;

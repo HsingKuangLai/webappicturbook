@@ -63,7 +63,7 @@ export const createMember = async (req, res) => {
   }
 };
 
-// Update a member
+// Update a member fav book
 export const updateMember = async (req, res) => {
   const { userId, bookName } = req.body;
   // console.log(userId, bookName)
@@ -106,15 +106,19 @@ export const deleteMember = async (req, res) => {
 };
 
 // Get a member favorite book
-// export const getFavorite = async (req, res) => {
+export const getFavorite = async (req, res) => {
 
-//   const {userId} = req.body;
-//   try{
-//     const member_fv = await MemberModel.findOne({"account":userId});
-//     // Return members
-//     return res.status(200).json(member_fv)
-//   } catch(error){
-//     return res.status(500).json({message: error.message})
-//   }
+  // get 要用 req.query
+  const {account, bookName} = req.query;
+  try{
+    const members = await MemberModel.findOne({"account":account});
+    
+    // 檢查是否在favorite，並回傳true or false
+    const isBookInFavorites = members.favorite.includes(bookName);
 
-// };
+    return res.status(200).json(isBookInFavorites)
+  } catch(error){
+    return res.status(500).json({message: error.message})
+  }
+
+};
