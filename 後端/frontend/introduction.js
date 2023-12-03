@@ -77,17 +77,22 @@ async function setupEventListeners() {
           
           Swal.fire({
               icon: 'warning',
-              title: 'The book is already in your Favorite. Are you sure that you want to delete it? ',
+              title: 'Are you sure that you want to delete it? ',
               showConfirmButton: true,
+              showCancelButton: true,
+              confirmButtonText: 'Ok',
+              cancelButtonText: 'Cancel' 
+
               // timer: 1500
           }).then(async (result) => {
             if (result.isConfirmed) {
               // If the book is already in favorites, remove it from favorites
               const removed = await deleteMembersFav(id, textValue);
               console.log(removed);
+              // Change the image source after successful removal
+               addButton.innerHTML = '<img src="./image/addfavorite.png">';
             }})
-          // // Change the image source after successful removal
-          addButton.innerHTML = '<img src="./image/addfavorite.png">';
+          
       }
     });
 
