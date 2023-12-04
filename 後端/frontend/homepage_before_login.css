@@ -1,8 +1,7 @@
-
 body {
   font-family: Bookman, URW Bookman L, serif;
   color:#003C9D;
-  background-image: url("./image/background2.png");
+  background-image: url("./image/background.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -22,7 +21,7 @@ body {
 }
 
 .logo {
-  width: 400px;
+  width: 410px;
   height: auto;
 }
 
@@ -105,14 +104,15 @@ input[type="text"]::before {
   border-radius: 20px;
 }
 
-.hot-reads, .hot-themes {
-
-}
-
 h2 {
   font-size: 30px;
   padding: 5px;
   margin: 15px 0 5px 0;
+  font-family: 'Microsoft JhengHei', sans-serif;
+}
+
+h2:lang(en) {
+  font-family: 'Gill Sans', sans-serif;
 }
 
 .image-grid {
@@ -223,6 +223,15 @@ a {
   margin-left: 120px;
 } */
 
+.themeicon{
+  width: 385px;
+  height: auto;
+  margin-left: 10px;
+}
+
+
+
+
 .circle-btn {
   display: flex;
   justify-content: center;
@@ -237,6 +246,7 @@ a {
   border: none;
   cursor: pointer;
   margin-right: 10px;
+  margin-bottom: 7.5px;
 }
 
 .circle-btn i {
