@@ -44,17 +44,6 @@ body {
   margin-left: 10px;
 }
 
-li {
-  display: grid;
-  grid-template-columns: 40% 55%;
-  align-items: center;
-  justify-content: space-between;
-  height: 300px;
-  width: 600px;
-}
-
-
-
 .search {
   position: relative;
   bottom: 30px;
@@ -94,14 +83,27 @@ input[type="text"] {
   margin-bottom: 25px;
 }
 
-
 h2 {
   font-size: 30px;
   /* color: #6495ED; */
-  font-family: 'Microsoft JhengHei', sans-serif;
+  /*font-family: 'Microsoft JhengHei', sans-serif;*/
 }
 
+p {
+  font-size: 25px;
+  font-weight: bold;
+  font-family: 'Microsoft JhengHei', sans-serif;
+  text-align: left;
+}
 
+li {
+  display: grid;
+  grid-template-columns: 40% 55%;
+  align-items: center;
+  justify-content: space-between;
+  height: 300px;
+  width: 600px;
+}
 
 .text-grid {
   display: grid;
@@ -109,33 +111,47 @@ h2 {
   gap: 10px;
 }
 
-.favorite-book {
-  flex: 0 0 40%; /* 调整图片所占的宽度，这里占 40% */
-}
-
 .text-box {
   flex: 0 0 55%; /* 调整文字和按钮所占的宽度，这里占 55% */
+  height: 288px; /* 容器高度 */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
+  justify-content: space-between; /* 文字和按钮在容器中垂直分布 */
+  align-items: flex-start; /* 文字和按钮左对齐 */
 }
 
 .text-box p {
   margin-bottom: 10px; /* 添加一些底部边距，使按钮不会紧贴文字 */
+  align-items: baseline;
+  height: 100%;
+  margin-top: 0px;
 }
 
-.favorite-book img {
-  max-width: 100%;
+.favorite-book {
+  flex: 0 0 40%; /* 调整图片所占的宽度，这里占 40% */
+}
+
+.favorite-image {
+  max-width: 90%;
   height:auto;
 }
 
-.read-btn, .delete-btn {
-  margin-top: 10px; 
-  margin-right: 5px; 
-  display: inline-block;
+.button-container {
+  display: flex;
+  height: 50%;
 }
+
+.read-btn, .delete-btn {
+  margin-top: 10px; /* 保留上方边距 */
+  margin-right: 20px; /* 可以调整按钮之间的间距 */
+  display: inline-block; /* 使按钮在水平方向上排列 */
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
 
 #memberID {
   color: white;
