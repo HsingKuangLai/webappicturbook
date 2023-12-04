@@ -1,6 +1,6 @@
 node_modules
 # dotenv environment variable files
-frontend/image
+# frontend/image
 .env
 
 .DS_Store
