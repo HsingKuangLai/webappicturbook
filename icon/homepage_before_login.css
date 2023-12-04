@@ -236,8 +236,15 @@ a {
   text-decoration: none;
   border: none;
   cursor: pointer;
+  margin-right: 10px;
 }
 
 .circle-btn i {
   font-size: 25px; /* Adjust the font size as needed */
+}
+
+
+.circle-btn:hover {
+  background-color: black;
+  color: white
 }

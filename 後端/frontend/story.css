@@ -102,3 +102,31 @@ body {
 .page:nth-child(even) {
     background-color: #f9f9f9;
 } */
+
+
+.circle-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px
+  }
+  
+  .circle-btn i {
+    font-size: 25px; /* Adjust the font size as needed */
+  }
+  
+  
+  .circle-btn:hover {
+    background-color: black;
+    color: white
+  }
+  
