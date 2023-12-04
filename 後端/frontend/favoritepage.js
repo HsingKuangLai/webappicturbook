@@ -34,9 +34,11 @@ async function main() {
     $(document).ready(function() {
         // 所有閱讀按鈕設定事件
         $('ul').on('click', '.read-btn', function() {
-            const bookTitle = $(this).siblings('p').text();
+            // const bookTitle = $(this).siblings('p').text();
+            const bookTitle = $(this).closest('.text-box').find('.bookName').text();
+            console.log(bookTitle);
             localStorage.setItem('storedText', bookTitle);
-            window.location.href = "./introduction.html"
+            window.location.href = "./introduction.html";
         });
     
         // 所有刪除按鈕設定事件
@@ -51,7 +53,7 @@ async function main() {
                 // timer: 3000
               }).then( (result) => {
                     if (result.isConfirmed){
-                        const bookTitle = $(this).siblings('p').text();
+                        const bookTitle = $(this).closest('.text-box').find('.bookName').text();
                         const id = localStorage.getItem('ID');
                         
                         $(this).closest('li').remove();
