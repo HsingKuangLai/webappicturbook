@@ -19,6 +19,16 @@ $(document).ready(function() {
             currentPage++;
             slideBook();
         }
+        
+        if (currentPage == $('.page').length){
+            Swal.fire({
+                icon: 'warning', // Set the icon (success, error, warning, info, question)
+                title: 'It\'s the last page! \nThanks for reading~',
+                showConfirmButton: true
+                // timer: 3000
+              });
+        }
+
     });
 
     function slideBook() {

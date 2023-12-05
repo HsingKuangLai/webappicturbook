@@ -66,6 +66,9 @@ body {
     gap: 200px;
 }
 
+.page:last-child {
+    margin-right: 200px; 
+}
 
 
 /* .changepage_container{
