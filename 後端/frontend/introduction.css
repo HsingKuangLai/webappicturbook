@@ -84,28 +84,34 @@ input[type="text"]::before {
     margin: 0 auto;
     padding: 5px 20px;
     max-width: 1250px;
-    height: 750px;
+    height: auto;
     text-align: left;
     background-color: white;
     border-radius: 20px;
     margin-top: 100px;
     margin-bottom: 25px;
+    display: flex;
 }
 
 .image {
-    width: 400px;
+    /*width: 400px;
     height: 600px;
-    position: relative;
     left: 800px;
-    bottom: 600px;
+    bottom: 600px;*/
+    position: relative;
+    flex-grow: 1;
+    text-align: center;
+    margin-top: 22px;
+    margin-left: 50px;
 }
 
 .text{
     width: 700px;
-    height: 600px;
+    height: auto;
     word-wrap: break-word;
     font-family: "Microsoft JhengHei", sans-serif;
     transition: transform 0.75s ease-in-out;
+    float: left;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -121,7 +127,7 @@ p{
 }
 
 .inf{
-    margin: 0 auto;
+    margin: 0 5px;
     background-color: lightgray;
     border-radius: 5px;
     width: 150px;
@@ -131,6 +137,16 @@ p{
     text-align: center;
     position: relative;
     top: 20px;
+}
+
+button#addFavoriteButton {
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+button#StartReadingButton {
+  margin-bottom: 15px;
 }
 
 #StartReading{
