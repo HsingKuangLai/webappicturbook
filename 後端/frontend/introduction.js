@@ -45,9 +45,9 @@ async function setupEventListeners() {
     
     console.log(insideFav);
     if (insideFav){
-      addButton.innerHTML = '<img src="./image/tofavorite.png">';
+      addButton.innerHTML = '<button class="circle-btn2"><i class="fas fa-heart"></i></button>';
     } else {
-      addButton.innerHTML = '<img src="./image/addfavorite.png">';
+      addButton.innerHTML = '<button class="circle-btn3"><i class="far fa-heart"></i></button>';;
     }
 
     
@@ -72,7 +72,7 @@ async function setupEventListeners() {
               timer: 1500
           });
 
-          addButton.innerHTML = '<img src="./image/tofavorite.png">';
+          addButton.innerHTML = '<button class="circle-btn2"><i class="fas fa-heart"></i></button>';
       } else {
           
           Swal.fire({
@@ -90,7 +90,7 @@ async function setupEventListeners() {
               const removed = await deleteMembersFav(id, textValue);
               console.log(removed);
               // Change the image source after successful removal
-               addButton.innerHTML = '<img src="./image/addfavorite.png">';
+               addButton.innerHTML = '<button class="circle-btn3"><i class="far fa-heart"></i></button>';
             }})
           
       }
