@@ -48,7 +48,7 @@ body {
     width: 1400px;
     height: 750px;
     position: relative;
-    top: 30px;
+    top: 50px;
     overflow: hidden;   
     display: grid;
 
@@ -57,7 +57,7 @@ body {
 
 .story {
     
-    padding-left: 125px;
+    padding-left: 102.5px;
     /* 添加過渡效果 */
     /* transition: margin-left 0.5s;  */
     display: grid;
@@ -68,6 +68,11 @@ body {
 
 .page:last-child {
     margin-right: 200px; 
+}
+
+.page {
+    box-shadow: 0px 0px 15px 3px ;
+
 }
 
 
@@ -84,8 +89,8 @@ body {
 
 .changepage_container {
     position: absolute;
-    top: 75%;
-    transform: translateY(-50%);
+    top: 50%;
+    /* transform: translateY(-50%); */
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -94,10 +99,10 @@ body {
 
 
 .changepage { 
-    width: 60px;
-    height: auto;
-    margin-right: 80px;
-    margin-left: 130px;
+    width: 75px;
+    height: 75px;
+    margin-right: 0px;
+    margin-left: 0px;
     cursor: pointer;
 }
 
