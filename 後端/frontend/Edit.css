@@ -72,7 +72,7 @@ body {
   margin-bottom: 25px;
 }
 
-.loginBox{
+.editBox{
   max-width: 400px;
   background-color: white;
   text-align: center;
@@ -82,7 +82,7 @@ body {
 }
 
 
-/* Login標題格式 */
+/* EditInfo標題格式 */
 .head {
   text-align: center;
   font-size: 45px;
@@ -100,7 +100,7 @@ p{
   font-family: 'Microsoft JhengHei', sans-serif;
 }
 
-button{
+.BlueButton{
   border:10;
   background-color:#003C9D;
   color:#fff;
@@ -114,13 +114,12 @@ button{
   cursor:pointer;
   transition: 0.8s;
   font-family: 'Microsoft JhengHei', sans-serif;
-
 }
 
-button:hover{
-  color:#003C9D;
-  background-color:#fff;
-  border:2px #003C9D solid;
+.BlueButton:hover{
+color:#003C9D;
+background-color:#fff;
+border:2px #003C9D solid;
 }
 
 table {

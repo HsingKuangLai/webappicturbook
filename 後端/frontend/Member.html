@@ -3,11 +3,11 @@
 <head>
     
     <meta charset="UTF-8">
-    <title>Change</title>
+    <title>Member</title>
     
     <!-- 加入js -->
     <!-- <script src="./jquery-1.10.2.min.js"></script> -->
-    <script defer src='./Change.js'></script>
+    <!--<script defer src='./Signup.js'></script>-->
 
     <!-- Include SweetAlert2 CSS and JS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.2/dist/sweetalert2.min.css">
@@ -21,7 +21,7 @@
     ></script>
     
     <!-- 加入Css格式 -->
-    <link rel = "stylesheet" href = "Change.css">
+    <link rel = "stylesheet" href = "Member.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     
     <!--最佳化螢幕寬度-->
@@ -46,11 +46,11 @@
   </div>
 
 <div class="content">   
-  <!-- <p class = "head">Login</p> -->
 
-  <div class = "loginBox">
+  <div class = "memberBox">
     <!-- <hr class="hr-space-square">  -->
-    <p class = "head">Change</p>
+    <p class = "head">Member Center</p>
+    <p class = "greeting"> Hello! How are You?</p>
 
     <p> Name </p>
     <!--<input type="text" id="user_id" autofocus placeholder="">-->
@@ -73,14 +73,6 @@
       <td><input type="text" id="account" placeholder=""></td>
     </table>
 
-  
-    <p> Password </p>
-    <!--<input type="password" id="password" />-->
-    <table>
-      <td class="icon"><i class='fas fa-lock'></i></td>
-      <td> <input type="password" id="password" /></td>
-    </table>
-
     <p> Credit Card Number </p>
     <!--<input type="text" id="creditCard_num" placeholder="Please enter 16 digits number">-->
     <table>
@@ -88,16 +80,13 @@
       <td><input type="text" id="creditCard_num" placeholder="Please enter 16 digits number"></td>
     </table>
 
-    <p>
-      <input type = "checkbox" id = "myCheckbox">
-      <label class="checkbox-container" for="myCheckbox"> Subscription Confirmation </label>
-    </p>
-
     <br><br>
-    <button id="signupButton" >Change</button>
+    
+    <a><button id="unsubscribeButton" class= "BlueButton">Unsubscribe</button></a>
+    <a href="./Edit.html"><button id="editButton" class= "BlueButton">Edit Info</button></a>
   
   </div>
-  <a href="./Login.html" style = "text-align:center; font-size: 20px;"> back </a>
+  <!--<a href="./Login.html" style = "text-align:center; font-size: 20px;"> back </a>-->
   <br><br>
   
   </div>

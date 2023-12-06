@@ -60,7 +60,7 @@ body {
   /* transform: translateY(-50%);  */
 }
 
-.container{
+.content{
   background-color: white;
   margin: 0 auto;
   padding: 5px 20px;
@@ -72,22 +72,31 @@ body {
   margin-bottom: 25px;
 }
 
-.loginBox{
+.memberBox{
   max-width: 400px;
   background-color: white;
   text-align: center;
-  height: 500px; 
+  /* height: 500px;  */
   margin: 0 auto; 
   padding: 20px; 
 }
 
-/* Login標題格式 */
+
+/* Member標題格式 */
 .head {
   text-align: center;
   font-size: 45px;
   font-family: 'Gill Sans', serif;
   font-weight: bold;
   margin: 15px 0 20px 0;
+}
+
+.greeting {
+  text-align: center;
+  font-size: 20px;
+  font-family: 'Microsoft JhengHei', sans-serif;
+  font-weight: bold;
+  margin: 10px 0 0 0;
 }
 
 p{
@@ -98,6 +107,7 @@ p{
   font-size: 20px;
   font-family: 'Microsoft JhengHei', sans-serif;
 }
+
 
 .BlueButton{
   border:10;
@@ -116,9 +126,9 @@ p{
 }
 
 .BlueButton:hover{
-  color:#003C9D;
-  background-color:#fff;
-  border:2px #003C9D solid;
+color:#003C9D;
+background-color:#fff;
+border:2px #003C9D solid;
 }
 
 table {
@@ -146,10 +156,58 @@ input {
   height: 100%;
   font-size: 18px;
 }
+
+
+/* Hide the default checkbox */
+input[type="checkbox"] {
+  display: none;
   
-a {
-    text-decoration: none; /* 去除超連結的底線 */
-  }
+}
+
+/* Style the label to create a custom checkbox */
+label.checkbox-container {
+  display: inline-block;
+  position: relative;
+  padding-left: 30px; 
+  cursor: pointer;
+  font-size: 20px;
+  user-select: none;
+  align-items: left;
+}
+
+/* Create the custom checkbox design */
+label.checkbox-container::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #2196F3; /* Border color */
+  background-color: white;
+}
+
+/* Style the custom checkbox when checked */
+input[type="checkbox"]:checked + label.checkbox-container::before {
+  background-color: #2196F3; /* Background color when checked */
+  border: 2px solid #2196F3; /* Border color when checked */
+}
+
+/* Style the checkmark inside the custom checkbox */
+label.checkbox-container::after {
+  content: "\2713"; /* Unicode checkmark character */
+  font-size: 20px;
+  position: absolute;
+  left: 5px; /* Adjust the position of the checkmark */
+  top: 1px; /* Adjust the position of the checkmark */
+  color: white; /* Color of the checkmark */
+  display: none;
+}
+
+/* Show the checkmark when the checkbox is checked */
+input[type="checkbox"]:checked + label.checkbox-container::after {
+  display: block;
+}
 
 /*
 input[type="text"] {
@@ -187,7 +245,7 @@ input[type="text"] {
   background-color :  #fff;
   outline:none;
   font-size: 18px;
-  }
+}
 
 input[type="password"] {
     width: 100%;
@@ -203,7 +261,7 @@ input[type="password"] {
     background-color :  #fff;
     outline:none;
     font-size: 18px;
-    }
+}
 */
 
 
@@ -231,4 +289,8 @@ input[type="password"] {
 .circle-btn:hover {
   background-color: black;
   color: white
+}
+
+a {
+  text-decoration: none; /* 去除超連結的底線 */
 }
