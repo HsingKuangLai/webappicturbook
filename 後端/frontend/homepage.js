@@ -31,6 +31,24 @@ async function main() {
     }
     
     $(document).ready(function() {
+        
+        // Logout Button Click Event
+        $('#logout-btn').on('click', function() {
+          Swal.fire({
+              title: 'Logout',
+              text: 'Are you sure you want to logout?',
+              icon: 'question',
+              showCancelButton: true,
+              confirmButtonText: 'Yes, logout',
+              cancelButtonText: 'Cancel',
+          }).then((result) => {
+              if (result.isConfirmed) {
+                  window.location.href = './homepage_before_login.html'; // Redirect to logout page
+              }
+          });
+         });
+         
+
         // 書本超連結
         $('.image-grid').on('click', '.introduction-page', function() {
             const bookTitle = $(this).find('span').text();

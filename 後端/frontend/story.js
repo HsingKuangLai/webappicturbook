@@ -3,6 +3,23 @@
 $(document).ready(function() {
     var currentPage = 1;
 
+
+    // Logout Button Click Event
+    $('#logout-btn').on('click', function() {
+        Swal.fire({
+            title: 'Logout',
+            text: 'Are you sure you want to logout?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, logout',
+            cancelButtonText: 'Cancel',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = './homepage_before_login.html'; // Redirect to logout page
+            }
+        });
+       });
+       
     // 上一頁按鈕點擊事件
     $('#prev-btn').on('click', function() {
         console.log('上一頁按鈕被點擊');
