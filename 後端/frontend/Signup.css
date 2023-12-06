@@ -100,7 +100,7 @@ p{
   font-family: 'Microsoft JhengHei', sans-serif;
 }
 
-button{
+.BlueButton{
   border:10;
   background-color:#003C9D;
   color:#fff;
@@ -117,7 +117,7 @@ button{
 
 }
 
-button:hover{
+.BlueButton:hover{
   color:#003C9D;
   background-color:#fff;
   border:2px #003C9D solid;

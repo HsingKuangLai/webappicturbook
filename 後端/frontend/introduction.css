@@ -149,7 +149,7 @@ button#StartReadingButton {
   margin-bottom: 15px;
 }
 
-#StartReading{
+button#StartReading{
     margin: 0 auto;
     border: 1px solid; 
     color: #edd664; 
@@ -162,7 +162,7 @@ button#StartReadingButton {
     line-height:40px;
 }
 
-button{
+button#StartReadingButton{
     display: flex; 
     justify-content: center;
     margin: 0 auto;
@@ -178,9 +178,9 @@ button{
     cursor:pointer;
     transition: 0.8s;
     font-family: "Heiti TC", serif;
-}
+} 
 
-button:hover{
+#StartReadingButton:hover{
   color:#003C9D;
   background-color:#fff;
   border:2px #003C9D solid;
@@ -211,59 +211,59 @@ a {
     margin-right: 10px
   }
   
-  .circle-btn i {
-    font-size: 25px; /* Adjust the font size as needed */
-  }
-  
-  
-  .circle-btn:hover {
-    background-color: black;
-    color: white
-  }
-  
+.circle-btn i {
+  font-size: 25px; /* Adjust the font size as needed */
+}
 
-  .circle-btn2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: white;
-    color: red;
-    text-align: center;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-  }
 
-  .circle-btn2 i {
-    font-size: 25px; /* Adjust the font size as needed */
-  }
+.circle-btn:hover {
+  background-color: black;
+  color: white
+}
+
+
+.circle-btn2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
+  color: red;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.circle-btn2 i {
+  font-size: 25px; /* Adjust the font size as needed */
+}
 
   /* .circle-btn2:hover {
     background-color: red;
     color: white
   } */
 
-  .circle-btn3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: white;
-    color: black;
-    text-align: center;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-  }
+.circle-btn3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
 
-  .circle-btn3 i {
-    font-size: 25px; 
-  }
+.circle-btn3 i {
+  font-size: 25px; 
+}
 
   /* .circle-btn3:hover {
     background-color: black;
