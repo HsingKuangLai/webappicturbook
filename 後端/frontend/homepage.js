@@ -14,6 +14,10 @@ async function main() {
       const userId = localStorage.getItem("ID");
       const user = document.querySelector("#memberID");
       user.innerText = `${user.innerText} ${userId}`;
+      // jwt 測試
+      const jwt = localStorage.getItem("jwt");
+      test = await getjwt({"account":jwt});
+      console.log(test);
 
     
       Books = await getAllBooks();
@@ -258,6 +262,13 @@ async function getCategoryBooks(category) {
 async function getSearchBooks(name) {
   // console.log({params:category})
   const response = await instance.get("/books/search", {params:name});
+  return response.data;
+}
+
+// jwt 測試
+async function getjwt(name) {
+  // console.log({params:category})
+  const response = await instance.get("/members/jwt", {params:name});
   return response.data;
 }
 

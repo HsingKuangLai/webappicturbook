@@ -4,6 +4,7 @@ import {
   getFavorite,
   getTargetMembers,
   getMemberdata,
+  getjwt,
   updateMember,
   updateMemberData,
   deleteMember,
@@ -25,6 +26,8 @@ router.get("/target", getTargetMembers);
 router.get("/favorite", getFavorite);
 // GET /api/members
 router.get("/memberdata", getMemberdata);
+// GET /api/members
+router.get("/jwt", getjwt);
 // POST /api/members
 router.post("/", createMember);
 // PUT /api/members/:id

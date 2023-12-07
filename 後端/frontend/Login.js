@@ -68,6 +68,7 @@ const handleLogin = async (event) => {
       
     try {
       const memberData = await getMembers({account, password});
+      console.log(memberData);  
       if (!memberData || memberData.length === 0){
         // 未找到會員警告
         Swal.fire({
@@ -80,6 +81,20 @@ const handleLogin = async (event) => {
         passwordInput.value = "";
         return;
       }
+      // 確定正確就清空
+      else{
+        Swal.fire({
+          icon: 'success', // Set the icon (success, error, warning, info, question)
+          title: 'Log in Successfully！',
+          showConfirmButton: false,
+          timer: 1500
+        }).then( () => {
+            storeAndNavigate(event, memberData);
+            accountInput.value = "";
+            passwordInput.value = "";
+        });
+
+      }
     
 
     } catch (error) {
@@ -91,24 +106,12 @@ const handleLogin = async (event) => {
       });
       return;
     }
-
-    // 確定正確就清空
     
-    Swal.fire({
-      icon: 'success', // Set the icon (success, error, warning, info, question)
-      title: 'Log in Successfully！',
-      showConfirmButton: false,
-      timer: 1500
-    }).then( () => {
-        storeAndNavigate(event);
-        accountInput.value = "";
-        passwordInput.value = "";
-    });
 
 };
 
 
-function storeAndNavigate(event) {
+function storeAndNavigate(event, member) {
   // 使用try規避掉enter的event.preventDefault();會錯誤的情況
   try{
     event.preventDefault();
@@ -116,8 +119,10 @@ function storeAndNavigate(event) {
     const accountInput = document.querySelector("#id");
     const id = accountInput.value;
 
+
     console.log('ID:', id);
     localStorage.setItem('ID', id);
+    localStorage.setItem('jwt', member);
     window.location.href = 'homepage.html';
   };
 }

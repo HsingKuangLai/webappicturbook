@@ -1,5 +1,24 @@
 import MemberModel from "../models/memberModel.js";
+// const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
+// Middleware to verify JWT token
+export const verifyToken = (req, res, next) => {
+  const token = req.headers['authorization'];
+
+  if (!token) {
+    return res.status(401).send('Unauthorized');
+  }
+
+  jwt.verify(token, 'your_secret_key', (err, decoded) => {
+    if (err) {
+      return res.status(401).send('Invalid token');
+    }
+
+    req.userId = decoded.userId;
+    next();
+  });
+};
 
 // get all members
 export const getTargetMembers = async (req, res) =>{
@@ -29,9 +48,14 @@ export const getMembers = async (req, res) => {
     const members = await MemberModel.findOne({'account':account, 'password':password});
     if (!members){
       console.log("Log in fail QQ");
+      return res.status(200).json(members);;
     }
     
-    return res.status(200).json(members);
+    //  Generate JWT token
+     const token = jwt.sign({ 'account':account }, 'your_secret_key');
+    //  console.log(token);
+    
+    return res.status(200).json(token);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -122,6 +146,25 @@ export const getFavorite = async (req, res) => {
   }
 
 };
+
+// jwt test get
+export const getjwt = async (req, res) => {
+  // jwt 解碼 test
+  const {account} = req.query;
+  console.log(account);
+  // const token = req.headers['authorization'];
+  // console.log(token);
+  // console.log(token);
+  jwt.verify(account, 'your_secret_key', (err, decoded) => {
+    if (err) {
+      return res.status(401).send('Invalid token');
+    }
+    console.log("decode：", decoded.account);
+    // req.userId = decoded.a;
+    return res.status(200).json(decoded.account)
+  });
+
+}
 
 // Get a member data
 export const getMemberdata = async (req, res) => {

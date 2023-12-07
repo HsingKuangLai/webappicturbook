@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
+// const jwt = require('jsonwebtoken');
 
 // Routes
 import memberRouter from "./routes/member.js";
