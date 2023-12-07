@@ -20,8 +20,10 @@ async function main() {
 
   try {
     // 抓member data
-    const currentID= localStorage.getItem('ID');
-    const user_id = await getMemberdata({"account":currentID});
+    const currentID = localStorage.getItem('ID');
+    console.log(currentID);
+    const jwt = localStorage.getItem('jwt');
+    const user_id = await getMemberdata({"account":jwt});
     rendermember(user_id);
   
   } catch (error) {
@@ -35,7 +37,8 @@ async function main() {
     });
   }
   const user_id = localStorage.getItem('ID');
-  unsubscribeEventListeners(user_id);
+  const jwt = localStorage.getItem('jwt');
+  unsubscribeEventListeners(jwt);
   changeEventListeners();
   
 
@@ -82,6 +85,8 @@ function changeEventListeners() {
       </table>
       <br><br>
       <button id="saveButton" class="BlueButton">Save Edits</button>
+      <br><br>
+      <a href="./Member.html" style = "text-align:center; font-size: 20px;"> back </a>
     `;
     
     try {
@@ -120,6 +125,7 @@ function setupEventListeners() {
   const passwordInput = document.querySelector("#password");
   const creditcardInput = document.querySelector('#creditCard_num')
   const user_id = localStorage.getItem('ID');
+  const jwt = localStorage.getItem('jwt');
  
   if (saveButton) {
     saveButton.addEventListener("click",async() => {
@@ -182,8 +188,8 @@ function setupEventListeners() {
         creditcardInput.value = "";
         return;
       }
-      console.log(user_id, name, email, password, creditCard);
-      await updateMemberdata(user_id, name, email, password, creditCard);
+      console.log(jwt, name, email, password, creditCard);
+      await updateMemberdata(jwt, name, email, password, creditCard);
 
 
       nameInput.value = "";
@@ -214,10 +220,10 @@ function setupEventListeners() {
   }
 
   // 前端呼叫後端function
-  async function updateMemberdata(user_id, newName, newEmail, newPassword, newCreditCardNumber) {
+  async function updateMemberdata(jwt, newName, newEmail, newPassword, newCreditCardNumber) {
     try {
       const response = await instance.put("/members/memberdata", {
-        account: user_id,
+        account: jwt,
         name: newName,
         email: newEmail,
         password: newPassword,
@@ -323,9 +329,9 @@ async function getMemberdata(member) {
   return response.data;
 }
 
-async function deleteMemberdata(userId) {
+async function deleteMemberdata(account) {
   const response = await instance.delete("/members/memberdata", {
-      data: {userId}});
+      data: {account}});
   return response.data;
 }
 

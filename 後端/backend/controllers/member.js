@@ -1,37 +1,38 @@
 import MemberModel from "../models/memberModel.js";
-// const jwt = require('jsonwebtoken');
-import jwt from 'jsonwebtoken';
+import jwt, { decode } from 'jsonwebtoken';
 
-// Middleware to verify JWT token
-export const verifyToken = (req, res, next) => {
-  const token = req.headers['authorization'];
+export const getSignupMembers = async (req, res) => {
+  try {
+    const { account } = req.query;
+    // 不需要驗證，因為尚未登入僅是註冊階段
+    
+    const members = await MemberModel.findOne({ 'account': account });
 
-  if (!token) {
-    return res.status(401).send('Unauthorized');
+    // Return members
+    return res.status(200).json(members);
+  } catch (error) {
+      return res.status(500).json({ message: error.message });
   }
-
-  jwt.verify(token, 'your_secret_key', (err, decoded) => {
-    if (err) {
-      return res.status(401).send('Invalid token');
-    }
-
-    req.userId = decoded.userId;
-    next();
-  });
 };
 
-// get all members
-export const getTargetMembers = async (req, res) =>{
-  const {account} = req.query;
-  
-  try{
-    const members = await MemberModel.findOne({'account':account});
-    // Return members
-    return res.status(200).json(members)
-  } catch(error){
-    return res.status(500).json({message: error.message})
-  }
+export const getTargetMembers = async (req, res) => {
+  try {
+    const { account } = req.query;
+    // 不需要驗證，因為尚未登入僅是註冊階段
+    console.log(account);
+    const secretKey = process.env.JWT_SECRET_KEY || 'fallback_secret_key';
 
+    // Verify the JWT token
+    const decoded = jwt.verify(account, secretKey);
+
+    // Query the database for members
+    const members = await MemberModel.findOne({ 'account': decoded.account });
+
+    // Return members
+    return res.status(200).json(members);
+  } catch (error) {
+      return res.status(500).json({ message: error.message });
+  }
 };
 
 
@@ -52,8 +53,8 @@ export const getMembers = async (req, res) => {
     }
     
     //  Generate JWT token
-     const token = jwt.sign({ 'account':account }, 'your_secret_key');
-    //  console.log(token);
+    const secretKey = process.env.JWT_SECRET_KEY || 'fallback_secret_key';
+    const token = jwt.sign({ 'account':account }, secretKey, { expiresIn: '1h' });
     
     return res.status(200).json(token);
   } catch (error) {
@@ -89,10 +90,17 @@ export const createMember = async (req, res) => {
 
 // Update a member fav book
 export const updateMember = async (req, res) => {
-  const { userId, bookName } = req.body;
-  // console.log(userId, bookName)
   try {
-    const members = await MemberModel.findOne({'account':userId});
+    const { account, bookName } = req.body;
+    const secretKey = process.env.JWT_SECRET_KEY || 'fallback_secret_key';
+
+    // Verify the JWT token
+    const decoded = jwt.verify(account, secretKey);
+
+    // console.log("updateMember:", decoded.account);
+
+    
+    const members = await MemberModel.findOne({'account':decoded.account});
     if (!members){
       console.log("fail QQ");
     }
@@ -103,81 +111,95 @@ export const updateMember = async (req, res) => {
 
     return res.status(200).json(members);
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    if (error.name === 'JsonWebTokenError') {
+      return res.status(401).send('Invalid token');
+    } else{
+      return res.status(500).json({ message: error.message });
+    }
   }
 };
 
-// Delete a member favorite book
-export const deleteMember = async (req, res) => {
-
-  const { userId, bookName } = req.body;
+// Update a member favorite book
+export const updateMemberFavBooks = async (req, res) => {
   try {
+    const { account, bookName } = req.body;
+    const secretKey = process.env.JWT_SECRET_KEY || 'fallback_secret_key';
+
+    // Verify the JWT token
+    const decoded = jwt.verify(account, secretKey);
+  
     const result = await MemberModel.updateOne(
-      { 'account': userId },
+      { 'account': decoded.account },
       { $pull: { 'favorite': { $in: [bookName] } } }
     );
-
     
-    if (!result) {
+
+    if (!result || result.nModified === 0) {
       return res.status(404).json({ message: "Member not found!" });
     }
 
-    // await MemberModel.findByIdAndDelete(id);
     return res.status(200).json({ message: "Member deleted successfully!" });
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    if (error.name === 'JsonWebTokenError') {
+      return res.status(401).send('Invalid token');
+    } else{
+      return res.status(500).json({ message: error.message });
+    }
   }
 };
 
 // Get a member favorite book
 export const getFavorite = async (req, res) => {
+  try {
+    const { account, bookName } = req.query;
+    const secretKey = process.env.JWT_SECRET_KEY || 'fallback_secret_key';
 
-  // get 要用 req.query
-  const {account, bookName} = req.query;
-  try{
-    const members = await MemberModel.findOne({"account":account});
+    // Verify the JWT token
+    const decoded = jwt.verify(account, secretKey);
+
+    // console.log("getFavorite:", decoded.account);
+
+    const members = await MemberModel.findOne({"account":decoded.account});
     
     // 檢查是否在favorite，並回傳true or false
     const isBookInFavorites = members.favorite.includes(bookName);
-
+  
     return res.status(200).json(isBookInFavorites)
-  } catch(error){
-    return res.status(500).json({message: error.message})
+  
+  } catch (error) {
+    if (error.name === 'JsonWebTokenError') {
+      return res.status(401).send('Invalid token');
+    } else{
+      return res.status(500).json({ message: error.message });
+    }
   }
 
 };
 
-// jwt test get
-export const getjwt = async (req, res) => {
-  // jwt 解碼 test
-  const {account} = req.query;
-  console.log(account);
-  // const token = req.headers['authorization'];
-  // console.log(token);
-  // console.log(token);
-  jwt.verify(account, 'your_secret_key', (err, decoded) => {
-    if (err) {
-      return res.status(401).send('Invalid token');
-    }
-    console.log("decode：", decoded.account);
-    // req.userId = decoded.a;
-    return res.status(200).json(decoded.account)
-  });
 
-}
 
 // Get a member data
 export const getMemberdata = async (req, res) => {
-  console.log('Request received:', req.url);
-  console.log('Query parameters:', req.query);
-  // get 要用 req.query
-  const {account} = req.query;
-  try{
-    const members = await MemberModel.findOne({"account":account});
-    console.log(members);
+  // console.log('Request received:', req.url);
+  // console.log('Query parameters:', req.query);
+  try {
+    const { account } = req.query;
+    const secretKey = process.env.JWT_SECRET_KEY || 'fallback_secret_key';
+
+    // Verify the JWT token
+    const decoded = jwt.verify(account, secretKey);
+
+    // console.log("getMemberdata:", decoded.account);
+
+    const members = await MemberModel.findOne({"account":decoded.account});
+    // console.log(members);
     return res.status(200).json(members)
-  } catch(error){
-    return res.status(500).json({message: error.message})
+  } catch (error) {
+    if (error.name === 'JsonWebTokenError') {
+      return res.status(401).send('Invalid token');
+    } else{
+      return res.status(500).json({ message: error.message });
+    }
   }
 
 };
@@ -185,11 +207,22 @@ export const getMemberdata = async (req, res) => {
 
 // Delete a member 
 export const deleteMemberdata = async (req, res) => {
-  const { userId } = req.body;
-  console.log('Request Body:', req.body);
-  console.log('Deleting member with userId:', userId);
   try {
-    const result = await MemberModel.deleteOne({ 'account': userId });
+    const { account } = req.body;
+    const secretKey = process.env.JWT_SECRET_KEY || 'fallback_secret_key';
+
+    // Verify the JWT token
+    const decoded = jwt.verify(account, secretKey);
+
+    // console.log("deleteMemberdata:", decoded.account);
+
+    // const members = await MemberModel.findOne({"account":decoded.account});
+  // console.log(members);
+  // const { userId } = req.body;
+  // console.log('Request Body:', req.body);
+  // console.log('Deleting member with userId:', userId);
+
+    const result = await MemberModel.deleteOne({ 'account': decoded.account });
 
     if (!result.deletedCount) {
       return res.status(404).json({ message: "Member not found!" });
@@ -197,19 +230,29 @@ export const deleteMemberdata = async (req, res) => {
 
     return res.status(200).json({ message: "Member deleted successfully!" });
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    if (error.name === 'JsonWebTokenError') {
+      return res.status(401).send('Invalid token');
+    } else{
+      return res.status(500).json({ message: error.message });
+    }
   }
 };
 
-// change mamber data
+// change member data
 export const updateMemberData = async (req, res) => {
-  console.log(req.body);
+  try {  
+  // console.log(req.body);
   const { account, name, email, password,  creditCard } = req.body;
-  console.log(account, name, email, password,  creditCard );
-  try {
-    // 更新 MemberModel，使用 $set 操作符设置新的值
-    const result = await MemberModel.updateOne(
-      { 'account': account },
+  // console.log(account, name, email, password,  creditCard );
+  const secretKey = process.env.JWT_SECRET_KEY || 'fallback_secret_key';
+
+  // Verify the JWT token
+  const decoded = jwt.verify(account, secretKey);
+
+
+  // 更新 MemberModel，使用 $set 操作符设置新的值
+  const result = await MemberModel.updateOne(
+      { 'account': decoded.account },
       {
         $set: {
           'name': name,
@@ -218,17 +261,20 @@ export const updateMemberData = async (req, res) => {
           'creditCard': creditCard
         }
       }
-    );
+  );
 
-    // 检查是否找到了成员并成功更新
-    if (!result || result.nModified === 0) {
-      return res.status(404).json({ message: "成员未找到或未进行任何更改！" });
-    }
+  // 检查是否找到了成员并成功更新
+  if (!result || result.nModified === 0) {
+    return res.status(404).json({ message: "成员未找到或未进行任何更改！" });
+  }
 
-    // 返回成功消息
-    return res.status(200).json({ message: "成员数据已成功更新！" });
+  // 返回成功消息
+  return res.status(200).json({ message: "成员数据已成功更新！" });
   } catch (error) {
-    // 处理更新过程中发生的任何错误
-    return res.status(500).json({ message: error.message });
+    if (error.name === 'JsonWebTokenError') {
+      return res.status(401).send('Invalid token');
+    } else{
+      return res.status(500).json({ message: error.message });
+    }
   }
 };

@@ -63,7 +63,7 @@ async function setupEventListeners() {
 
     // 判斷addButton愛心顏色
     addButton = document.getElementById('addFavoriteButton');
-    const account = id;
+    const account = jwt;
     const bookName = textValue;
     const insideFav = await checkIfBookInFavorites({account, bookName});
     
@@ -81,13 +81,13 @@ async function setupEventListeners() {
     addButton = document.getElementById('addFavoriteButton');
     addButton.addEventListener("click", async () => {
       // Check if the book is already in favorites
-      const account = id;
+      const account = jwt;
       const bookName = textValue;
       const isBookInFavorites = await checkIfBookInFavorites({account, bookName});
       // console.log(isBookInFavorites);
       if (!isBookInFavorites) {
           // If not, add it to favorites
-          const back = await addFavorite(id, textValue);
+          const back = await addFavorite(jwt, textValue);
           // console.log(back);
           Swal.fire({
               icon: 'success',
@@ -111,7 +111,7 @@ async function setupEventListeners() {
           }).then(async (result) => {
             if (result.isConfirmed) {
               // If the book is already in favorites, remove it from favorites
-              const removed = await deleteMembersFav(id, textValue);
+              const removed = await deleteMembersFav(jwt, textValue);
               console.log(removed);
               // Change the image source after successful removal
                addButton.innerHTML = '<button class="circle-btn3"><i class="far fa-heart"></i></button>';
@@ -178,11 +178,11 @@ async function getBooks(bookName) {
 }
 
 // addButton 顏色判斷
-async function buttonColor(favBook){
-    const response = await instance.get("/members/favorite", {params : favBook});
-    return response.data;
+// async function buttonColor(favBook){
+//     const response = await instance.get("/members/favorite", {params : favBook});
+//     return response.data;
 
-}
+// }
 
 async function checkIfBookInFavorites(favBook) {
   try {
@@ -199,13 +199,13 @@ async function checkIfBookInFavorites(favBook) {
 
 async function addFavorite(member, bookName){
     // req.userId = member;
-    const response = await instance.put("/members", {"bookName":bookName, "userId":member});
+    const response = await instance.put("/members", {"bookName":bookName, "account":member});
     return response.data;
 }
 
-async function deleteMembersFav(userId, bookName) {
-  const response = await instance.delete("/members/target", {
-      data: {userId, bookName}});
+async function deleteMembersFav(account, bookName) {
+  const response = await instance.put("/members/target", {
+      data: {account, bookName}});
   return response.data;
 }
 
@@ -220,6 +220,9 @@ console.log('Stored Text:', textValue);
 
 const id = localStorage.getItem('ID');
 console.log('ID:', id);
+
+const jwt = localStorage.getItem('jwt');
+console.log('jwt:', jwt);
 
 main();
   

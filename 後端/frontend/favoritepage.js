@@ -19,7 +19,11 @@ async function main() {
       const id = localStorage.getItem('ID');
       console.log('ID:', id);
 
-      const members = await getMembers({"account":id});
+      // 抓用戶
+      const jwt = localStorage.getItem('jwt');
+      console.log('jwt:', jwt);
+
+      const members = await getMembers({"account":jwt});
       members.favorite.forEach((book) => renderFavorite(book))
     
     } catch (error) {
@@ -73,9 +77,10 @@ async function main() {
                     if (result.isConfirmed){
                         const bookTitle = $(this).closest('.text-box').find('.bookName').text();
                         const id = localStorage.getItem('ID');
+                        const jwt = localStorage.getItem('jwt');
                         
                         $(this).closest('li').remove();
-                        deleteMembersFav(id, bookTitle);
+                        deleteMembersFav(jwt, bookTitle);
                     };                
                 });
         });
@@ -107,9 +112,9 @@ async function renderFavorite(books) {
 
 
 // 前端呼叫後端function
-async function deleteMembersFav(userId, bookName) {
-    const response = await instance.delete("/members/target", {
-        data: {userId, bookName}});
+async function deleteMembersFav(account, bookName) {
+    const response = await instance.put("/members/target", {
+        data: {account, bookName}});
     return response.data;
 }
 

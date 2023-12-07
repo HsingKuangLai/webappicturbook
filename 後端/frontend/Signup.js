@@ -164,8 +164,8 @@ async function createMember(members) {
   return response.data;
 }
 
-async function getMembers(id) {
-  const response = await instance.get("/members/target", {params:id});
+async function getMembers(account) {
+  const response = await instance.get("/members/signup", {params:account});
   return response.data;
 }
 

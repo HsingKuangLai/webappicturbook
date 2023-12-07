@@ -2,12 +2,12 @@ import {
   createMember,
   getMembers,
   getFavorite,
+  getSignupMembers,
   getTargetMembers,
   getMemberdata,
-  getjwt,
   updateMember,
   updateMemberData,
-  deleteMember,
+  updateMemberFavBooks,
   deleteMemberdata
 } from "../controllers/member.js";
 import express from "express";
@@ -20,22 +20,22 @@ const router = express.Router();
 
 // GET /api/members
 router.get("/", getMembers);
-// GET /api/members
+// GET /api/members/signup
+router.get("/signup", getSignupMembers);
+// GET /api/members/target
 router.get("/target", getTargetMembers);
-// GET /api/members
+// GET /api/members/favorite
 router.get("/favorite", getFavorite);
-// GET /api/members
+// GET /api/members/memberdata
 router.get("/memberdata", getMemberdata);
-// GET /api/members
-router.get("/jwt", getjwt);
 // POST /api/members
 router.post("/", createMember);
-// PUT /api/members/:id
+// PUT /api/members
 router.put("/", updateMember);
-// PUT /api/members/:id
+// PUT /api/members/memberdata
 router.put("/memberdata", updateMemberData);
-// DELETE /api/members/:id
-router.delete("/target", deleteMember);
+// PUT /api/members/target
+router.put("/target", updateMemberFavBooks);
 // DELETE /api/members/:id
 router.delete("/memberdata", deleteMemberdata);
 
