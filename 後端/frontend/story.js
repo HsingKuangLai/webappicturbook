@@ -15,6 +15,7 @@ $(document).ready(function() {
             cancelButtonText: 'Cancel',
         }).then((result) => {
             if (result.isConfirmed) {
+                localStorage.clear();
                 window.location.href = './homepage_before_login.html'; // Redirect to logout page
             }
         });

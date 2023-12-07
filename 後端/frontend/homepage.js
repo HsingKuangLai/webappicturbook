@@ -47,7 +47,8 @@ async function main() {
               cancelButtonText: 'Cancel',
           }).then((result) => {
               if (result.isConfirmed) {
-                  window.location.href = './homepage_before_login.html'; // Redirect to logout page
+                localStorage.clear();
+                window.location.href = './homepage_before_login.html'; // Redirect to logout page
               }
           });
          });
