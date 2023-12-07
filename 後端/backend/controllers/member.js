@@ -122,3 +122,70 @@ export const getFavorite = async (req, res) => {
   }
 
 };
+
+// Get a member data
+export const getMemberdata = async (req, res) => {
+  console.log('Request received:', req.url);
+  console.log('Query parameters:', req.query);
+  // get 要用 req.query
+  const {account} = req.query;
+  try{
+    const members = await MemberModel.findOne({"account":account});
+    console.log(members);
+    return res.status(200).json(members)
+  } catch(error){
+    return res.status(500).json({message: error.message})
+  }
+
+};
+
+
+// Delete a member 
+export const deleteMemberdata = async (req, res) => {
+  const { userId } = req.body;
+  console.log('Request Body:', req.body);
+  console.log('Deleting member with userId:', userId);
+  try {
+    const result = await MemberModel.deleteOne({ 'account': userId });
+
+    if (!result.deletedCount) {
+      return res.status(404).json({ message: "Member not found!" });
+    }
+
+    return res.status(200).json({ message: "Member deleted successfully!" });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+// change mamber data
+export const updateMemberData = async (req, res) => {
+  console.log(req.body);
+  const { account, name, email, password,  creditCard } = req.body;
+  console.log(account, name, email, password,  creditCard );
+  try {
+    // 更新 MemberModel，使用 $set 操作符设置新的值
+    const result = await MemberModel.updateOne(
+      { 'account': account },
+      {
+        $set: {
+          'name': name,
+          'email': email,
+          'password': password,
+          'creditCard': creditCard
+        }
+      }
+    );
+
+    // 检查是否找到了成员并成功更新
+    if (!result || result.nModified === 0) {
+      return res.status(404).json({ message: "成员未找到或未进行任何更改！" });
+    }
+
+    // 返回成功消息
+    return res.status(200).json({ message: "成员数据已成功更新！" });
+  } catch (error) {
+    // 处理更新过程中发生的任何错误
+    return res.status(500).json({ message: error.message });
+  }
+};
