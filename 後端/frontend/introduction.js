@@ -204,8 +204,7 @@ async function addFavorite(member, bookName){
 }
 
 async function deleteMembersFav(account, bookName) {
-  const response = await instance.put("/members/target", {
-      data: {account, bookName}});
+  const response = await instance.put("/members/target", {account, bookName});
   return response.data;
 }
 

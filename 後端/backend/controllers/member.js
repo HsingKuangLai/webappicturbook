@@ -18,7 +18,7 @@ export const getSignupMembers = async (req, res) => {
 export const getTargetMembers = async (req, res) => {
   try {
     const { account } = req.query;
-    // 不需要驗證，因為尚未登入僅是註冊階段
+    
     console.log(account);
     const secretKey = process.env.JWT_SECRET_KEY || 'fallback_secret_key';
 
@@ -125,14 +125,16 @@ export const updateMemberFavBooks = async (req, res) => {
     const { account, bookName } = req.body;
     const secretKey = process.env.JWT_SECRET_KEY || 'fallback_secret_key';
 
-    // Verify the JWT token
+    // Verify the JWT token\
+    // console.log( account );
     const decoded = jwt.verify(account, secretKey);
+    console.log("updateMember", decoded.account);
   
     const result = await MemberModel.updateOne(
       { 'account': decoded.account },
       { $pull: { 'favorite': { $in: [bookName] } } }
     );
-    
+    console.log(result);
 
     if (!result || result.nModified === 0) {
       return res.status(404).json({ message: "Member not found!" });

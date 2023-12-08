@@ -110,11 +110,11 @@ async function renderFavorite(books) {
     bookList.appendChild(item);
 }
 
-
 // 前端呼叫後端function
 async function deleteMembersFav(account, bookName) {
-    const response = await instance.put("/members/target", {
-        data: {account, bookName}});
+    
+    console.log({data: {account,bookName}});
+    const response = await instance.put("/members/target", {account, bookName});
     return response.data;
 }
 
