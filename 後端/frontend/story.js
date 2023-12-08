@@ -62,7 +62,7 @@ $(document).ready(function() {
             slideBook();
         }
         
-        if (currentPage == $('.page').length){
+        else if (currentPage == $('.page').length){
             Swal.fire({
                 icon: 'warning', // Set the icon (success, error, warning, info, question)
                 title: 'It\'s the last page! \nThanks for reading~',
