@@ -54,6 +54,19 @@ async function main() {
             });
            });
 
+        $('#home-btn').on('click', function() {
+        window.location.href = './homepage.html';
+        localStorage.removeItem('homepageCategory');
+
+        });
+
+        // user-btn 超連結
+        $('#user-btn').on('click', function() {
+            window.location.href = './Member.html';
+            localStorage.removeItem('homepageCategory');
+    
+        });
+
         // 所有閱讀按鈕設定事件
         $('ul').on('click', '.read-btn', function() {
             // const bookTitle = $(this).siblings('p').text();

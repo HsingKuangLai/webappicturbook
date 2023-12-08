@@ -59,7 +59,15 @@ async function main() {
         window.location.href = './homepage.html';
 
       });
-      
+
+
+      // user-btn 超連結
+      $('#user-btn').on('click', function() {
+        window.location.href = './Member.html';
+        localStorage.removeItem('homepageCategory');
+
+      });
+
 
       });
   

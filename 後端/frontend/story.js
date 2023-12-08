@@ -20,6 +20,30 @@ $(document).ready(function() {
             }
         });
        });
+
+    
+    // home-btn 超連結
+    $('#home-btn').on('click', function() {
+        window.location.href = './homepage.html';
+        localStorage.removeItem('homepageCategory');
+
+    });
+
+    // favorite-btn 超連結
+    $('#favorite-btn').on('click', function() {
+        window.location.href = './favoritepage.html';
+        localStorage.removeItem('homepageCategory');
+
+    });   
+
+
+    // introduction-btn 超連結
+    $('#introduction-btn').on('click', function() {
+        window.location.href = './introduction.html';
+        localStorage.removeItem('homepageCategory');
+    
+    });  
+
        
     // 上一頁按鈕點擊事件
     $('#prev-btn').on('click', function() {

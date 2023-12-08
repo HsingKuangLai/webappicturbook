@@ -42,6 +42,42 @@ async function main() {
   changeEventListeners();
   
 
+
+  $(document).ready(function() {
+        
+    // Logout Button Click Event
+    $('#logout-btn').on('click', function() {
+      Swal.fire({
+          title: 'Logout',
+          text: 'Are you sure you want to logout?',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, logout',
+          cancelButtonText: 'Cancel',
+      }).then((result) => {
+          if (result.isConfirmed) {
+            localStorage.clear();
+            window.location.href = './homepage_before_login.html'; // Redirect to logout page
+          }
+      });
+     });
+    
+    // home-btn 超連結
+    $('#home-btn').on('click', function() {
+      window.location.href = './homepage.html';
+      localStorage.removeItem('homepageCategory');
+
+    });
+
+    // favorite-btn 超連結
+    $('#favorite-btn').on('click', function() {
+      window.location.href = './favoritepage.html';
+      localStorage.removeItem('homepageCategory');
+
+    });
+
+  });
+
 }
 
 
