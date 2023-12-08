@@ -6,8 +6,19 @@ const instance = axios.create({
   });
   
 async function main() {
-    setupEventListeners();
-  }
+  setupEventListeners();
+
+  $(document).ready(function() {
+    
+    // home_before-btn 超連結
+    $('#home_before-btn').on('click', function() {
+      console.log("0")
+      window.location.href = './homepage_before_login.html';
+    });
+  });
+  
+  
+}
   
 // 設定EventListeners，裡面包含Sign up按鈕function
 function setupEventListeners() {
