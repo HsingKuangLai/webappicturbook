@@ -12,16 +12,64 @@ async function main() {
     try {
       // 抓用戶名並顯示
       const userId = localStorage.getItem("ID");
+      const jwt = localStorage.getItem("jwt");
       const user = document.querySelector("#memberID");
       user.innerText = `${user.innerText} ${userId}`;
+
       // jwt 測試
-      const jwt = localStorage.getItem("jwt");
-      console.log(jwt);
+      // 類別按鈕
+      $('.themeicon').on('click', async function() {
+          
+        const bookCategory = $(this).attr('id');
+        if(!bookCategory){
+          bookCategory = localStorage.getItem('homepageCategory');
+
+        } 
+        console.log(bookCategory);
+        const headText = document.querySelector("#headText");
+        headText.innerText = bookCategory;
+        localStorage.setItem("homepageCategory", bookCategory);
+
+        var allImages = document.getElementsByClassName('themeicon');
+        for (var i = 0; i < allImages.length; i++) {
+            allImages[i].classList.add('dimmed');
+        }
+
+        // Not Dim the clicked image
+        $(this).removeClass('dimmed');
+
+
+        Books = await getCategoryBooks({"category":bookCategory});
+        bookList.innerHTML = ""
+        Books.forEach((book) => renderAllBooks(book));
+        
+        // 顯示書本
+        $('.book-div').hide();
+        $('.book-div').slice(0, 5).css('transform', 'translateX(0)').fadeIn(500);
+        
+      });
+      
+      
+
+      if (localStorage.getItem("homepageCategory")){
+        // console.log(localStorage.getItem("homepageCategory"));
+        const storeCategory = localStorage.getItem("homepageCategory")
+        try{
+          $('#' + storeCategory + '.themeicon').trigger('click');
+        } catch(error){
+          console.log(error);
+        }
+
+        
+      } else{
+        Books = await getAllBooks();
+        Books.slice(0,10).forEach((book) => renderAllBooks(book));
+        // bookList.innerHTML = "";
+
+      }
 
     
-      Books = await getAllBooks();
-      Books.slice(0,10).forEach((book) => renderAllBooks(book));
-      // bookList.innerHTML = "";
+      
     
     } catch (error) {
       Swal.fire({
@@ -51,7 +99,28 @@ async function main() {
               }
           });
          });
-         
+        
+        // home-btn 超連結
+        $('#home-btn').on('click', function() {
+          window.location.href = './homepage.html';
+          localStorage.removeItem('homepageCategory');
+
+        });
+
+        // favorite-btn 超連結
+        $('#favorite-btn').on('click', function() {
+          window.location.href = './favoritepage.html';
+          localStorage.removeItem('homepageCategory');
+
+        });
+
+        // user-btn 超連結
+        $('#user-btn').on('click', function() {
+          window.location.href = './Member.html';
+          localStorage.removeItem('homepageCategory');
+
+        });
+
 
         // 書本超連結
         $('.image-grid').on('click', '.introduction-page', function() {
@@ -61,30 +130,37 @@ async function main() {
             window.location.href = "./introduction.html"
         });
 
-        // 類別按鈕
-        $('.themeicon').on('click', async function() {
-          const bookCategory = $(this).attr('id');
-          const headText = document.querySelector("#headText");
-          headText.innerText = bookCategory;
-
-          var allImages = document.getElementsByClassName('themeicon');
-          for (var i = 0; i < allImages.length; i++) {
-              allImages[i].classList.add('dimmed');
-          }
-
-          // Not Dim the clicked image
-          $(this).removeClass('dimmed');
-
-
-          Books = await getCategoryBooks({"category":bookCategory});
-          bookList.innerHTML = ""
-          Books.forEach((book) => renderAllBooks(book));
+        // // 類別按鈕
+        // $('.themeicon').on('click', async function() {
           
-          // 顯示書本
-          $('.book-div').hide();
-          $('.book-div').slice(0, 5).css('transform', 'translateX(0)').fadeIn(500);
+        //   const bookCategory = $(this).attr('id');
+        //   if(!bookCategory){
+        //     bookCategory = localStorage.getItem('homepageCategory');
+
+        //   } 
+        //   console.log(bookCategory);
+        //   const headText = document.querySelector("#headText");
+        //   headText.innerText = bookCategory;
+        //   localStorage.setItem("homepageCategory", bookCategory);
+
+        //   var allImages = document.getElementsByClassName('themeicon');
+        //   for (var i = 0; i < allImages.length; i++) {
+        //       allImages[i].classList.add('dimmed');
+        //   }
+
+        //   // Not Dim the clicked image
+        //   $(this).removeClass('dimmed');
+
+
+        //   Books = await getCategoryBooks({"category":bookCategory});
+        //   bookList.innerHTML = ""
+        //   Books.forEach((book) => renderAllBooks(book));
           
-        });
+        //   // 顯示書本
+        //   $('.book-div').hide();
+        //   $('.book-div').slice(0, 5).css('transform', 'translateX(0)').fadeIn(500);
+          
+        // });
 
         var currentPage = 1;
 

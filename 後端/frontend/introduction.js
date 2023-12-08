@@ -47,7 +47,21 @@ async function main() {
           });
       });
 
-  });
+      $('#favorite-btn').on('click', function() {
+        // favorite 頁面跳轉
+        window.location.href = './favoritepage.html';
+        localStorage.removeItem('homepageCategory');
+
+      });
+
+      $('#home-btn').on('click', function() {
+        // homepage 頁面跳轉
+        window.location.href = './homepage.html';
+
+      });
+      
+
+      });
   
   }
 

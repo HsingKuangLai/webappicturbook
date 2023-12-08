@@ -19,7 +19,7 @@ export const getTargetMembers = async (req, res) => {
   try {
     const { account } = req.query;
     
-    console.log(account);
+    // console.log(account);
     const secretKey = process.env.JWT_SECRET_KEY || 'fallback_secret_key';
 
     // Verify the JWT token
