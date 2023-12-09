@@ -18,34 +18,72 @@ async function main() {
 
       // jwt 測試
       // 類別按鈕
+      let isthemeClicked = true;
+      let originbookCategory = 'origin';
       $('.themeicon').on('click', async function() {
-          
         const bookCategory = $(this).attr('id');
-        if(!bookCategory){
-          bookCategory = localStorage.getItem('homepageCategory');
+        if (originbookCategory == bookCategory){
+          console.log("same");
+          isthemeClicked = false;
 
-        } 
-        console.log(bookCategory);
-        const headText = document.querySelector("#headText");
-        headText.innerText = bookCategory;
-        localStorage.setItem("homepageCategory", bookCategory);
-
-        var allImages = document.getElementsByClassName('themeicon');
-        for (var i = 0; i < allImages.length; i++) {
-            allImages[i].classList.add('dimmed');
+        } else {
+          isthemeClicked = true;
+          console.log("different");
         }
 
-        // Not Dim the clicked image
-        $(this).removeClass('dimmed');
+        originbookCategory = bookCategory;
+
+        if (isthemeClicked === true){ 
+          const bookCategory = $(this).attr('id');
+          
+          if(!bookCategory){
+            bookCategory = localStorage.getItem('homepageCategory');
+          } 
+          console.log(bookCategory);
+          const headText = document.querySelector("#headText");
+          headText.innerText = bookCategory;
+          localStorage.setItem("homepageCategory", bookCategory);
+
+          var allImages = document.getElementsByClassName('themeicon');
+          for (var i = 0; i < allImages.length; i++) {
+              allImages[i].classList.add('dimmed');
+          }
+
+          // Not Dim the clicked image
+          $(this).removeClass('dimmed');
 
 
-        Books = await getCategoryBooks({"category":bookCategory});
-        bookList.innerHTML = ""
-        Books.forEach((book) => renderAllBooks(book));
+          categoryBooks = await getCategoryBooks({"category":bookCategory});
+          bookList.innerHTML = ""
+          categoryBooks.forEach((book) => renderAllBooks(book));
+          
+          // 顯示書本
+          $('.book-div').hide();
+          $('.book-div').slice(0, 5).css('transform', 'translateX(0)').fadeIn(500);
+
+          // 更改狀態
+          isthemeClicked = false;
         
-        // 顯示書本
-        $('.book-div').hide();
-        $('.book-div').slice(0, 5).css('transform', 'translateX(0)').fadeIn(500);
+
+        } else{
+          isthemeClicked = true;
+          headText.innerText = "Top 10 Hot Reads";
+          var allImages = document.getElementsByClassName('themeicon');
+          for (var i = 0; i < allImages.length; i++) {
+              allImages[i].classList.remove('dimmed');
+          }
+          
+          Books = await getAllBooks();
+          bookList.innerHTML = ""
+          Books.slice(0,10).forEach((book) => renderAllBooks(book));
+          $('.book-div').hide();
+          $('.book-div').slice(0, 5).css('transform', 'translateX(0)').fadeIn(500);
+          
+          // 更改狀態
+          isthemeClicked = true;
+          originbookCategory = 'origin';
+
+        }
         
       });
       
@@ -62,6 +100,7 @@ async function main() {
 
         
       } else{
+
         Books = await getAllBooks();
         Books.slice(0,10).forEach((book) => renderAllBooks(book));
         // bookList.innerHTML = "";
