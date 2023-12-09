@@ -1,7 +1,5 @@
 /* global axios */
 
-// import { forgetEmail } from "../backend/controllers/member";
-
 
 const instance = axios.create({
     baseURL: "http://localhost:8000/api",
@@ -48,6 +46,8 @@ function setupEventListeners() {
       // $("#verifyText").show();
       // $("#passwordText").show();
       $("#verificationBox").show();
+      $("#submitButton").show();
+      // $("#sendButton").hide();
       
 
       
@@ -56,7 +56,7 @@ function setupEventListeners() {
       console.log(userEmail);
 
       verification = await forgetEmail({userEmail});
-      console.log("see your password backend");
+      console.log("See your password in backend or email.");
     });
 
     //點擊submit按鈕   
@@ -237,6 +237,7 @@ async function resetPassword(reset){
 function forgetahref() {
   $(".loginBox").hide();
   $("#verificationBox").hide();
+  $("#submitButton").hide();
   $(".forgetPasswordBox").show();
 };
 
