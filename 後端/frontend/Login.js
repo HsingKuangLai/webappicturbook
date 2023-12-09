@@ -1,5 +1,7 @@
 /* global axios */
 
+// import { forgetEmail } from "../backend/controllers/member";
+
 
 const instance = axios.create({
     baseURL: "http://localhost:8000/api",
@@ -22,13 +24,14 @@ async function main() {
   
 // 設定EventListeners，裡面包含Sign up按鈕function
 function setupEventListeners() {
+    $(".forgetPasswordBox").hide();
     
     const loginButton = document.querySelector("#LoginButton");
     
     //點擊Login按鈕
     loginButton.addEventListener("click", handleLogin);
 
-    //按Enter
+    //Login按Enter
     document.addEventListener("keydown", (event) => {
       // Check if the pressed key is Enter (key code 13)
       if (event.key === "Enter") {
@@ -36,6 +39,78 @@ function setupEventListeners() {
         
       }
     });
+
+    
+
+    //點擊send按鈕
+    let verification;
+    $("#sendButton").on('click', async function() {
+      // $("#verifyText").show();
+      // $("#passwordText").show();
+      $("#verificationBox").show();
+      
+
+      
+      const forgetemail  = document.querySelector("#email");
+      const userEmail = forgetemail.value;
+      console.log(userEmail);
+
+      verification = await forgetEmail({userEmail});
+      console.log("see your password backend");
+    });
+
+    //點擊submit按鈕   
+    $("#submitButton").on('click', async function() {
+      // check
+      const verifyAccount  = document.querySelector("#verifyAccount");
+      const account = verifyAccount.value;
+
+      const passwordText = document.querySelector("#newPassword");
+      const password = passwordText.value;
+
+      const verifycode  = document.querySelector("#verification");
+      const verificationCode = verifycode.value;
+      console.log(verificationCode);
+      // console.log("share", verification);
+    
+
+      if (verification === verificationCode){
+        console.log("same");
+      } else{
+        Swal.fire({
+          icon: 'warning',
+          title: "verification is not correct!",
+          showConfirmButton: true
+          // timer: 2000?
+        })
+        verifycode.value = "";
+        passwordText.value = ""
+        return;
+
+        
+      }
+
+      
+
+      console.log(account, password);
+      const newPassword = await resetPassword({account, password});
+      // console.log(newPassword);
+      if (newPassword){
+        Swal.fire({
+          icon: 'success',
+          title: "Change password successfully!",
+          showConfirmButton: false,
+          timer: 2000
+        }).then(() => {
+          window.location.href = "Login.html";
+        });
+      };
+      return;
+      
+
+    });
+
+
 
     
   }
@@ -131,7 +206,7 @@ function storeAndNavigate(event, member) {
     const id = accountInput.value;
 
 
-    console.log('ID:', id);
+    // console.log('ID:', id);
     localStorage.setItem('ID', id);
     localStorage.setItem('jwt', member);
     window.location.href = 'homepage.html';
@@ -146,11 +221,26 @@ async function getMembers(members) {
     return response.data;
 }
   
-  // async function createMember(members) {
-  //   const response = await instance.post("/members", members);
-  //   return response.data;
-  // }
-  
+async function forgetEmail(email){
+  // console.log({params: email});
+  const response = await instance.get("/members/forgetemail", {params: email});
+  return response.data;
+}
+
+async function resetPassword(reset){
+  console.log(reset);
+  const response = await instance.put("/members/resetPassword", reset);
+  return response.data;
+}
+
+//點擊a href按鈕
+function forgetahref() {
+  $(".loginBox").hide();
+  $("#verificationBox").hide();
+  $(".forgetPasswordBox").show();
+};
+
+
 
 main();
   

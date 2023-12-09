@@ -8,7 +8,9 @@ import {
   updateMember,
   updateMemberData,
   updateMemberFavBooks,
-  deleteMemberdata
+  updatePassword,
+  deleteMemberdata,
+  forgetEmail
 } from "../controllers/member.js";
 import express from "express";
 
@@ -28,10 +30,14 @@ router.get("/target", getTargetMembers);
 router.get("/favorite", getFavorite);
 // GET /api/members/memberdata
 router.get("/memberdata", getMemberdata);
+// GET /api/members/memberdata
+router.get("/forgetemail", forgetEmail);
 // POST /api/members
 router.post("/", createMember);
 // PUT /api/members
 router.put("/", updateMember);
+// PUT /api/members
+router.put("/resetPassword", updatePassword);
 // PUT /api/members/memberdata
 router.put("/memberdata", updateMemberData);
 // PUT /api/members/target

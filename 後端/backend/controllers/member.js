@@ -1,5 +1,8 @@
 import MemberModel from "../models/memberModel.js";
-import jwt, { decode } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
+import nodemailer from 'nodemailer';
+import crypto from 'crypto';
+
 
 export const getSignupMembers = async (req, res) => {
   try {
@@ -279,4 +282,82 @@ export const updateMemberData = async (req, res) => {
       return res.status(500).json({ message: error.message });
     }
   }
+};
+
+// Example route for handling forget password request
+export const forgetEmail = async(req, res) => {
+  const {userEmail} = req.query;
+  console.log(userEmail);
+
+  // A simple in-memory database to store verification codes and their associated email addresses
+  const verificationCodes = new Map();
+
+  // Generate a random verification code
+  const verificationCode = crypto.randomBytes(3).toString('hex'); // Change the length as needed
+
+  // Store the verification code in the database
+  verificationCodes.set(userEmail, verificationCode);
+  // console.log(verificationCodes)
+
+  // Example email sending code with nodemailer
+  const transporter = nodemailer.createTransport({
+   service: 'gmail',
+   host: 'smtp.gmail.com',
+   port: 465,
+   secure: true,
+    auth: {
+      user: 'webappr11@gmail.com',
+      // pass: 'R11722015'
+      pass:'beoi ltou uifs zhef'
+    }
+  });
+
+  const mailOptions = {
+    from: 'webappr11@gmail.com',
+    to: userEmail,
+    subject: 'Password Reset',
+    text: `Your verification code is: ${verificationCode}`
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+      return res.status(500).send('Error sending email');
+    } else {
+      // console.log('Email sent: ' + info.response);
+      console.log('Email sent: ', verificationCode);
+      return res.status(200).json(verificationCode);
+    }
+  });
+};
+
+export const updatePassword = async(req, res) => {
+  const {account, password} = req.body;
+  // console.log(account, password);
+  
+
+  try{
+
+    const result = await MemberModel.updateOne(
+      { 'account': account },
+      {
+        $set: {
+          'password': password,
+        }
+      }
+  );
+
+  // check if update is successful
+  if (!result || result.nModified === 0) {
+    return res.status(404).json({ message: "update fail!" });
+  }
+  console.log(`Password reset for ${account}. New Password: ${password}. `);
+
+  return res.status(200).send(password);
+
+  } catch(error) {
+    res.status(400).send('Invalid verification code');
+  }
+
+
 };

@@ -81,6 +81,15 @@ body {
   padding: 20px; 
 }
 
+.forgetPasswordBox{
+  max-width: 400px;
+  background-color: white;
+  text-align: center;
+  height:auto; 
+  margin: 0 auto; 
+  padding: 20px; 
+}
+
 /* Login標題格式 */
 .head {
   text-align: center;
