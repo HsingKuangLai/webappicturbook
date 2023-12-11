@@ -47,16 +47,23 @@ $(document).ready(function() {
        
     // 上一頁按鈕點擊事件
     $('#prev-btn').on('click', function() {
-        console.log('上一頁按鈕被點擊');
+        // console.log('上一頁按鈕被點擊');
         if (currentPage > 1) {
             currentPage--;
             slideBook();
+        }
+        else if (currentPage === 1){
+            Swal.fire({
+                icon: 'warning', // Set the icon (success, error, warning, info, question)
+                title: "It's the first page!",
+                showConfirmButton: true               
+              });
         }
     });
 
     // 下一頁按鈕點擊事件
     $('#next-btn').on('click', function() {
-        console.log('下一頁按鈕被點擊');
+        // console.log('下一頁按鈕被點擊');
         if (currentPage < $('.page').length) {
             currentPage++;
             slideBook();

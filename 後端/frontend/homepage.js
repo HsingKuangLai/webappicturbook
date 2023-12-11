@@ -205,16 +205,24 @@ async function main() {
 
         // 上一頁按鈕點擊事件
         $('#prev-btn').on('click', function () {
-            console.log('上一頁按鈕被點擊');
+            console.log(currentPage);
             if (currentPage > 1) {
                 currentPage--;
                 slideLeft(currentPage);
+            }
+            else if (currentPage == 1){
+              Swal.fire({
+                icon: 'warning', // Set the icon (success, error, warning, info, question)
+                title: "It's the first page！",
+                // text: '',
+                showConfirmButton: true,
+              });
             }
         });
     
         // 下一頁按鈕點擊事件
         $('#next-btn').on('click', function () {
-            console.log('下一頁按鈕被點擊');
+            // console.log('下一頁按鈕被點擊');
             var totalBooks = $('.book-div').length;
             var booksPerPage = 5;
             var totalPages = Math.ceil(totalBooks / booksPerPage);
@@ -223,6 +231,16 @@ async function main() {
                 currentPage++;
                 slideRight(currentPage);
             }
+
+            else if (currentPage == totalPages) {
+              Swal.fire({
+                icon: 'warning', // Set the icon (success, error, warning, info, question)
+                title: "It's the final page！",
+                // text: '',
+                showConfirmButton: true,
+              });
+              
+          }
         });
     
         // 顯示書本一開始執行一次
