@@ -119,6 +119,14 @@ async function renderFavorite(books) {
     const names = item.querySelector("p.bookName");
     names.innerText = favorBook.name;
 
+    // 作者
+    const author = item.querySelector(".author-name");
+    author.innerText = `作者： ${favorBook.author}`;
+
+    // 瀏覽次數
+    const times = item.querySelector("span.times");
+    times.innerText = `瀏覽次數： ${favorBook.times} ${"次"}`;
+
     // 加入前端List
     bookList.appendChild(item);
 }

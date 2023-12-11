@@ -131,13 +131,13 @@ export const updateMemberFavBooks = async (req, res) => {
     // Verify the JWT token\
     // console.log( account );
     const decoded = jwt.verify(account, secretKey);
-    console.log("updateMember", decoded.account);
+    // console.log("updateMember", decoded.account);
   
     const result = await MemberModel.updateOne(
       { 'account': decoded.account },
       { $pull: { 'favorite': { $in: [bookName] } } }
     );
-    console.log(result);
+    // console.log(result);
 
     if (!result || result.nModified === 0) {
       return res.status(404).json({ message: "Member not found!" });
@@ -315,7 +315,7 @@ export const forgetEmail = async(req, res) => {
   const mailOptions = {
     from: 'webappr11@gmail.com',
     to: userEmail,
-    subject: 'Password Reset',
+    subject: 'Web app Password Reset',
     text: `Your verification code is: ${verificationCode}`
   };
 
