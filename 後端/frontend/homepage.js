@@ -298,7 +298,7 @@ async function main() {
               // 顯示書本
               $('.book-div').hide();
               $('.book-div').slice(0, 5).css('transform', 'translateX(0)').fadeIn(500);
-
+              currentPage = 1;
               if(Books.length === 0){
                 // 未找到書警告
                 Swal.fire({
