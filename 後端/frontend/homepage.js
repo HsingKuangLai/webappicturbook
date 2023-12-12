@@ -206,7 +206,18 @@ async function main() {
         // 上一頁按鈕點擊事件
         $('#prev-btn').on('click', function () {
             console.log(currentPage);
-            if (currentPage > 1) {
+            var totalBooks = $('.book-div').length;
+
+            if (totalBooks <= 5) {
+              Swal.fire({
+                icon: 'warning', // Set the icon (success, error, warning, info, question)
+                title: "Only one page！",
+                // text: '',
+                showConfirmButton: true,
+              });
+            }
+
+            else if (currentPage > 1) {
                 currentPage--;
                 slideLeft(currentPage);
             }
@@ -226,12 +237,20 @@ async function main() {
             var totalBooks = $('.book-div').length;
             var booksPerPage = 5;
             var totalPages = Math.ceil(totalBooks / booksPerPage);
-    
-            if (currentPage < totalPages) {
+
+            if (totalBooks <= 5) {
+              Swal.fire({
+                icon: 'warning', // Set the icon (success, error, warning, info, question)
+                title: "Only one page！",
+                // text: '',
+                showConfirmButton: true,
+              });
+            }
+            else if  (currentPage < totalPages) {
                 currentPage++;
                 slideRight(currentPage);
             }
-
+            
             else if (currentPage == totalPages) {
               Swal.fire({
                 icon: 'warning', // Set the icon (success, error, warning, info, question)
