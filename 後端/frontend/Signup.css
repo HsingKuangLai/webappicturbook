@@ -32,17 +32,6 @@ body {
   margin-left: auto; /* 将右侧部分推到右侧 */
 }
 
-.pageicon-container {
-  display: flex;
-  justify-content: flex-end;
-  position: relative;
-}
-
-.pageicon {
-  width: 40px;
-  height: auto;
-  margin-left: 10px;
-}
 
 .search {
   bottom: 30px;
@@ -269,7 +258,10 @@ input[type="password"] {
   text-decoration: none;
   border: none;
   cursor: pointer;
-  margin-right: 10px
+  margin-right: 10px;
+  margin-bottom: 7.5px;
+  transition: transform 0.3s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 .circle-btn i {
@@ -279,9 +271,43 @@ input[type="password"] {
 
 .circle-btn:hover {
   background-color: black;
-  color: white
+  color: white;
+  transform: scale(1.1);
+  
 }
 
 a {
   text-decoration: none; /* 去除超連結的底線 */
+}
+
+.pageicon-container {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+.pageIcon{
+  position: relative;
+}
+
+.pageIcon .buttonText {
+  visibility: hidden;
+  width: 120px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 40%;
+  margin-top: 5px; /* Adjust the margin as needed */
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.pageIcon:hover .buttonText {
+  visibility: visible;
+  opacity: 1;
 }
