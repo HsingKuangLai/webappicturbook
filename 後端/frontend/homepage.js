@@ -20,19 +20,21 @@ async function main() {
       // 類別按鈕
       let isthemeClicked = true;
       let originbookCategory = 'origin';
+      var currentPage = 1;
       $('.themeicon').on('click', async function() {
         const bookCategory = $(this).attr('id');
         if (originbookCategory == bookCategory){
           console.log("same");
           isthemeClicked = false;
-
+          currentPage = 1;
         } else {
           isthemeClicked = true;
           console.log("different");
+          currentPage = 1;
         }
 
         originbookCategory = bookCategory;
-
+        
         if (isthemeClicked === true){ 
           const bookCategory = $(this).attr('id');
           
@@ -94,6 +96,7 @@ async function main() {
         const storeCategory = localStorage.getItem("homepageCategory")
         try{
           $('#' + storeCategory + '.themeicon').trigger('click');
+          
         } catch(error){
           console.log(error);
         }
@@ -104,7 +107,7 @@ async function main() {
         Books = await getAllBooks();
         Books.slice(0,10).forEach((book) => renderAllBooks(book));
         // bookList.innerHTML = "";
-
+        
       }
 
     
@@ -201,7 +204,7 @@ async function main() {
           
         // });
 
-        var currentPage = 1;
+        // var currentPage = 1;
 
         // 上一頁按鈕點擊事件
         $('#prev-btn').on('click', function () {
@@ -220,6 +223,7 @@ async function main() {
             else if (currentPage > 1) {
                 currentPage--;
                 slideLeft(currentPage);
+                console.log(currentPage)
             }
             else if (currentPage == 1){
               Swal.fire({
@@ -249,6 +253,7 @@ async function main() {
             else if  (currentPage < totalPages) {
                 currentPage++;
                 slideRight(currentPage);
+                console.log(currentPage)
             }
             
             else if (currentPage == totalPages) {
