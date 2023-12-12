@@ -342,6 +342,7 @@ function unsubscribeEventListeners(user_id) {
           }).then(() => {
             // Redirect to the homepage
             window.location.href = './homepage_before_login.html'; // Replace with the actual homepage URL
+            localStorage.clear();
           });
         } catch (error) {
           // If unsuccessful, show an error message
