@@ -53,7 +53,7 @@ async function main() {
           $(this).removeClass('dimmed');
 
 
-          categoryBooks = await getCategoryBooks({"category":bookCategory});
+          const categoryBooks = await getCategoryBooks({"category":bookCategory});
           bookList.innerHTML = ""
           categoryBooks.forEach((book) => renderAllBooks(book));
           
