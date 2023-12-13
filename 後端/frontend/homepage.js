@@ -84,6 +84,7 @@ async function main() {
           // 更改狀態
           isthemeClicked = true;
           originbookCategory = 'origin';
+          localStorage.removeItem('homepageCategory');
 
         }
         
