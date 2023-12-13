@@ -118,6 +118,7 @@ function setupEventListeners() {
         accountInput.value = "";
         return;
       }
+      
 
     } catch(error){
       Swal.fire({
@@ -129,8 +130,20 @@ function setupEventListeners() {
       return;
     }
     try {
-      const memeberShip = await createMember({ name, email, account, password, creditCard });
-      // console.log(memeberShip);
+      const memberShip = await createMember({ name, email, account, password, creditCard });
+      // console.log(memberShip.message);
+      if (memberShip.message === "Invalid email address."){
+        console.log(memberShip.message);
+        Swal.fire({
+          icon: 'warning', // Set the icon (success, error, warning, info, question)
+          title: "Email is not a valid email address, please try another email！",
+          showConfirmButton: true,
+        });
+        
+        emailInput.value = "";
+        return;
+        
+      }
     } catch (error) {
       Swal.fire({
         icon: 'error', // Set the icon (success, error, warning, info, question)

@@ -2,6 +2,7 @@ import MemberModel from "../models/memberModel.js";
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
 import crypto from 'crypto';
+import validator from 'validator';
 
 
 export const getSignupMembers = async (req, res) => {
@@ -74,6 +75,12 @@ export const createMember = async (req, res) => {
     return res
       .status(400)
       .json({ message: "Information are required!" });
+  }
+
+  if (!validator.isEmail(email)){
+    console.log("fail");
+    return res.json({message:"Invalid email address."})
+    
   }
 
   // Create a new member
