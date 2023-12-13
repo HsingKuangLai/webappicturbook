@@ -330,6 +330,8 @@ a {
   margin-left: -60px;
   opacity: 0;
   transition: opacity 0.3s;
+  font-weight: 500;
+  font-family: Bookman, URW Bookman L, serif;
 }
 
 .pageIcon:hover .buttonText {
