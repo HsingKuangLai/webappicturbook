@@ -45,10 +45,18 @@ function setupEventListeners() {
     $("#sendButton").on('click', async function() {
       // $("#verifyText").show();
       // $("#passwordText").show();
+     
+      // $("#sendButton").hide();
+      if (document.getElementById("email").value === "") {
+        Swal.fire({
+          icon: 'warning',
+          title: "Please enter email！",
+          showConfirmButton: true
+        });
+        return;
+      }
       $("#verificationBox").show();
       $("#submitButton").show();
-      // $("#sendButton").hide();
-      
 
       
       const forgetemail  = document.querySelector("#email");
