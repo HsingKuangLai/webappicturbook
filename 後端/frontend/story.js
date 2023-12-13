@@ -1,9 +1,36 @@
+/* global axios */
+const itemTemplate = document.querySelector("#story-template");
+const StoryList = document.querySelector("#storys");
+
+const instance = axios.create({
+    baseURL: "http://localhost:8000/api",
+  });
+  
+
+$(document).ready(async function() {
+
+    try {
+        // 抓書名
+        const textValue = localStorage.getItem('storedText');
+        console.log(textValue);
+        const books = await getBooks({"name":textValue});
+
+        console.log(books.content)
+        books.content.forEach((page) => renderstory(page));
 
 
-$(document).ready(function() {
+      } catch (error) {
+        console.log(error);
+        $('.container').hide();
+        Swal.fire({
+          icon: 'error', // Set the icon (success, error, warning, info, question)
+          title: 'Fail to Load the book！',
+          showConfirmButton: true
+          // timer: 3000
+        });
+      }
+
     var currentPage = 1;
-
-
     // Logout Button Click Event
     $('#logout-btn').on('click', function() {
         Swal.fire({
@@ -89,3 +116,39 @@ $(document).ready(function() {
         
     }
 });
+
+
+async function getstory(name) {
+    // console.log({params:category})
+    const response = await instance.get("/books/story", {params:name});
+    return response.data;
+  }
+
+
+
+// 抓取書本資訊
+async function renderstory(page) {
+    const item = itemTemplate.content.cloneNode(true);
+    // 圖片
+    const storyImage = item.querySelector(".story-image");
+    console.log(page)
+    urlpic = "./story/" + page
+    console.log(urlpic)
+    storyImage.src = urlpic;
+
+    // 加入前端List
+    StoryList.appendChild(item);
+    
+}
+
+
+
+
+  // 前端呼叫後端function
+async function getBooks(bookName) {
+  // console.log({params:bookName});
+  const response = await instance.get("/books", {params:bookName});
+  return response.data;
+}
+
+

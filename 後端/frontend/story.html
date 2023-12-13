@@ -11,7 +11,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.2/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.2/dist/sweetalert2.all.min.js"></script>
     
-    <script src="story.js"></script>
+    <script defer src="story.js"></script>
+
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"
+    integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    >
+    </script>
+    <!--最佳化螢幕寬度-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Story</title>
 </head>
 
@@ -51,23 +62,27 @@
     </div>
     
     <div class="container">
-        <div class = "story">
-            <div class="page"><img src="./story1/story1-1.jpg"  width="1200" height="750"> </div>
-            <div class="page"><img src="./story1/story1-2.jpg"  width="1200" height="750"> </div>
-            <div class="page"><img src="./story1/story1-3.jpg"  width="1200" height="750"> </div>
-            <div class="page"><img src="./story1/story1-4.jpg"  width="1200" height="750"> </div>
-            <div class="page"><img src="./story1/story1-5.jpg"  width="1200" height="750"> </div>
-            <!-- <div class="page"><img src="./story1/story2-1.jpg"  width="1200" height="750"> </div>
-            <div class="page"><img src="./story1/story2-2.jpg"  width="1200" height="750"> </div>
-            <div class="page"><img src="./story1/story2-3.jpg"  width="1200" height="750"> </div>
-            <div class="page"><img src="./story1/story2-4.jpg"  width="1200" height="750"> </div>
-            <div class="page"><img src="./story1/story2-5.jpg"  width="1200" height="750"> </div> -->
-        </div>
+        <ul class = "story" id = "storys">
+            <!-- <div class="page"><img src="./story1/story1.png"  width="1200" height="750"> </div>
+            <div class="page"><img src="./story1/story2.png"  width="1200" height="750"> </div>
+            <div class="page"><img src="./story1/story1.png"  width="1200" height="750"> </div>
+            <div class="page"><img src="./story1/story2.png"  width="1200" height="750"> </div>
+            <div class="page"><img src="./story1/story1.png"  width="1200" height="750"> </div> -->
+        </ul>
         <div class="changepage_container">
             <img src="./image/lastpage.png"  class="changepage", id="prev-btn">
             <img src="./image/nextpage.png" class="changepage" id="next-btn">  
         </div>
     </div>
+    <template id="story-template">
+        <li class = "story-list">
+            <div class="page">
+                <img class="story-image" width="1200" height="750"> 
+            </div>   
+        </li>
+    </template>
+
+
 
 
 <script>

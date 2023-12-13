@@ -51,7 +51,7 @@ body {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     overflow: hidden;
-    gap: 200px;
+    gap: 0px;
 }
 
 .page:last-child {
@@ -161,8 +161,6 @@ margin-top: 5px; /* Adjust the margin as needed */
 margin-left: -60px;
 opacity: 0;
 transition: opacity 0.3s;
-font-weight: 500;
-font-family: Bookman, URW Bookman L, serif;
 }
 
 .pageIcon:hover .buttonText {
