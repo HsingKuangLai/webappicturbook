@@ -17,9 +17,13 @@
           title: 'Please log in！',
           showConfirmButton: true
           // timer: 3000
+        }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.href = './Login.html'; // Redirect to login page
+              }
+          });
         });
-            });
-        });
+    });
     </script>
     <!--最佳化螢幕寬度-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
