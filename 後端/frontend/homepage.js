@@ -173,6 +173,15 @@ async function main() {
             window.location.href = "./introduction.html"
         });
 
+        $('#instagram-btn').on('click', function() {
+          window.location.href = 'https://www.instagram.com/jason_wei0701/';
+        });
+
+        $('#facebook-btn').on('click', function() {
+          window.location.href = 'https://www.facebook.com/profile.php?id=100006438136962';
+        });
+
+
         // // 類別按鈕
         // $('.themeicon').on('click', async function() {
           

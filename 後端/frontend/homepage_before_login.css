@@ -283,3 +283,27 @@ a {
   visibility: visible;
   opacity: 1;
 }
+
+
+.down{
+  margin: 0 auto;
+  position: relative;
+  width: 15%;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+}
+
+/* .down_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+.contact {
+  color: white;
+  font-size: 22px;
+  font-family: 'Microsoft JhengHei', sans-serif;
+  margin: 5px 5px 0 0;
+}
