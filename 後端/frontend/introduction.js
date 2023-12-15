@@ -78,7 +78,7 @@ async function setupEventListeners() {
     const startReadButton = document.querySelector("#StartReadingButton");    
     startReadButton.addEventListener("click", async () => {
       const book = localStorage.getItem('storedText');
-      updateBookTimes(book);
+      await updateBookTimes(book);
       window.location.href = "./story.html"
   
     });
