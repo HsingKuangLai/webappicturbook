@@ -313,14 +313,13 @@ export const forgetEmail = async(req, res) => {
    port: 465,
    secure: true,
     auth: {
-      user: 'webappr11@gmail.com',
-      // pass: 'R11722015'
-      pass:'beoi ltou uifs zhef'
+      user: process.env.Email,
+      pass: process.env.Password
     }
   });
 
   const mailOptions = {
-    from: 'webappr11@gmail.com',
+    from: process.env.Email,
     to: userEmail,
     subject: 'Web app Password Reset',
     text: `Your verification code is: ${verificationCode}`
